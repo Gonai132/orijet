@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kaushan+Script&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+html, body { background: #00BFD2; }
 
 :root{
 /* Kolory */
@@ -21,7 +23,6 @@
 --color-text-light: #ffffff;
 
 
-
 /* Typografia */
 --font-main:   'Josefin Sans', sans-serif;
 --font-logo: 'Kaushan Script', cursive;
@@ -29,4 +30,5 @@
 /* Inne */
 --radius-md: 12px;
 --transition: 180ms ease;
+--transition2: 0.3s ease;
 }

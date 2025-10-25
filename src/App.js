@@ -10,10 +10,13 @@ import Payment from "./pages/Payment";
 import Confirmation from "./pages/Confirmation";
 import Button1 from './components/Button/Button1';
 import Button2 from './components/Button/Button2';
+import NavbarMobile from './components/Navbar/NavbarMobile';
+import LowerMenu from './components/LowerMenu/LowerMenu';
 
 function App() {
   return (
     <BrowserRouter>
+    <NavbarMobile />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<SearchResults />} />
@@ -28,7 +31,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Button1>Zarezerwuj</Button1>
-      <Button2>Nie chcę bagażu</Button2>
+      <LowerMenu />
     </BrowserRouter>
   );
 }
