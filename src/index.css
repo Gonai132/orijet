@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Kaushan+Script&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+/* Kolory */
+--color-teal: #007389;
+--color-teal-light: #00BFD2;
+--color-teal-dark: #023D4D;
+--color-orange:  #F84F00;
+--color-sand:    #FED59F;
+--color-cream:   #FAF6DD;
+--color-sky-1:   #7FE0EB;
+--color-sky-2:   #E0FEFF;
+--color-gray-light:#DCDFDF;
+--color-gray-medium:#777B7B;
+--color-text-light: #ffffff;
+
+
+
+/* Typografia */
+--font-main:   'Josefin Sans', sans-serif;
+--font-logo: 'Kaushan Script', cursive;
+
+/* Inne */
+--radius-md: 12px;
+--transition: 180ms ease;
+}

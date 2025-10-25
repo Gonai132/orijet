@@ -1,0 +1,51 @@
+.button {
+  width: 320px;
+  height: 45px;
+  border-radius: 100px;
+  font-family: var(--font-main);
+  line-height: 24px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.button1 {
+  background-color: var(--color-teal-light);
+  color: var(--color-text-light);
+  font-weight: 700;
+   font-size: 20px;
+  border: none;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.button1:hover {
+  background-color: var(--color-teal);
+}
+
+.button1:active {
+  background-color: var(--color-teal-dark);
+  color: var(--color-cream);
+}
+
+.button2 {
+  background-color: color-mix(in srgb, var(--color-cream) 30%, transparent);
+  color: var(--color-teal);
+  font-weight: 600;
+  font-size: 18px;
+  border: 2px solid var(--color-cream);
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.button2:hover {
+  background-color: color-mix(in srgb, var(--color-cream) 60%, transparent);
+  color: var(--color-teal);
+  border: 2px solid var(--color-teal);
+}
+
+.button2:active {
+  background-color: var(--color-cream);
+  color: var(--color-teal);
+  border: 2px solid var(--color-teal);
+}
