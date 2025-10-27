@@ -89,7 +89,14 @@ export default function SearchResults() {
           <div className="sr-route">
 
             <span className="sr-airport">{o}</span>
-            <span className="sr-arrow"><FaPlane/></span>
+            <span className="sr-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="129" height="20" viewBox="0 0 129 20" fill="none">
+            <line x1="2" y1="9.5" x2="122" y2="9.5" stroke="white" stroke-dasharray="4 4"/>
+            <path d="M73.9425 7.475C75.1979 7.475 76.2175 8.49469 76.2175 9.75C76.2175 11.0053 75.1979 12.025 73.9425 12.025H68.771L62.3035 19.0775C62.0557 19.3456 61.7104 19.5 61.3447 19.5H59.5694C59.1266 19.5 58.8138 19.0653 58.9519 18.6428L61.1579 12.025H57.1075L54.9625 14.7062C54.8407 14.8606 54.6538 14.95 54.4547 14.95H53.6504C53.2279 14.95 52.9191 14.5519 53.0207 14.1416L54.1175 9.75L53.0207 5.35844C52.915 4.94812 53.2279 4.55 53.6504 4.55H54.4547C54.6538 4.55 54.8407 4.63937 54.9625 4.79375L57.1075 7.475H61.1579L58.9519 0.857187C58.8138 0.434687 59.1266 0 59.5694 0H61.3447C61.7104 0 62.0557 0.154375 62.3035 0.4225L68.771 7.475H73.9425Z" fill="#FAF6DD"/>
+            <circle cx="3.5" cy="9.5" r="3.5" fill="white"/>
+            <circle cx="125.5" cy="9.5" r="3.5" fill="white"/>
+            </svg>
+            </span>
             <span className="sr-airport">{d}</span>
                         <span className="sr-pax"> • {pax} os.</span>
           </div>
@@ -99,9 +106,9 @@ export default function SearchResults() {
         {/* OUTBOUND */}
         <section className="sr-section">
           <div className="sr-datebar">
-            <button className="pill" disabled={!outNeighbors.prev} onClick={() => outNeighbors.prev && gotoOut(outNeighbors.prev)}>← {outNeighbors.prev || ""}</button>
+            <button className="pill" disabled={!outNeighbors.prev} onClick={() => outNeighbors.prev && gotoOut(outNeighbors.prev)}><span>← </span> {outNeighbors.prev || ""}</button>
             <div className="pill pill--active">Wylot {dateISO}</div>
-            <button className="pill" disabled={!outNeighbors.next} onClick={() => outNeighbors.next && gotoOut(outNeighbors.next)}>{outNeighbors.next || ""} →</button>
+            <button className="pill" disabled={!outNeighbors.next} onClick={() => outNeighbors.next && gotoOut(outNeighbors.next)}>{outNeighbors.next || ""} <span>→</span></button>
           </div>
 
           {outFlights.length === 0 ? (
@@ -124,9 +131,9 @@ export default function SearchResults() {
         {rt && (
           <section className="sr-section">
             <div className="sr-datebar">
-              <button className="pill" disabled={!backNeighbors.prev} onClick={() => backNeighbors.prev && gotoBack(backNeighbors.prev)}>← {backNeighbors.prev || ""}</button>
+              <button className="pill" disabled={!backNeighbors.prev} onClick={() => backNeighbors.prev && gotoBack(backNeighbors.prev)}><span>← </span> {backNeighbors.prev || ""}</button>
               <div className="pill pill--active">Powrót {retISO || "-"}</div>
-              <button className="pill" disabled={!backNeighbors.next} onClick={() => backNeighbors.next && gotoBack(backNeighbors.next)}>{backNeighbors.next || ""} →</button>
+              <button className="pill" disabled={!backNeighbors.next} onClick={() => backNeighbors.next && gotoBack(backNeighbors.next)}>{backNeighbors.next || ""} <span>→</span></button>
             </div>
 
             {backFlights.length === 0 ? (
@@ -185,14 +192,17 @@ function FlightCard({ data, selected, onSelect }) {
         <div className="fc-time">{data.arriveTime}</div>
       </div>
        <div className="fc-row fc-meta">
-        {data.origin.name}<span> {data.durationText}</span> {data.destination.name}
+        <svg xmlns="http://www.w3.org/2000/svg" width="96" height="6" viewBox="0 0 96 6" fill="none">
+      <path d="M96 2.88678L91 2.83718e-05V5.77353L96 2.88678ZM0 2.88678V3.38678H91.5V2.88678V2.38678H0V2.88678Z" fill="#333333"/>
+      </svg>
+       <span className="fc-destination">{data.origin.name}</span><span> {data.durationText}</span> <span className="fc-destination">{data.destination.name}</span>
       </div>
 
       <div className="fc-row fc-route">
         <div className="fc-airport">
           {data.origin.code}
         </div>
-        <div className="fc-airport fc-airport--right">
+        <div className="fc-airport">
           {data.destination.code}
         </div>
       </div>
@@ -200,7 +210,7 @@ function FlightCard({ data, selected, onSelect }) {
      
 
       <div className="fc-row fc-bottom">
-        <div className="fc-price">{data.pricePLN.toFixed(2)} PLN</div>
+        <div className="fc-price"><span>TARYFA PODSTAWOWA:</span>{data.pricePLN.toFixed(2)}<span>PLN</span></div>
         <div className={`fc-radio ${selected ? "fc-radio--on" : ""}`} aria-hidden />
       </div>
     </button>
