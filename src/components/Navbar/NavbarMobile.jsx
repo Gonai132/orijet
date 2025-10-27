@@ -15,10 +15,10 @@ export default function NavbarMobile() {
       <div className="status-bar" />
 
       <nav className="nav-bar">
-        <div className="brand">
+        <Link to="/" className="brand">
           <img src={logo} alt="OriJet logo" className="brand-logo" />
           <span className="brand-text">OriJet</span>
-        </div>
+        </Link>
 
         <button
           className="menu-btn"

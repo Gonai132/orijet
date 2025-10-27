@@ -3,7 +3,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 101;
+  z-index: 98;
   height: 65px;
   background: var(--color-teal-dark);
   color: var(--color-cream);
@@ -23,6 +23,20 @@
   color: var(--color-cream);
   text-decoration: none;
   font-size: 30px;
+  transition: color var(--transition2);
 }
 
-.lm-item:active { opacity: 1; }
+.lm-item:active {
+  color: var(--color-teal-light);
+}
+
+.lm-item:hover {
+  color: var(--color-teal-light);
+}
+
+@media (min-width: 992px) {
+  .lower-menu { display: none; }
+}
+
+
+

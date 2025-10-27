@@ -4,12 +4,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: var(--font-main), Roboto, sans-serif;
 }
 
-html, body { background: #00BFD2; }
+main {
+  padding-top: 50px;
+  padding-bottom: 90px;
+}
 
 :root{
-/* Kolory */
+/* Kolory*/
 --color-teal: #007389;
 --color-teal-light: #00BFD2;
 --color-teal-dark: #023D4D;
@@ -21,6 +25,9 @@ html, body { background: #00BFD2; }
 --color-gray-light:#DCDFDF;
 --color-gray-medium:#777B7B;
 --color-text-light: #ffffff;
+/* --color-text-medium: #A1A4A4; */
+--color-text-medium: #567;
+--color-text-dark:  #333333;
 
 
 /* Typografia */
@@ -31,4 +38,11 @@ html, body { background: #00BFD2; }
 --radius-md: 12px;
 --transition: 180ms ease;
 --transition2: 0.3s ease;
+}
+
+@media (min-width: 992px) {
+  main {
+    padding-top: 60px;
+    padding-bottom: 0;
+  }
 }

@@ -9,7 +9,7 @@
 
 .status-bar {
   width: 100%;
-  height: 10px;
+  height: 0px;
   background: var(--color-teal-light);
 }
 
@@ -18,7 +18,7 @@
   z-index: 101;
   height: 50px;
   background: var(--color-teal);
-  box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -30,6 +30,7 @@
   align-items: center;
   gap: 5px;
   cursor: pointer;
+  text-decoration: none
 }
 
 .brand-logo {
@@ -62,7 +63,7 @@
 .nav-layer {
   position: fixed;
   inset: 0;
-  top: 60px;
+  top: 50px;
   z-index: 99;
   pointer-events: none;
   opacity: 0;
@@ -73,7 +74,7 @@
 .nav-layer.is-open {
   pointer-events: auto;
   opacity: 1;
-  background: rgba(2, 61, 77, 0.3);
+  background: rgba(2, 61, 77, 0.5);
 }
 
 .dropdown {
@@ -113,6 +114,10 @@
   background: color-mix(in srgb, var(--color-sky-1) 85%, #ffffff);
 }
 
+
+@media (min-width: 992px) {
+  .navbar-mobile { display: none; }
+}
 
 
 

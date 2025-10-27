@@ -1,0 +1,11 @@
+.app-bg {
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    var(--color-orange) 0%,
+    var(--color-cream) 100%
+  );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

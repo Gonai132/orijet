@@ -12,27 +12,28 @@ import Button1 from './components/Button/Button1';
 import Button2 from './components/Button/Button2';
 import NavbarMobile from './components/Navbar/NavbarMobile';
 import LowerMenu from './components/LowerMenu/LowerMenu';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
+    <div className="app-bg">
     <BrowserRouter>
+    <Navbar />
     <NavbarMobile />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<SearchResults />} />
         <Route path="/flight/:flightId" element={<FlightDetails />} />
-
         <Route path="/booking/seats" element={<SeatSelection />} />
         <Route path="/booking/baggage" element={<BagSelection />} />
         <Route path="/booking/passengers" element={<ReservationForm />} />
         <Route path="/booking/payment" element={<Payment />} />
         <Route path="/booking/confirmation/:pnr" element={<Confirmation />} />
-
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-      <Button1>Zarezerwuj</Button1>
       <LowerMenu />
     </BrowserRouter>
+    </div>
   );
 }
 
