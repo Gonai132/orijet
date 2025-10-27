@@ -19,48 +19,47 @@
   text-align: center;
   font-weight: 700;
   letter-spacing: 1px;
-  margin: 30px 0 10px;
+  margin: 5px 0 10px;
 }
 .back-btn {
-  position: fixed;
+  position: static;
   appearance: none;
   border: 0;
-  background: #fff2;
-  color: var(--color-text-light);
-  border-radius: 10px;
+  background:transparent;
+  color: rgba(255, 255, 255, 0.75);
   padding: 4px 8px;
-  backdrop-filter: blur(2px);
 }
+.back-btn svg {
+  width: 36px;
+  height: 36px;}
+
+
 .sr-route {
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 10px 14px;
+  flex-wrap: wrap;
   font-weight: 700;
-  margin-bottom: 6px;
+  color: var(--color-text-light);
+  font-size: 24px;
 }
 .sr-pax {
   flex-basis: 100%;
+  font-size: 16px;
   text-align: center;
   font-weight: 500;
   opacity: .85;
 }
 .sr-airport {
   text-align: center;
-  flex-basis: 33%;
   font-size: 24px; }
 
 .sr-arrow {
   font-size: 24px;
   text-align: center;
-  flex-basis: 30%;
 }
-
-  /* .sr-arrow svg {
-    position: absolute;
-  } */
-
 
 .sr-section { margin: 16px 0 10px; }
 
@@ -80,7 +79,9 @@
   font-size: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,.12);
   border: 1px solid #DBCDC2;
+  text-align: center;
 }
+
 .pill:disabled { opacity: .45; }
 .pill--active {
   background:#0b8e9b;

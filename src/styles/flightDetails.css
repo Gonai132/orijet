@@ -1,0 +1,106 @@
+.details .back-btn{
+  position: static;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: rgba(255,255,255,.85);
+  padding: 6px 8px;
+}
+.details .back-btn svg{ width:36px; height:36px; }
+
+.fd-bar{ padding:10px 0 0; color:#fff; }
+.fd-route{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
+  gap:10px 14px; font-weight:700;
+}
+.fd-code{ font-size:24px; }
+.fd-pax{ width:100%; text-align:center; font-weight:500; opacity:.9; }
+
+.fd-wrap{ margin-top: 20px; }
+.fd-card{
+  background:#fff;
+}
+
+.fd-times{
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  margin-bottom:10px;
+}
+.fd-time{ font-size:36px; font-weight:900; line-height:1; text-align:center; }
+.fd-time-plane{ color:var(--color-teal); font-size:22px; }
+
+.fd-names{
+  display:flex; align-items:flex-start; justify-content:space-between;
+  gap:12px; margin-bottom:8px;
+}
+.fd-name{ flex:1 1 0; }
+.fd-name-main{ font-weight:700; }
+.fd-name-sub{ color:var(--color-text-medium); font-size:12px; }
+
+.fd-details{
+  display:flex; flex-direction:column; gap:6px; margin-top:6px;
+}
+.fd-detail{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; color:var(--color-text-medium); font-size:13px;
+}
+.fd-detail strong{ color:var(--color-text-dark); }
+
+.fd-subtitle{
+  text-align:center; font-size:16px; letter-spacing:.5px; color:#1b3740;
+  margin: 20px 0 12px; color: var(--color-teal); font-weight: 600;
+}
+
+.logo-details img {
+    display: block;
+    position: absolute;
+    left: calc(50% - 20px);
+    margin-top: 10px;
+}
+
+.fd-fares{
+  display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between;
+}
+.fd-fare{
+  flex:1 1 calc(50% - 6px);
+  border:1px solid #e7ecef; border-radius:14px; padding:12px 10px; background:#fff;
+  min-width:140px;
+}
+.fd-fare-title{
+  font-weight:800; text-align:center; margin-bottom:6px; font-size:12px; color:#1f3940;
+}
+.fd-fare-list{
+  list-style:none; margin:0 0 6px; padding:0; display:flex; flex-direction:column; gap:6px;
+  color:var(--color-text-medium); font-size:12px; text-align: center;
+}
+.fd-fare-list svg{ margin-right:6px; }
+.fd-fare-price{
+  text-align:center; font-weight:900; font-size:26px; color:var(--color-text-dark);
+}
+.fd-fare-price span{ font-size:10px; font-weight:600; color:var(--color-text-medium); }
+
+.fd-icons {
+    color: var(--color-teal-light);
+    font-size: 20px;
+}
+
+.suitcase {
+    font-size: 30px;
+}
+.fc-top {
+    text-align: center;
+    justify-content: space-around;
+}
+
+.fd-seats{ margin-top:8px; text-align:center; color:#345; }
+
+.fd-tabs{ display:flex; gap:8px; justify-content:center; margin:8px 0 12px; }
+.fd-tab{
+  border:1px solid #ffffff88; background:#ffffffc0; color:var(--color-text-medium);
+  border-radius:20px; padding:8px 14px; font-size:12px;
+  box-shadow:0 2px 6px rgba(0,0,0,.12); border:1px solid #DBCDC2;
+}
+.fd-tab.is-active{ background:var(--color-teal-light); color:#fff; border-color:transparent; font-weight:700; }
+
+.fd-cta{
+  margin:16px auto 28px; display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
+}

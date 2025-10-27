@@ -4,6 +4,8 @@ import Container from "../components/Container/Container";
 import Button1 from "../components/Button/Button1";
 import "./../styles/searchResults.css";
 import { FaPlane } from "react-icons/fa6";
+import { IoArrowBackCircle } from "react-icons/io5";
+
 
 import { listAvailableDates, findFlightsForDate } from "../data/Schedule";
 
@@ -67,24 +69,22 @@ export default function SearchResults() {
 
   const canReserve = !rt ? !!selOut : !!selOut && !!selBack;
 
-  const handleReserve = () => {
-    if (!canReserve) return;
-    // tu docelowo przejście do ekranu rezerwacji z payloadem
-    const payload = {
-      o, d,
-      dateISO,
-      retISO: rt ? retISO : null,
-      pax,
-      selected: { outbound: selOut, inbound: selBack }
-    };
-    console.log("REZERWUJ:", payload);
-    alert("Super! Przechodzimy do rezerwacji 🙂 (payload w konsoli)");
-  };
+const handleReserve = () => {
+  if (!canReserve) return;
+
+  navigate("/details", {
+    state: {
+      flight: selOut,                      
+      returnFlight: rt ? selBack : null,   
+      pax                                   
+    },
+  });
+};
 
   return (
     <main className="page page-results">
       <div className="sr-hero">
-          <button className="back-btn" onClick={() => navigate(-1)} aria-label="Wróć">←</button>
+          <button className="back-btn" onClick={() => navigate(-1)} aria-label="Wróć"><IoArrowBackCircle /></button>
           <h1 className="sr-title">DOSTĘPNE POŁĄCZENIA:</h1>
           <div className="sr-route">
 
@@ -180,8 +180,7 @@ function FlightCard({ data, selected, onSelect }) {
       type="button"
       className={`flight-card ${selected ? "is-selected" : ""}`}
       onClick={onSelect}
-      aria-pressed={selected}
-    >
+      aria-pressed={selected}>
 
        <div className="fc-row fc-meta">
         <div className="fc-fnumber">Nr lotu: <strong>{data.flightNo}</strong></div>

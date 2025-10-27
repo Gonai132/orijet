@@ -2,7 +2,7 @@
   min-height: 100vh;
   background: linear-gradient(
     180deg,
-    var(--color-orange) 0%,
+     #f84f00ec 0%,
     var(--color-cream) 100%
   );
   background-attachment: fixed;

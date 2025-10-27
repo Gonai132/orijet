@@ -76,25 +76,22 @@ export function getReachableAirports(rules, origin) {
 }
 
 export function buildFlightFromRule(rule, isoDate) {
-  const dep = rule.departure; // "HH:MM"
+  const dep = rule.departure;
   const arr = addMinutes(dep, rule.durationMin || 0);
-  const durationMin = rule.durationMin || 0;
-  const h = Math.floor(durationMin / 60);
-  const m = durationMin % 60;
-
   return {
-    id: `${rule.id}-${isoDate}-${dep}`,
-    dateISO: isoDate,
+    id: `${rule.id}-${isoDate}`,
+    date: isoDate,
     origin: rule.origin,
     destination: rule.destination,
     flightNo: rule.id,
     departTime: dep,
     arriveTime: arr,
-    durationText: `${h} h ${pad2(m)} min`,
-    durationMin,
-    direct: !!rule.direct,
-    aircraft: rule.aircraft || "",
-    pricePLN: rule.pricePLN ?? rule.price ?? 0,
+    durationMin: rule.durationMin || 0,
+    durationText: `${Math.floor((rule.durationMin||0)/60)} h ${String((rule.durationMin||0)%60).padStart(2,"0")} min`,
+    aircraft: rule.aircraft,
+    terminal: rule.terminal,
+    pricePLN: rule.pricePLN ?? rule.price,
+    availableSeats: rule.availableSeats ?? rule.seatsAvailable ?? null
   };
 }
 

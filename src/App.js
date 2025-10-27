@@ -23,9 +23,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<SearchResults />} />
-        <Route path="/flight/:flightId" element={<FlightDetails />} />
-        <Route path="/booking/seats" element={<SeatSelection />} />
-        <Route path="/booking/baggage" element={<BagSelection />} />
+        <Route path="/details" element={<FlightDetails />} />
+        <Route path="/seats" element={<SeatSelection />} />
+        <Route path="/baggage" element={<BagSelection />} />
         <Route path="/booking/passengers" element={<ReservationForm />} />
         <Route path="/booking/payment" element={<Payment />} />
         <Route path="/booking/confirmation/:pnr" element={<Confirmation />} />
