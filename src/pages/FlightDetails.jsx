@@ -1,8 +1,8 @@
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useMemo, useState } from "react";
 import Container from "../components/Container/Container";
-import Button1 from "../components/Button/Button1";
-import Button2 from "../components/Button/Button2";
+import Button1 from "../components/Buttons/Button1";
+import Button2 from "../components/Buttons/Button2";
 import { FaPlane, FaSuitcaseRolling,} from "react-icons/fa6";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { FaBagShopping } from "react-icons/fa6";

@@ -9,7 +9,7 @@
 
 .status-bar {
   width: 100%;
-  height: 0px;
+  height: 0%;
   background: var(--color-teal-light);
 }
 

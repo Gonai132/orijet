@@ -29,7 +29,7 @@
   color: var(--color-cream);
 }
 
-.button1:disabled { opacity: .45; box-shadow: none; cursor: not-allowed; }
+.button1:disabled { opacity: .4; box-shadow: none; cursor: not-allowed; background-color: var(--color-orange); }
 
 .button2 {
   background-color: color-mix(in srgb, var(--color-cream) 30%, transparent);
@@ -51,3 +51,14 @@
   color: var(--color-teal);
   border: 2px solid var(--color-teal);
 }
+
+.back-btn{
+  position: static;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: rgba(255,255,255,.85);
+  padding: 6px 8px;
+}
+
+.back-btn svg{ width:36px; height:36px; }

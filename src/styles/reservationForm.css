@@ -1,0 +1,142 @@
+.rf-container {
+  max-width: 640px;
+}
+
+.rf-title {
+  color: var(--color-text-light);
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.25;
+  margin: 8px 0 14px;
+  font-weight: 800;
+  letter-spacing: .5px;
+}
+
+.rf-card {
+  display: grid;
+  gap: 12px;
+}
+
+.rf-field {
+  display: grid;
+  gap: 6px;
+}
+
+.rf-label {
+  color: var(--color-text-medium);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-left: 5px;
+}
+
+.rf-input {
+  width: 100%;
+  /* border: 1px solid #DBCDC2; */
+  border: 1px solid var(--color-gray-light);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color var(--transition), box-shadow (--transition);
+}
+
+.rf-input:focus {
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px rgba(0, 142, 150, 0.12);
+}
+
+.rf-input.is-error {
+  border-color: var(--color-orange);
+  box-shadow: 0 0 0 3px rgba(220,53,69,.12);
+}
+
+.rf-inline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.rf-inline-date {
+  grid-template-columns: 1fr;
+}
+
+.rf-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.rf-consent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 30px;
+}
+
+.rf-consent input[type="checkbox"] {
+  accent-color:var(--color-teal);
+  width: 16px;
+  height: 16px;
+}
+
+.rf-link {
+  text-decoration: underline;
+  color: var(--color-text-dark);
+  font-weight: 700;
+}
+
+.rf-err {
+  color: var(--color-orange);
+  font-size: 12px;
+}
+
+.rf-err-consent {
+  margin-top: -6px;
+}
+
+.accept-error {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.rf-cta {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.rf-cta button {
+  max-width: 400px;
+}
+
+.rf-cta button:disabled {
+  background-color: var(--color-orange);
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.icon-accept {
+    color: var(--color-teal-dark);
+    font-size: 22px;
+    line-height: 30px;
+    margin-left: 10px;
+}
+
+input:-internal-autofill-selected {
+    background-color: white!important;
+}
+
+.rf-bottom {
+  text-align: center;
+  margin-top: 10px;
+}
+
+@media (min-width: 480px) {
+  .rf-card {
+    padding: 16px 18px 18px;
+  }
+}

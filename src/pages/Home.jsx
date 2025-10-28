@@ -1,6 +1,6 @@
 import "./../styles/home.css";
 import Container from "../components/Container/Container";
-import Button1 from "../components/Button/Button1";
+import Button1 from "../components/Buttons/Button1";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PiArrowsClockwiseFill } from "react-icons/pi";
@@ -146,6 +146,7 @@ export default function Home() {
         <Container>
           <form className="search-form" onSubmit={handleSubmit}>
             <div className="trip-type">
+            
               <label className="radio">
                 <input
                   type="radio"

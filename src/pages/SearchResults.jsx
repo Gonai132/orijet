@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Container from "../components/Container/Container";
-import Button1 from "../components/Button/Button1";
+import Button1 from "../components/Buttons/Button1";
 import "./../styles/searchResults.css";
 import { FaPlane } from "react-icons/fa6";
 import { IoArrowBackCircle } from "react-icons/io5";

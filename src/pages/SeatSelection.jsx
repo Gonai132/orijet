@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
-import Button1 from "../components/Button/Button1";
+import Button1 from "../components/Buttons/Button1";
 import { IoArrowBackCircle } from "react-icons/io5";
 import "./../styles/seatSelection.css";
 import planeBg from "../img/Samolot.png";
@@ -104,7 +104,7 @@ export default function SeatSelection() {
       </button>
           <div className="seat-cta">
             {!ready && <div className="seat-hint">Wybierz {pax} miejsce(a).</div>}
-            <Button1 onClick={next} disabled={!ready}>WYBIERZ MIEJSCE</Button1>
+            <Button1 onClick={next} disabled={!ready}>WYBIERZ MIEJSC{pax > 1 ? "A" : "E"}</Button1>
         </div>
 
       <div className="seat-wrap-no-panel">
@@ -119,7 +119,7 @@ export default function SeatSelection() {
           <img className="plane-bg" src={planeBg} alt="" />
           <div className="seat-grid-rows" aria-label="Mapa miejsc">
           <div className="seat-picked">
-            <div className="picked-title">Wybrane miejsce{pax > 1 ? "(a)" : ""}:  <span className="picked-value">{effective.map(s => s.label).join(", ") || "—"}</span></div>
+            <div className="picked-title">Wybrane miejsc{pax > 1 ? "a" : "e"}:  <span className="picked-value">{effective.map(s => s.label).join(", ") || "—"}</span></div>
             <div className="picked-price">
               Dopłata za wybór: <strong>{totalSurcharge.toFixed(2)} PLN</strong>
             </div>
@@ -163,7 +163,7 @@ function SeatButton({ seat, selected, assigned, onClick }) {
     : `${seat.label} • ${
         seat.type === "window" ? "okno +29,90"
       : seat.type === "aisle"  ? "korytarz +19,90"
-      : "środek +9,90"}`;
+      : "środek +0,0"}`;
 
   return (
     <button

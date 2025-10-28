@@ -1,0 +1,53 @@
+.pay-wrap { background: none; border: 0; box-shadow: none; padding-bottom: 18px; }
+
+.pay-hero { color: var(--color-text-light); text-align: center; padding: 8px 0 0; }
+.pay-title { margin: 0 0 6px; font-weight: 800; font-size: 18px; letter-spacing: .5px; }
+.pay-route-codes { display:flex; align-items:center; justify-content:center; gap:10px; font-weight:700; font-size:22px; }
+.pay-code { font-size: 22px; }
+.pay-arrow { opacity:.8; }
+.pay-pax { font-size:14px; opacity:.85; }
+
+.pay-summary { margin: 12px 0; }
+.pay-summary-top {
+  background:#fff; border-radius:16px; border:1px solid #e9eef1;
+  padding: 10px 14px; box-shadow: 0 6px 18px rgba(0,0,0,.08); margin-bottom:10px;
+}
+.pay-line { display:flex; justify-content:space-between; margin:4px 0; color:#123; }
+.pay-line-l { font-weight:600; }
+.pay-line-r { font-weight:700; }
+
+.pay-items {
+  background:#fff; border-radius:16px; border:1px solid #e9eef1;
+  padding: 10px 14px; box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+.pay-item, .pay-total { display:flex; justify-content:space-between; padding: 6px 0; }
+.pay-total { border-top:2px solid #e7ecef; margin-top:6px; padding-top:10px; font-weight:900; }
+
+.pay-card { margin: 16px 0 24px; }
+.pay-sub { color:#fff; text-align:center; font-size:14px; margin: 6px 0 10px; letter-spacing:.5px; }
+.pay-field { display:flex; flex-direction:column; gap:6px; margin-bottom:10px; }
+.pay-lab { color:#2a3a40; font-size:12px; opacity:.9; }
+.pay-inp {
+  width:100%; padding:12px 14px; border-radius:12px; border:1px solid #DBCDC2; background:#fff;
+  font-size:16px; outline:none;
+}
+.pay-inp:focus { border-color: var(--color-teal); box-shadow: 0 0 0 3px rgba(11,142,155,.15); }
+
+.pay-row { display:flex; gap:10px; }
+.half { flex:1; }
+
+.pay-btn { width:100%; margin-top:8px; }
+
+.pay-modal {
+  position: fixed; inset: 0; background: rgba(0,0,0,.4);
+  display:flex; align-items:center; justify-content:center; padding: 16px; z-index: 50;
+}
+.pay-modal-box {
+  background:#fff; border-radius:14px; padding: 18px; width:min(420px, 92vw);
+  text-align:center; box-shadow: 0 10px 30px rgba(0,0,0,.2);
+}
+.pay-modal-box h3 { margin: 0 0 8px; }
+.pay-modal-btn {
+  margin-top:10px; padding:10px 14px; border-radius:12px; border:none; cursor:pointer;
+  background: var(--color-teal); color:#fff; font-weight:700;
+}
