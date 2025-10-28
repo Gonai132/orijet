@@ -1,0 +1,133 @@
+[
+  { "id":"OJ101","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"LHR","name":"Londyn Heathrow"},"daysOfWeek":["Mon","Tue","Wed","Thu","Fri"],"departure":"07:00","durationMin":160,"aircraft":"A321neo","pricePLN":249,"terminal":"Terminal 2","availableSeats":142 },
+  { "id":"OJ102","origin":{"code":"LHR","name":"Londyn Heathrow"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Mon","Tue","Wed","Thu","Fri"],"departure":"10:20","durationMin":155,"aircraft":"A321neo","pricePLN":249,"terminal":"Terminal 3","availableSeats":138 },
+
+  { "id":"OJ103","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"LHR","name":"Londyn Heathrow"},"daysOfWeek":["Mon","Tue","Wed","Thu","Fri"],"departure":"13:00","durationMin":160,"aircraft":"A320","pricePLN":279,"terminal":"Terminal 2","availableSeats":155 },
+  { "id":"OJ104","origin":{"code":"LHR","name":"Londyn Heathrow"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Mon","Tue","Wed","Thu","Fri"],"departure":"16:30","durationMin":155,"aircraft":"A320","pricePLN":279,"terminal":"Terminal 3","availableSeats":161 },
+
+  { "id":"OJ105","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"LHR","name":"Londyn Heathrow"},"daysOfWeek":["Mon","Tue","Wed","Thu","Fri"],"departure":"20:30","durationMin":165,"aircraft":"A320","pricePLN":299,"terminal":"Terminal 1","availableSeats":172 },
+  { "id":"OJ106","origin":{"code":"LHR","name":"Londyn Heathrow"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Mon","Tue","Wed","Thu","Fri"],"departure":"23:45","durationMin":160,"aircraft":"A320","pricePLN":299,"terminal":"Terminal 4","availableSeats":147 },
+
+  { "id":"OJ107","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"LHR","name":"Londyn Heathrow"},"daysOfWeek":["Sat","Sun"],"departure":"09:00","durationMin":160,"aircraft":"A321neo","pricePLN":259,"terminal":"Terminal 2","availableSeats":121 },
+  { "id":"OJ108","origin":{"code":"LHR","name":"Londyn Heathrow"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Sat","Sun"],"departure":"12:20","durationMin":155,"aircraft":"A321neo","pricePLN":259,"terminal":"Terminal 3","availableSeats":134 },
+
+  { "id":"OJ109","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"LHR","name":"Londyn Heathrow"},"daysOfWeek":["Sat","Sun"],"departure":"18:00","durationMin":165,"aircraft":"A320","pricePLN":289,"terminal":"Terminal 1","availableSeats":158 },
+  { "id":"OJ110","origin":{"code":"LHR","name":"Londyn Heathrow"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Sat","Sun"],"departure":"21:20","durationMin":160,"aircraft":"A320","pricePLN":289,"terminal":"Terminal 4","availableSeats":136 },
+
+  { "id":"OJ201","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"BER","name":"Berlin Brandenburg"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"08:10","durationMin":80,"aircraft":"A319","pricePLN":149,"terminal":"Terminal 1","availableSeats":103 },
+  { "id":"OJ202","origin":{"code":"BER","name":"Berlin Brandenburg"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"10:00","durationMin":80,"aircraft":"A319","pricePLN":149,"terminal":"Terminal 2","availableSeats":89 },
+
+  { "id":"OJ203","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"BER","name":"Berlin Brandenburg"},"daysOfWeek":["Tue","Thu","Sat"],"departure":"19:20","durationMin":80,"aircraft":"A319","pricePLN":159,"terminal":"Terminal 1","availableSeats":131 },
+  { "id":"OJ204","origin":{"code":"BER","name":"Berlin Brandenburg"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Tue","Thu","Sat"],"departure":"21:10","durationMin":80,"aircraft":"A319","pricePLN":159,"terminal":"Terminal 2","availableSeats":92 },
+
+  { "id":"OJ301","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"CDG","name":"Paryż Charles de Gaulle"},"daysOfWeek":["Mon","Tue","Thu","Sat"],"departure":"06:40","durationMin":155,"aircraft":"A320","pricePLN":229,"terminal":"Terminal 1","availableSeats":144 },
+  { "id":"OJ302","origin":{"code":"CDG","name":"Paryż Charles de Gaulle"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Mon","Tue","Thu","Sat"],"departure":"10:10","durationMin":150,"aircraft":"A320","pricePLN":229,"terminal":"Terminal 2","availableSeats":151 },
+
+  { "id":"OJ303","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"CDG","name":"Paryż Charles de Gaulle"},"daysOfWeek":["Wed","Fri","Sun"],"departure":"17:30","durationMin":155,"aircraft":"A321neo","pricePLN":249,"terminal":"Terminal 3","availableSeats":174 },
+  { "id":"OJ304","origin":{"code":"CDG","name":"Paryż Charles de Gaulle"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Wed","Fri","Sun"],"departure":"21:00","durationMin":150,"aircraft":"A321neo","pricePLN":249,"terminal":"Terminal 4","availableSeats":156 },
+
+  { "id":"OJ401","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"MAD","name":"Madryt Barajas"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"09:10","durationMin":225,"aircraft":"A321neo","pricePLN":319,"terminal":"Terminal 2","availableSeats":162 },
+  { "id":"OJ402","origin":{"code":"MAD","name":"Madryt Barajas"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"13:30","durationMin":230,"aircraft":"A321neo","pricePLN":319,"terminal":"Terminal 3","availableSeats":141 },
+
+  { "id":"OJ403","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"MAD","name":"Madryt Barajas"},"daysOfWeek":["Tue","Thu","Sat"],"departure":"19:00","durationMin":225,"aircraft":"A320","pricePLN":299,"terminal":"Terminal 1","availableSeats":146 },
+  { "id":"OJ404","origin":{"code":"MAD","name":"Madryt Barajas"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Tue","Thu","Sat"],"departure":"23:20","durationMin":230,"aircraft":"A320","pricePLN":299,"terminal":"Terminal 4","availableSeats":138 },
+
+  { "id":"OJ405","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"MAD","name":"Madryt Barajas"},"daysOfWeek":["Fri"],"departure":"12:30","durationMin":225,"aircraft":"A321neo","pricePLN":329,"terminal":"Terminal 2","availableSeats":158 },
+  { "id":"OJ406","origin":{"code":"MAD","name":"Madryt Barajas"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Fri"],"departure":"17:10","durationMin":230,"aircraft":"A321neo","pricePLN":329,"terminal":"Terminal 3","availableSeats":149 },
+
+  { "id":"OJ501","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"ATH","name":"Ateny"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"10:20","durationMin":150,"aircraft":"A320","pricePLN":269,"terminal":"Terminal 1","availableSeats":138 },
+  { "id":"OJ502","origin":{"code":"ATH","name":"Ateny"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"13:50","durationMin":150,"aircraft":"A320","pricePLN":269,"terminal":"Terminal 4","availableSeats":129 },
+
+  { "id":"OJ503","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"ATH","name":"Ateny"},"daysOfWeek":["Tue","Sat"],"departure":"20:00","durationMin":150,"aircraft":"A320","pricePLN":259,"terminal":"Terminal 1","availableSeats":124 },
+  { "id":"OJ504","origin":{"code":"ATH","name":"Ateny"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Tue","Sat"],"departure":"23:40","durationMin":150,"aircraft":"A320","pricePLN":259,"terminal":"Terminal 3","availableSeats":116 },
+
+  { "id":"OJ601","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"FCO","name":"Rzym Fiumicino"},"daysOfWeek":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],"departure":"07:20","durationMin":140,"aircraft":"A320","pricePLN":239,"terminal":"Terminal 2","availableSeats":175 },
+  { "id":"OJ602","origin":{"code":"FCO","name":"Rzym Fiumicino"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],"departure":"10:00","durationMin":135,"aircraft":"A320","pricePLN":239,"terminal":"Terminal 1","availableSeats":153 },
+
+  { "id":"OJ603","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"FCO","name":"Rzym Fiumicino"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"15:40","durationMin":140,"aircraft":"A321neo","pricePLN":269,"terminal":"Terminal 2","availableSeats":167 },
+  { "id":"OJ604","origin":{"code":"FCO","name":"Rzym Fiumicino"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"19:00","durationMin":135,"aircraft":"A321neo","pricePLN":269,"terminal":"Terminal 1","availableSeats":152 },
+
+  { "id":"OJ701","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"LIS","name":"Lizbona"},"daysOfWeek":["Tue","Thu","Sun"],"departure":"06:30","durationMin":240,"aircraft":"A321neo","pricePLN":339,"terminal":"Terminal 2","availableSeats":168 },
+  { "id":"OJ702","origin":{"code":"LIS","name":"Lizbona"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Tue","Thu","Sun"],"departure":"11:30","durationMin":245,"aircraft":"A321neo","pricePLN":339,"terminal":"Terminal 4","availableSeats":150 },
+
+  { "id":"OJ801","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"VIE","name":"Wiedeń"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"11:10","durationMin":75,"aircraft":"A319","pricePLN":169,"terminal":"Terminal 3","availableSeats":112 },
+  { "id":"OJ802","origin":{"code":"VIE","name":"Wiedeń"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"13:00","durationMin":80,"aircraft":"A319","pricePLN":169,"terminal":"Terminal 1","availableSeats":96 },
+
+  { "id":"OJ803","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"VIE","name":"Wiedeń"},"daysOfWeek":["Tue","Thu"],"departure":"18:40","durationMin":75,"aircraft":"A319","pricePLN":179,"terminal":"Terminal 3","availableSeats":108 },
+  { "id":"OJ804","origin":{"code":"VIE","name":"Wiedeń"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Tue","Thu"],"departure":"20:30","durationMin":80,"aircraft":"A319","pricePLN":179,"terminal":"Terminal 2","availableSeats":101 },
+
+  { "id":"OJ901","origin":{"code":"WAW","name":"Warszawa Chopin"},"destination":{"code":"OSL","name":"Oslo Gardermoen"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"12:20","durationMin":110,"aircraft":"A320","pricePLN":219,"terminal":"Terminal 4","availableSeats":132 },
+  { "id":"OJ902","origin":{"code":"OSL","name":"Oslo Gardermoen"},"destination":{"code":"WAW","name":"Warszawa Chopin"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"14:40","durationMin":110,"aircraft":"A320","pricePLN":219,"terminal":"Terminal 2","availableSeats":118 },
+
+  { "id":"OJ1101","origin":{"code":"LHR","name":"Londyn Heathrow"},"destination":{"code":"CDG","name":"Paryż Charles de Gaulle"},"daysOfWeek":["Mon","Tue","Wed","Thu","Fri"],"departure":"08:00","durationMin":75,"aircraft":"A320","pricePLN":199,"terminal":"Terminal 3","availableSeats":143 },
+  { "id":"OJ1102","origin":{"code":"CDG","name":"Paryż Charles de Gaulle"},"destination":{"code":"LHR","name":"Londyn Heathrow"},"daysOfWeek":["Mon","Tue","Wed","Thu","Fri"],"departure":"10:10","durationMin":80,"aircraft":"A320","pricePLN":199,"terminal":"Terminal 2","availableSeats":128 },
+
+  { "id":"OJ1103","origin":{"code":"LHR","name":"Londyn Heathrow"},"destination":{"code":"BER","name":"Berlin Brandenburg"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"12:40","durationMin":110,"aircraft":"A320","pricePLN":189,"terminal":"Terminal 4","availableSeats":137 },
+  { "id":"OJ1104","origin":{"code":"BER","name":"Berlin Brandenburg"},"destination":{"code":"LHR","name":"Londyn Heathrow"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"15:00","durationMin":120,"aircraft":"A320","pricePLN":189,"terminal":"Terminal 1","availableSeats":121 },
+
+  { "id":"OJ1105","origin":{"code":"LHR","name":"Londyn Heathrow"},"destination":{"code":"MAD","name":"Madryt Barajas"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"08:30","durationMin":145,"aircraft":"A321neo","pricePLN":229,"terminal":"Terminal 3","availableSeats":162 },
+  { "id":"OJ1106","origin":{"code":"MAD","name":"Madryt Barajas"},"destination":{"code":"LHR","name":"Londyn Heathrow"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"11:30","durationMin":150,"aircraft":"A321neo","pricePLN":229,"terminal":"Terminal 4","availableSeats":151 },
+
+  { "id":"OJ1107","origin":{"code":"LHR","name":"Londyn Heathrow"},"destination":{"code":"FCO","name":"Rzym Fiumicino"},"daysOfWeek":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],"departure":"12:10","durationMin":150,"aircraft":"A320","pricePLN":219,"terminal":"Terminal 3","availableSeats":176 },
+  { "id":"OJ1108","origin":{"code":"FCO","name":"Rzym Fiumicino"},"destination":{"code":"LHR","name":"Londyn Heathrow"},"daysOfWeek":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],"departure":"15:10","durationMin":160,"aircraft":"A320","pricePLN":219,"terminal":"Terminal 4","availableSeats":169 },
+
+  { "id":"OJ1109","origin":{"code":"LHR","name":"Londyn Heathrow"},"destination":{"code":"LIS","name":"Lizbona"},"daysOfWeek":["Tue","Thu","Sat"],"departure":"14:30","durationMin":160,"aircraft":"A321neo","pricePLN":239,"terminal":"Terminal 2","availableSeats":125 },
+  { "id":"OJ1110","origin":{"code":"LIS","name":"Lizbona"},"destination":{"code":"LHR","name":"Londyn Heathrow"},"daysOfWeek":["Tue","Thu","Sat"],"departure":"18:00","durationMin":165,"aircraft":"A321neo","pricePLN":239,"terminal":"Terminal 1","availableSeats":134 },
+
+  { "id":"OJ1111","origin":{"code":"LHR","name":"Londyn Heathrow"},"destination":{"code":"VIE","name":"Wiedeń"},"daysOfWeek":["Mon","Wed","Fri"],"departure":"17:50","durationMin":145,"aircraft":"A320","pricePLN":199,"terminal":"Terminal 3","availableSeats":148 },
+  { "id":"OJ1112","origin":{"code":"VIE","name":"Wiedeń"},"destination":{"code":"LHR","name":"Londyn Heathrow"},"daysOfWeek":["Mon","Wed","Fri"],"departure":"20:30","durationMin":150,"aircraft":"A320","pricePLN":199,"terminal":"Terminal 4","availableSeats":153 },
+
+  { "id":"OJ1113","origin":{"code":"LHR","name":"Londyn Heathrow"},"destination":{"code":"OSL","name":"Oslo Gardermoen"},"daysOfWeek":["Wed","Sun"],"departure":"09:15","durationMin":140,"aircraft":"A320","pricePLN":209,"terminal":"Terminal 4","availableSeats":159 },
+  { "id":"OJ1114","origin":{"code":"OSL","name":"Oslo Gardermoen"},"destination":{"code":"LHR","name":"Londyn Heathrow"},"daysOfWeek":["Wed","Sun"],"departure":"12:00","durationMin":145,"aircraft":"A320","pricePLN":209,"terminal":"Terminal 2","availableSeats":131 },
+
+  { "id":"OJ1115","origin":{"code":"LHR","name":"Londyn Heathrow"},"destination":{"code":"ATH","name":"Ateny"},"daysOfWeek":["Tue","Thu","Sat"],"departure":"22:00","durationMin":210,"aircraft":"A320","pricePLN":229,"terminal":"Terminal 3","availableSeats":175 },
+  { "id":"OJ1116","origin":{"code":"ATH","name":"Ateny"},"destination":{"code":"LHR","name":"Londyn Heathrow"},"daysOfWeek":["Wed","Fri","Sun"],"departure":"06:10","durationMin":220,"aircraft":"A320","pricePLN":229,"terminal":"Terminal 4","availableSeats":158 },
+
+  { "id":"OJ1201","origin":{"code":"FCO","name":"Rzym Fiumicino"},"destination":{"code":"MAD","name":"Madryt Barajas"},"daysOfWeek":["Tue","Thu","Sat"],"departure":"09:40","durationMin":120,"aircraft":"A320","pricePLN":199,"terminal":"Terminal 1","availableSeats":136 },
+  { "id":"OJ1202","origin":{"code":"MAD","name":"Madryt Barajas"},"destination":{"code":"FCO","name":"Rzym Fiumicino"},"daysOfWeek":["Tue","Thu","Sat"],"departure":"12:10","durationMin":135,"aircraft":"A320","pricePLN":199,"terminal":"Terminal 4","availableSeats":122 },
+
+  { "id":"OJ1203","origin":{"code":"FCO","name":"Rzym Fiumicino"},"destination":{"code":"CDG","name":"Paryż Charles de Gaulle"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"14:10","durationMin":135,"aircraft":"A320","pricePLN":189,"terminal":"Terminal 2","availableSeats":149 },
+  { "id":"OJ1204","origin":{"code":"CDG","name":"Paryż Charles de Gaulle"},"destination":{"code":"FCO","name":"Rzym Fiumicino"},"daysOfWeek":["Mon","Wed","Fri","Sun"],"departure":"16:40","durationMin":140,"aircraft":"A320","pricePLN":189,"terminal":"Terminal 1","availableSeats":138 },
+
+  { "id":"OJ1205","origin":{"code":"FCO","name":"Rzym Fiumicino"},"destination":{"code":"ATH","name":"Ateny"},"daysOfWeek":["Mon","Tue","Wed","Thu","Fri","Sun"],"departure":"08:00","durationMin":110,"aircraft":"A320","pricePLN":169,"terminal":"Terminal 1","availableSeats":113 },
+  { "id":"OJ1206","origin":{"code":"ATH","name":"Ateny"},"destination":{"code":"FCO","name":"Rzym Fiumicino"},"daysOfWeek":["Mon","Tue","Wed","Thu","Fri","Sun"],"departure":"10:10","durationMin":115,"aircraft":"A320","pricePLN":169,"terminal":"Terminal 3","availableSeats":97 },
+
+  { "id":"OJ1207","origin":{"code":"FCO","name":"Rzym Fiumicino"},"destination":{"code":"BER","name":"Berlin Brandenburg"},"daysOfWeek":["Wed","Sat"],"departure":"18:20","durationMin":120,"aircraft":"A320","pricePLN":179,"terminal":"Terminal 2","availableSeats":118 },
+  { "id":"OJ1208","origin":{"code":"BER","name":"Berlin Brandenburg"},"destination":{"code":"FCO","name":"Rzym Fiumicino"},"daysOfWeek":["Wed","Sat"],"departure":"21:00","durationMin":125,"aircraft":"A320","pricePLN":179,"terminal":"Terminal 1","availableSeats":102 },
+
+  { "id":"OJ1209","origin":{"code":"FCO","name":"Rzym Fiumicino"},"destination":{"code":"LIS","name":"Lizbona"},"daysOfWeek":["Tue","Fri"],"departure":"12:50","durationMin":185,"aircraft":"A321neo","pricePLN":229,"terminal":"Terminal 2","availableSeats":126 },
+  { "id":"OJ1210","origin":{"code":"LIS","name":"Lizbona"},"destination":{"code":"FCO","name":"Rzym Fiumicino"},"daysOfWeek":["Tue","Fri"],"departure":"16:10","durationMin":190,"aircraft":"A321neo","pricePLN":229,"terminal":"Terminal 1","availableSeats":119 },
+
+  { "id":"OJ1211","origin":{"code":"FCO","name":"Rzym Fiumicino"},"destination":{"code":"OSL","name":"Oslo Gardermoen"},"daysOfWeek":["Sun"],"departure":"07:30","durationMin":210,"aircraft":"A320","pricePLN":239,"terminal":"Terminal 3","availableSeats":97 },
+  { "id":"OJ1212","origin":{"code":"OSL","name":"Oslo Gardermoen"},"destination":{"code":"FCO","name":"Rzym Fiumicino"},"daysOfWeek":["Sun"],"departure":"11:10","durationMin":215,"aircraft":"A320","pricePLN":239,"terminal":"Terminal 4","availableSeats":95 },
+
+  { "id":"OJ1213","origin":{"code":"FCO","name":"Rzym Fiumicino"},"destination":{"code":"VIE","name":"Wiedeń"},"daysOfWeek":["Mon","Thu"],"departure":"17:30","durationMin":95,"aircraft":"A319","pricePLN":159,"terminal":"Terminal 1","availableSeats":108 },
+  { "id":"OJ1214","origin":{"code":"VIE","name":"Wiedeń"},"destination":{"code":"FCO","name":"Rzym Fiumicino"},"daysOfWeek":["Mon","Thu"],"departure":"19:20","durationMin":100,"aircraft":"A319","pricePLN":159,"terminal":"Terminal 2","availableSeats":101 },
+
+  { "id":"OJ1301","origin":{"code":"MAD","name":"Madryt Barajas"},"destination":{"code":"LIS","name":"Lizbona"},"daysOfWeek":["Mon","Wed","Fri"],"departure":"10:00","durationMin":75,"aircraft":"A319","pricePLN":149,"terminal":"Terminal 4","availableSeats":114 },
+  { "id":"OJ1302","origin":{"code":"LIS","name":"Lizbona"},"destination":{"code":"MAD","name":"Madryt Barajas"},"daysOfWeek":["Mon","Wed","Fri"],"departure":"12:00","durationMin":80,"aircraft":"A319","pricePLN":149,"terminal":"Terminal 2","availableSeats":109 },
+
+  { "id":"OJ1303","origin":{"code":"MAD","name":"Madryt Barajas"},"destination":{"code":"OSL","name":"Oslo Gardermoen"},"daysOfWeek":["Wed","Sun"],"departure":"16:20","durationMin":240,"aircraft":"A321neo","pricePLN":329,"terminal":"Terminal 4","availableSeats":143 },
+  { "id":"OJ1304","origin":{"code":"OSL","name":"Oslo Gardermoen"},"destination":{"code":"MAD","name":"Madryt Barajas"},"daysOfWeek":["Wed","Sun"],"departure":"20:10","durationMin":240,"aircraft":"A321neo","pricePLN":329,"terminal":"Terminal 2","availableSeats":128 },
+
+  { "id":"OJ1305","origin":{"code":"MAD","name":"Madryt Barajas"},"destination":{"code":"CDG","name":"Paryż Charles de Gaulle"},"daysOfWeek":["Tue","Thu","Sat"],"departure":"09:00","durationMin":120,"aircraft":"A320","pricePLN":189,"terminal":"Terminal 4","availableSeats":121 },
+  { "id":"OJ1306","origin":{"code":"CDG","name":"Paryż Charles de Gaulle"},"destination":{"code":"MAD","name":"Madryt Barajas"},"daysOfWeek":["Tue","Thu","Sat"],"departure":"11:30","durationMin":125,"aircraft":"A320","pricePLN":189,"terminal":"Terminal 2","availableSeats":118 },
+
+  { "id":"OJ1401","origin":{"code":"BER","name":"Berlin Brandenburg"},"destination":{"code":"VIE","name":"Wiedeń"},"daysOfWeek":["Tue","Thu","Sat"],"departure":"09:30","durationMin":60,"aircraft":"A319","pricePLN":129,"terminal":"Terminal 1","availableSeats":96 },
+  { "id":"OJ1402","origin":{"code":"VIE","name":"Wiedeń"},"destination":{"code":"BER","name":"Berlin Brandenburg"},"daysOfWeek":["Tue","Thu","Sat"],"departure":"11:00","durationMin":65,"aircraft":"A319","pricePLN":129,"terminal":"Terminal 3","availableSeats":92 },
+
+  { "id":"OJ1403","origin":{"code":"BER","name":"Berlin Brandenburg"},"destination":{"code":"CDG","name":"Paryż Charles de Gaulle"},"daysOfWeek":["Mon","Fri"],"departure":"13:40","durationMin":100,"aircraft":"A319","pricePLN":169,"terminal":"Terminal 2","availableSeats":101 },
+  { "id":"OJ1404","origin":{"code":"CDG","name":"Paryż Charles de Gaulle"},"destination":{"code":"BER","name":"Berlin Brandenburg"},"daysOfWeek":["Mon","Fri"],"departure":"16:10","durationMin":105,"aircraft":"A319","pricePLN":169,"terminal":"Terminal 3","availableSeats":104 },
+
+  { "id":"OJ1501","origin":{"code":"LIS","name":"Lizbona"},"destination":{"code":"VIE","name":"Wiedeń"},"daysOfWeek":["Mon","Thu"],"departure":"07:45","durationMin":200,"aircraft":"A320","pricePLN":219,"terminal":"Terminal 1","availableSeats":117 },
+  { "id":"OJ1502","origin":{"code":"VIE","name":"Wiedeń"},"destination":{"code":"LIS","name":"Lizbona"},"daysOfWeek":["Mon","Thu"],"departure":"11:20","durationMin":205,"aircraft":"A320","pricePLN":219,"terminal":"Terminal 2","availableSeats":111 },
+
+  { "id":"OJ1503","origin":{"code":"LIS","name":"Lizbona"},"destination":{"code":"OSL","name":"Oslo Gardermoen"},"daysOfWeek":["Sun"],"departure":"21:10","durationMin":290,"aircraft":"A321neo","pricePLN":349,"terminal":"Terminal 4","availableSeats":102 },
+  { "id":"OJ1504","origin":{"code":"OSL","name":"Oslo Gardermoen"},"destination":{"code":"LIS","name":"Lizbona"},"daysOfWeek":["Sun"],"departure":"06:30","durationMin":295,"aircraft":"A321neo","pricePLN":349,"terminal":"Terminal 1","availableSeats":95 },
+
+  { "id":"OJ1601","origin":{"code":"ATH","name":"Ateny"},"destination":{"code":"VIE","name":"Wiedeń"},"daysOfWeek":["Wed","Sat"],"departure":"06:20","durationMin":120,"aircraft":"A320","pricePLN":169,"terminal":"Terminal 3","availableSeats":88 },
+  { "id":"OJ1602","origin":{"code":"VIE","name":"Wiedeń"},"destination":{"code":"ATH","name":"Ateny"},"daysOfWeek":["Wed","Sat"],"departure":"09:00","durationMin":125,"aircraft":"A320","pricePLN":169,"terminal":"Terminal 1","availableSeats":90 },
+
+  { "id":"OJ1603","origin":{"code":"ATH","name":"Ateny"},"destination":{"code":"CDG","name":"Paryż Charles de Gaulle"},"daysOfWeek":["Tue","Thu"],"departure":"17:00","durationMin":195,"aircraft":"A321neo","pricePLN":219,"terminal":"Terminal 4","availableSeats":124 },
+  { "id":"OJ1604","origin":{"code":"CDG","name":"Paryż Charles de Gaulle"},"destination":{"code":"ATH","name":"Ateny"},"daysOfWeek":["Tue","Thu"],"departure":"21:00","durationMin":200,"aircraft":"A321neo","pricePLN":219,"terminal":"Terminal 2","availableSeats":118 }
+]

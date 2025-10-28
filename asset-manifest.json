@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/orijet/static/css/main.9ae372cb.css",
+    "main.js": "/orijet/static/js/main.e70483f7.js",
+    "static/js/453.83f37a51.chunk.js": "/orijet/static/js/453.83f37a51.chunk.js",
+    "static/media/OriJetVideo.mp4": "/orijet/static/media/OriJetVideo.a1bd9fcfd74cfd0bb997.mp4",
+    "static/media/Samolot.png": "/orijet/static/media/Samolot.2b2c203b69b41a2a0b33.png",
+    "static/media/logoSmall.png": "/orijet/static/media/logoSmall.98ad9efed042399c88d5.png",
+    "index.html": "/orijet/index.html",
+    "main.9ae372cb.css.map": "/orijet/static/css/main.9ae372cb.css.map",
+    "main.e70483f7.js.map": "/orijet/static/js/main.e70483f7.js.map",
+    "453.83f37a51.chunk.js.map": "/orijet/static/js/453.83f37a51.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9ae372cb.css",
+    "static/js/main.e70483f7.js"
+  ]
+}
