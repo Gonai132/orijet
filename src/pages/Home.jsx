@@ -35,12 +35,20 @@ export default function Home() {
 
   const [passengers, setPassengers] = useState(1);
 
+  // useEffect(() => {
+  //   fetch("/data/flights.json")
+  //     .then((r) => r.json())
+  //     .then(setRules)
+  //     .catch(() => setRules([]));
+  // }, []);
+
   useEffect(() => {
-    fetch("/data/flights.json")
-      .then((r) => r.json())
-      .then(setRules)
-      .catch(() => setRules([]));
-  }, []);
+  fetch(`${process.env.PUBLIC_URL}/data/flights.json`)
+    .then((r) => r.json())
+    .then(setRules)
+    .catch(() => setRules([]));
+}, []);
+
 
   const airports = useMemo(() => {
     const map = new Map();
