@@ -1,0 +1,125 @@
+.bp-title{
+  color: var(--color-text-light);
+  text-align:center;
+  font-weight:800;
+  letter-spacing:.5px;
+  font-size:26px;
+  margin:30px 0 25px;
+}
+
+.bp-wrap{
+  max-width: 450px;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.bp-stack{
+  margin: 6px auto 6px;
+}
+
+.bp-card{
+  background:#fff;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  border:1px solid #e9eef1;
+  padding:16px 10px;
+}
+
+.bp-card--top{
+  border-bottom: none;
+  border-radius: 25px;
+  padding-bottom: 12px;
+}
+.bp-card--bottom{
+  border-top: 1px dashed #e7ecef;
+  border-radius: 25px;
+  padding: 14px 18px 18px;
+}
+
+.bp-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.bp-logo span{
+  color: var(--color-teal);
+  line-height: 70px;
+}
+
+
+.bp-logo .brand-logo {
+  width: 60px;
+  height: 60px;
+}
+
+.bp-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  text-align: center; 
+  gap:2px;
+}
+
+.bp-airport{ font-size:22px; font-weight:500; letter-spacing:.5px;}
+.bp-city{ font-size:14px; color: var(--color-text-medium);}
+.bp-time{ font-size:34px; font-weight:600; }
+
+
+.bp-col-mid{
+  text-align:center;
+  min-width: 120px;
+}
+.bp-flightno{ font-size:12px; color:var(--color-text-medium); }
+.bp-plane{ font-size:30px; margin:3px 0; color:var(--color-teal-light); }
+.bp-duration{ font-size:12px; color:var(--color-text-medium); }
+
+
+.bp-hr{
+  border:0;
+  border-top:2px dashed var(--color-text-medium);
+  margin:8px 10px 15px;
+}
+
+.bp-two-cols{
+  display:grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap:14px;
+  row-gap:10px;
+  padding: 0 5px;
+  margin-bottom: 5px;
+}
+
+.bp-col{ text-align:left; }
+.bp-col--right{ text-align:right; }
+.bp-label{
+  font-size:14px;
+  font-weight:300;
+  color: var(--color-text-medium);
+}
+.bp-value{
+  font-size:15px;
+  font-weight:600;
+  text-transform: uppercase;
+}
+
+.bp-value.bp-seat{
+  font-size:26px;
+}
+
+.bp-barcode{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.bp-cta{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:center;
+  justify-content:center;
+  margin: 10px auto 30px;
+}
+.bp-cta > *{ width:min(420px, 90%); }

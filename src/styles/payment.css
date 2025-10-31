@@ -51,3 +51,9 @@
   margin-top:10px; padding:10px 14px; border-radius:12px; border:none; cursor:pointer;
   background: var(--color-teal); color:#fff; font-weight:700;
 }
+
+.pay-err {
+  color: var(--color-orange);
+  font-size: 12px;
+  margin-top: 6px;
+}

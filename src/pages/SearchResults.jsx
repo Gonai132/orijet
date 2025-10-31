@@ -25,7 +25,7 @@ export default function SearchResults() {
   const [selBack, setSelBack] = useState(null);
 
   useEffect(() => {
-    fetch("/data/flights.json").then(r => r.json()).then(setRules).catch(() => setRules([]));
+    fetch(`${process.env.PUBLIC_URL}/data/flights.json`).then(r => r.json()).then(setRules).catch(() => setRules([]));
   }, []);
 
   // OUTBOUND

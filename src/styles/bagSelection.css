@@ -128,3 +128,28 @@
   place-items: center;
   margin: 14px 0 6px;
 }
+
+.bag-qty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 10px 0 4px;
+}
+
+.counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 20px;
+  padding: 4px 8px;
+}
+.counter button {
+  border: 0;
+  background: transparent;
+  font-size: 18px;
+  line-height: 1;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+.counter-val { min-width: 18px; text-align: center; }

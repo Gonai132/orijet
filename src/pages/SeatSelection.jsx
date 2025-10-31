@@ -89,7 +89,7 @@ export default function SeatSelection() {
         pax,
         fare,
         pricePLN: basePrice,
-        seatSurcharge: Number(totalSurcharge.toFixed(2)),
+        seatFeeTotal: Number(totalSurcharge.toFixed(2)), 
         selectedSeats: effective.map(s => s.label),
         flight,
         returnFlight,
