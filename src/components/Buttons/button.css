@@ -1,5 +1,6 @@
 .button {
   width: 90%!important;
+  max-width: 400px;
   height: 45px;
   border-radius: 100px;
   font-family: var(--font-main);
@@ -29,7 +30,7 @@
   color: var(--color-cream);
 }
 
-.button1:disabled { opacity: .4; box-shadow: none; cursor: not-allowed; background-color: var(--color-orange); }
+.button1:disabled { opacity: .5; box-shadow: none; cursor: not-allowed; background-color: var(--color-orange); }
 
 .button2 {
   background-color: color-mix(in srgb, var(--color-cream) 30%, transparent);

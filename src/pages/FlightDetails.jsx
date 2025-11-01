@@ -99,18 +99,25 @@ export default function FlightDetails() {
       <header className="fd-bar">
         <div className="fd-route">
           <h1 className="sr-title">DOSTĘPNE POŁĄCZENIA:</h1>
+          <div className="sr-flightinfo">
+            <div className="sr-flighdata">
           <span className="fd-code">{origin?.code}</span>
+          <span className="fc-destination fc-top">{origin?.name}</span>
+          </div>
+          <div className="sr-flighticon">
           <svg xmlns="http://www.w3.org/2000/svg" width="129" height="20" viewBox="0 0 129 20" fill="none">
             <line x1="2" y1="9.5" x2="122" y2="9.5" stroke="white" strokeDasharray="4 4"/>
             <path d="M73.94 7.475c1.255 0 2.274 1.02 2.274 2.275 0 1.255-1.02 2.275-2.274 2.275H68.77l-6.467 7.053a.98.98 0 0 1-.958.422h-1.775c-.443 0-.756-.435-.618-.858l2.206-6.617h-4.05l-2.145 2.681a.58.58 0 0 1-.508.256h-.804c-.422 0-.731-.398-.629-.808L54.12 9.75l-1.097-4.392c-.106-.41.206-.808.629-.808h.804c.2 0 .387.09.508.244l2.145 2.681h4.05l-2.206-6.618c-.138-.423.179-.858.622-.858h1.775c.365 0 .71.154.958.422l6.467 7.053h5.171Z" fill="#FAF6DD"/>
             <circle cx="3.5" cy="9.5" r="3.5" fill="white"/>
             <circle cx="125.5" cy="9.5" r="3.5" fill="white"/>
           </svg>
+           <span className="sr-pax"> • {pax} os.</span>
+           </div>
+           <div className="sr-flighdata">
           <span className="fd-code">{destination?.code}</span>
-          <span className="fc-destination fc-top">{origin?.name}</span>
-             <svg width="40" height="1" fill="none">
-          </svg>
           <span className="fc-destination fc-top">{destination?.name}</span>
+          </div>
+          </div>
         </div>
       </header>
 

@@ -8,7 +8,7 @@
 }
 
 .bp-wrap{
-  max-width: 450px;
+  max-width: 400px;
   background-color: transparent;
   border: none;
   box-shadow: none;
@@ -21,20 +21,25 @@
 }
 
 .bp-card{
-  background:#fff;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  border:1px solid #e9eef1;
-  padding:16px 10px;
+  border: none;
 }
 
 .bp-card--top{
+  background:#fff;
+   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  border:1px solid #e9eef1;
   border-bottom: none;
   border-radius: 25px;
+  padding:16px 10px;
   padding-bottom: 12px;
 }
 .bp-card--bottom{
-  border-top: 1px dashed #e7ecef;
+  background:#fff;
+   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  border:1px solid #e9eef1;
+  border-top: 2px dashed #e7ecef;
   border-radius: 25px;
+  padding:16px 10px;
   padding: 14px 18px 18px;
 }
 
@@ -56,19 +61,45 @@
 
 .bp-head{
   display:flex;
-  align-items:center;
-  justify-content:space-between;
+  align-items:flex-start;
   text-align: center; 
   gap:2px;
+  align-items: stretch;
+  align-content: stretch;
 }
 
 .bp-airport{ font-size:22px; font-weight:500; letter-spacing:.5px;}
 .bp-city{ font-size:14px; color: var(--color-text-medium);}
-.bp-time{ font-size:34px; font-weight:600; }
+.bp-time{ font-size:34px; font-weight:600; align-items: center; line: height 100px; }
 
+.bp-col-left {
+  flex-basis: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.bp-col-right  {
+  flex-basis: 40%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.bp-col-left,
+.bp-col-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.bp-time {
+  margin-top: auto;
+}
 
 .bp-col-mid{
+  flex-basis: 20%;
   text-align:center;
+  align-self: center;
   min-width: 120px;
 }
 .bp-flightno{ font-size:12px; color:var(--color-text-medium); }
@@ -78,7 +109,7 @@
 
 .bp-hr{
   border:0;
-  border-top:2px dashed var(--color-text-medium);
+  border-top:2px dashed  color-mix(in srgb, var(--color-gray-medium) 50%, transparent);;
   margin:8px 10px 15px;
 }
 

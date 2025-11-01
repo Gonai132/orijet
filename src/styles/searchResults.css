@@ -9,7 +9,7 @@
 .sr-hero {
   padding: 10px 0 0px;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
   color: var(--color-text-light);
   font-family: var(--font-main);
 }
@@ -104,7 +104,7 @@
 .flight-card {
   text-align: left;
   width: 100%;
-  border: 1px solid #e9eef1;
+  border: 2px solid #e9eef1;
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 6px 18px rgba(0,0,0,.08);
@@ -114,7 +114,7 @@
 .flight-card:hover { box-shadow: 0 8px 22px rgba(0,0,0,.12); }
 .flight-card:active { transform: translateY(1px); }
 .flight-card.is-selected {
-  border-color: var(--color-teal-dark);
+  border-color: var(--color-teal);
   box-shadow: 5 5px 5px rgba(0, 0, 0, 0.25);
 }
 
@@ -166,20 +166,21 @@ font-weight: 300; }
 
 .fc-radio {
   width: 20px; height: 20px; border-radius: 50%;
-  border: 2px solid #cfd9dc;
+  border: 1px solid #cfd9dc;
 }
 .fc-radio--on {
-  border-color: var(--color-teal-light);
-  box-shadow: inset 0 0 0 6px var(--color-sky-1);
+  border-color: var(--color-teal);
+  box-shadow: inset 0 0 0 6px var(--color-teal-light);
 }
 
 .sr-empty { color: #234; margin: 8px 0 0; }
 
 .sr-reserve {
-  margin: 18px 0 30px;
+  margin: 25px 0 30px;
   display: grid;
   gap: 8px;
   place-items: center;
 }
 
-.sr-hint { font-size: 16px; color: #345; margin-top: 5px; }
+.sr-hint { font-size: 16px; color:var(--color-orange); margin-bottom: 10px; }
+

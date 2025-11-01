@@ -1,3 +1,4 @@
+.payment .pay-wrap { padding: 0;}
 .pay-wrap { background: none; border: 0; box-shadow: none; padding-bottom: 18px; }
 
 .pay-hero { color: var(--color-text-light); text-align: center; padding: 8px 0 0; }
@@ -12,24 +13,26 @@
   background:#fff; border-radius:16px; border:1px solid #e9eef1;
   padding: 10px 14px; box-shadow: 0 6px 18px rgba(0,0,0,.08); margin-bottom:10px;
 }
-.pay-line { display:flex; justify-content:space-between; margin:4px 0; color:#123; }
+.pay-line { margin:4px 0; color:var(--color-text-medium); font-weight: 300; text-align: center;}
 .pay-line-l { font-weight:600; }
 .pay-line-r { font-weight:700; }
 
 .pay-items {
-  background:#fff; border-radius:16px; border:1px solid #e9eef1;
-  padding: 10px 14px; box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  background:#fff; border-radius:16px; border: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 10px 14px; box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
-.pay-item, .pay-total { display:flex; justify-content:space-between; padding: 6px 0; }
+.pay-item, .pay-total { display:flex; justify-content:space-between; padding: 3px 0; }
 .pay-total { border-top:2px solid #e7ecef; margin-top:6px; padding-top:10px; font-weight:900; }
 
 .pay-card { margin: 16px 0 24px; }
-.pay-sub { color:#fff; text-align:center; font-size:14px; margin: 6px 0 10px; letter-spacing:.5px; }
+.pay-sub { color:var(--color-text-light); text-align:center; font-weight: 700; font-size:20px; margin: 30px 0 10px; letter-spacing:.5px; }
 .pay-field { display:flex; flex-direction:column; gap:6px; margin-bottom:10px; }
-.pay-lab { color:#2a3a40; font-size:12px; opacity:.9; }
+.pay-lab { color:#fff; font-size:12px; margin-left: 5px; }
 .pay-inp {
-  width:100%; padding:12px 14px; border-radius:12px; border:1px solid #DBCDC2; background:#fff;
-  font-size:16px; outline:none;
+  width:100%; padding:12px 14px; border-radius:12px;
+  font-size:16px; outline:none; border: 1px solid #FFF;
+
+background: rgba(255, 255, 255, 0.20);
 }
 .pay-inp:focus { border-color: var(--color-teal); box-shadow: 0 0 0 3px rgba(11,142,155,.15); }
 
@@ -56,4 +59,9 @@
   color: var(--color-orange);
   font-size: 12px;
   margin-top: 6px;
+}
+
+.payment .button1 {
+  display: block;
+  margin: 20px auto;
 }

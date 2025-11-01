@@ -3,149 +3,193 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import Container from "../components/Container/Container";
 import Button1 from "../components/Buttons/Button1";
 import "./../styles/searchResults.css";
+import "./../styles/flightDetails.css";
 import { FaPlane } from "react-icons/fa6";
 import { IoArrowBackCircle } from "react-icons/io5";
-
-
 import { listAvailableDates, findFlightsForDate } from "../data/Schedule";
 
 export default function SearchResults() {
   const navigate = useNavigate();
   const [sp] = useSearchParams();
 
-  const o = sp.get("o") || "";
-  const d = sp.get("d") || "";
-  const dateISO = sp.get("date") || "";
-  const pax = parseInt(sp.get("pax") || "1", 10);
-  const rt = sp.get("rt") === "1";
-  const retISO = sp.get("ret") || "";
+  const originCode = sp.get("o") || "";
+  const destinationCode = sp.get("d") || "";
+  const departISO = sp.get("date") || "";
+  const returnISO = sp.get("ret") || "";
+  const passengers = parseInt(sp.get("pax") || "1", 10);
+  const isRoundTrip = sp.get("rt") === "1";
 
   const [rules, setRules] = useState([]);
-  const [selOut, setSelOut] = useState(null);
-  const [selBack, setSelBack] = useState(null);
+  const [selectedDepart, setSelectedDepart] = useState(null);
+  const [selectedReturn, setSelectedReturn] = useState(null);
 
   useEffect(() => {
-    fetch(`${process.env.PUBLIC_URL}/data/flights.json`).then(r => r.json()).then(setRules).catch(() => setRules([]));
+    fetch(`${process.env.PUBLIC_URL}/data/flights.json`)
+      .then((r) => r.json())
+      .then(setRules)
+      .catch(() => setRules([]));
   }, []);
 
-  // OUTBOUND
-  const outFlights = useMemo(
-    () => (dateISO ? findFlightsForDate(rules, o, d, dateISO) : []),
-    [rules, o, d, dateISO]
+  const outboundFlights = useMemo(
+    () => (departISO ? findFlightsForDate(rules, originCode, destinationCode, departISO) : []),
+    [rules, originCode, destinationCode, departISO]
   );
-  const outNeighbors = useMemo(() => {
-    if (!dateISO) return { prev:null, next:null };
-    const arr = listAvailableDates(rules, o, d, dateISO, 120);
-    const i = arr.indexOf(dateISO);
-    return { prev: i>0?arr[i-1]:null, next: i>=0 && i<arr.length-1?arr[i+1]:null };
-  }, [rules, o, d, dateISO]);
 
-  // RETURN
-  const backFlights = useMemo(
-    () => (rt && retISO ? findFlightsForDate(rules, d, o, retISO) : []),
-    [rules, o, d, rt, retISO]
+  const outboundNeighbors = useMemo(() => {
+    if (!departISO) return { prev: null, next: null };
+    const arr = listAvailableDates(rules, originCode, destinationCode, departISO, 120);
+    const i = arr.indexOf(departISO);
+    return {
+      prev: i > 0 ? arr[i - 1] : null,
+      next: i >= 0 && i < arr.length - 1 ? arr[i + 1] : null,
+    };
+  }, [rules, originCode, destinationCode, departISO]);
+
+  const returnFlights = useMemo(
+    () => (isRoundTrip && returnISO ? findFlightsForDate(rules, destinationCode, originCode, returnISO) : []),
+    [rules, originCode, destinationCode, isRoundTrip, returnISO]
   );
-  const backNeighbors = useMemo(() => {
-    if (!rt || !retISO) return { prev:null, next:null };
-    const arr = listAvailableDates(rules, d, o, retISO, 120);
-    const i = arr.indexOf(retISO);
-    return { prev: i>0?arr[i-1]:null, next: i>=0 && i<arr.length-1?arr[i+1]:null };
-  }, [rules, o, d, rt, retISO]);
 
-  const gotoOut = (newISO) => {
+  const returnNeighbors = useMemo(() => {
+    if (!isRoundTrip || !returnISO) return { prev: null, next: null };
+    const arr = listAvailableDates(rules, destinationCode, originCode, returnISO, 120);
+    const i = arr.indexOf(returnISO);
+    return {
+      prev: i > 0 ? arr[i - 1] : null,
+      next: i >= 0 && i < arr.length - 1 ? arr[i + 1] : null,
+    };
+  }, [rules, originCode, destinationCode, isRoundTrip, returnISO]);
+
+  const gotoDepart = (newISO) => {
     const q = new URLSearchParams({
-      o, d, date: newISO, pax: String(pax), rt: rt ? "1" : "0", ...(rt && retISO ? { ret: retISO } : {})
+      o: originCode,
+      d: destinationCode,
+      date: newISO,
+      pax: String(passengers),
+      rt: isRoundTrip ? "1" : "0",
+      ...(isRoundTrip && returnISO ? { ret: returnISO } : {}),
     });
-    setSelOut(null);
+    setSelectedDepart(null);
     navigate(`/search?${q.toString()}`);
   };
-  const gotoBack = (newISO) => {
+
+  const gotoReturn = (newISO) => {
     const q = new URLSearchParams({
-      o, d, date: dateISO, pax: String(pax), rt: rt ? "1" : "0", ...(rt ? { ret: newISO } : {})
+      o: originCode,
+      d: destinationCode,
+      date: departISO,
+      pax: String(passengers),
+      rt: isRoundTrip ? "1" : "0",
+      ...(isRoundTrip ? { ret: newISO } : {}),
     });
-    setSelBack(null);
+    setSelectedReturn(null);
     navigate(`/search?${q.toString()}`);
   };
 
-  const canReserve = !rt ? !!selOut : !!selOut && !!selBack;
+  const canReserve = !isRoundTrip ? !!selectedDepart : !!selectedDepart && !!selectedReturn;
 
-const handleReserve = () => {
-  if (!canReserve) return;
+  const handleReserve = () => {
+    if (!canReserve) return;
+    navigate("/details", {
+      state: {
+        flight: selectedDepart,
+        returnFlight: isRoundTrip ? selectedReturn : null,
+        pax: passengers,
+      },
+    });
+  };
 
-  navigate("/details", {
-    state: {
-      flight: selOut,                      
-      returnFlight: rt ? selBack : null,   
-      pax                                   
-    },
-  });
-};
+  const origin = outboundFlights[0]?.origin || { code: originCode, name: "" };
+  const destination = outboundFlights[0]?.destination || { code: destinationCode, name: "" };
 
   return (
     <main className="page page-results">
-      <div className="sr-hero">
-          <button className="back-btn" onClick={() => navigate(-1)} aria-label="Wróć"><IoArrowBackCircle /></button>
-          <h1 className="sr-title">DOSTĘPNE POŁĄCZENIA:</h1>
-          <div className="sr-route">
+      <button className="back-btn" onClick={() => navigate(-1)} aria-label="Wróć">
+        <IoArrowBackCircle />
+      </button>
 
-            <span className="sr-airport">{o}</span>
-            <span className="sr-arrow">
-            <svg xmlns="http://www.w3.org/2000/svg" width="129" height="20" viewBox="0 0 129 20" fill="none">
-            <line x1="2" y1="9.5" x2="122" y2="9.5" stroke="white" stroke-dasharray="4 4"/>
-            <path d="M73.9425 7.475C75.1979 7.475 76.2175 8.49469 76.2175 9.75C76.2175 11.0053 75.1979 12.025 73.9425 12.025H68.771L62.3035 19.0775C62.0557 19.3456 61.7104 19.5 61.3447 19.5H59.5694C59.1266 19.5 58.8138 19.0653 58.9519 18.6428L61.1579 12.025H57.1075L54.9625 14.7062C54.8407 14.8606 54.6538 14.95 54.4547 14.95H53.6504C53.2279 14.95 52.9191 14.5519 53.0207 14.1416L54.1175 9.75L53.0207 5.35844C52.915 4.94812 53.2279 4.55 53.6504 4.55H54.4547C54.6538 4.55 54.8407 4.63937 54.9625 4.79375L57.1075 7.475H61.1579L58.9519 0.857187C58.8138 0.434687 59.1266 0 59.5694 0H61.3447C61.7104 0 62.0557 0.154375 62.3035 0.4225L68.771 7.475H73.9425Z" fill="#FAF6DD"/>
-            <circle cx="3.5" cy="9.5" r="3.5" fill="white"/>
-            <circle cx="125.5" cy="9.5" r="3.5" fill="white"/>
-            </svg>
-            </span>
-            <span className="sr-airport">{d}</span>
-                        <span className="sr-pax"> • {pax} os.</span>
+      <div className="sr-hero">
+        <header className="fd-bar">
+          <div className="fd-route">
+            <h1 className="sr-title">DOSTĘPNE POŁĄCZENIA:</h1>
+            <div className="sr-flightinfo">
+              <div className="sr-flighdata">
+                <span className="fd-code">{origin.code}</span>
+                <span className="fc-destination fc-top">{origin.name}</span>
+              </div>
+
+              <div className="sr-flighticon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="129" height="20" viewBox="0 0 129 20" fill="none">
+                  <line x1="2" y1="9.5" x2="122" y2="9.5" stroke="white" strokeDasharray="4 4" />
+                  <path
+                    d="M73.94 7.475c1.255 0 2.274 1.02 2.274 2.275 0 1.255-1.02 2.275-2.274 2.275H68.77l-6.467 7.053a.98.98 0 0 1-.958.422h-1.775c-.443 0-.756-.435-.618-.858l2.206-6.617h-4.05l-2.145 2.681a.58.58 0 0 1-.508.256h-.804c-.422 0-.731-.398-.629-.808L54.12 9.75l-1.097-4.392c-.106-.41.206-.808.629-.808h.804c.2 0 .387.09.508.244l2.145 2.681h4.05l-2.206-6.618c-.138-.423.179-.858.622-.858h1.775c.365 0 .71.154.958.422l6.467 7.053h5.171Z"
+                    fill="#FAF6DD"
+                  />
+                  <circle cx="3.5" cy="9.5" r="3.5" fill="white" />
+                  <circle cx="125.5" cy="9.5" r="3.5" fill="white" />
+                </svg>
+                <span className="sr-pax"> • {passengers} os.</span>
+              </div>
+
+              <div className="sr-flighdata">
+                <span className="fd-code">{destination.code}</span>
+                <span className="fc-destination fc-top">{destination.name}</span>
+              </div>
+            </div>
           </div>
+        </header>
       </div>
 
       <Container className="container-search">
-        {/* OUTBOUND */}
         <section className="sr-section">
           <div className="sr-datebar">
-            <button className="pill" disabled={!outNeighbors.prev} onClick={() => outNeighbors.prev && gotoOut(outNeighbors.prev)}><span>← </span> {outNeighbors.prev || ""}</button>
-            <div className="pill pill--active">Wylot {dateISO}</div>
-            <button className="pill" disabled={!outNeighbors.next} onClick={() => outNeighbors.next && gotoOut(outNeighbors.next)}>{outNeighbors.next || ""} <span>→</span></button>
+            <button className="pill" disabled={!outboundNeighbors.prev} onClick={() => outboundNeighbors.prev && gotoDepart(outboundNeighbors.prev)}>
+              <span>← </span> {outboundNeighbors.prev || ""}
+            </button>
+            <div className="pill pill--active">Wylot {departISO}</div>
+            <button className="pill" disabled={!outboundNeighbors.next} onClick={() => outboundNeighbors.next && gotoDepart(outboundNeighbors.next)}>
+              {outboundNeighbors.next || ""} <span>→</span>
+            </button>
           </div>
 
-          {outFlights.length === 0 ? (
+          {outboundFlights.length === 0 ? (
             <p className="sr-empty">Brak lotów w wybranym dniu.</p>
           ) : (
             <div className="sr-cards">
-              {outFlights.map(f => (
+              {outboundFlights.map((f) => (
                 <FlightCard
                   key={f.id}
                   data={f}
-                  selected={selOut?.id === f.id}
-                  onSelect={() => setSelOut(f)}
+                  selected={selectedDepart?.id === f.id}
+                  onSelect={() => setSelectedDepart(f)}
                 />
               ))}
             </div>
           )}
         </section>
 
-        {/* RETURN */}
-        {rt && (
+        {isRoundTrip && (
           <section className="sr-section">
             <div className="sr-datebar">
-              <button className="pill" disabled={!backNeighbors.prev} onClick={() => backNeighbors.prev && gotoBack(backNeighbors.prev)}><span>← </span> {backNeighbors.prev || ""}</button>
-              <div className="pill pill--active">Powrót {retISO || "-"}</div>
-              <button className="pill" disabled={!backNeighbors.next} onClick={() => backNeighbors.next && gotoBack(backNeighbors.next)}>{backNeighbors.next || ""} <span>→</span></button>
+              <button className="pill" disabled={!returnNeighbors.prev} onClick={() => returnNeighbors.prev && gotoReturn(returnNeighbors.prev)}>
+                <span>← </span> {returnNeighbors.prev || ""}
+              </button>
+              <div className="pill pill--active">Powrót {returnISO || "-"}</div>
+              <button className="pill" disabled={!returnNeighbors.next} onClick={() => returnNeighbors.next && gotoReturn(returnNeighbors.next)}>
+                {returnNeighbors.next || ""} <span>→</span>
+              </button>
             </div>
 
-            {backFlights.length === 0 ? (
+            {returnFlights.length === 0 ? (
               <p className="sr-empty">Brak lotów w wybranym dniu.</p>
             ) : (
               <div className="sr-cards">
-                {backFlights.map(f => (
+                {returnFlights.map((f) => (
                   <FlightCard
                     key={f.id}
                     data={f}
-                    selected={selBack?.id === f.id}
-                    onSelect={() => setSelBack(f)}
+                    selected={selectedReturn?.id === f.id}
+                    onSelect={() => setSelectedReturn(f)}
                   />
                 ))}
               </div>
@@ -153,8 +197,12 @@ const handleReserve = () => {
           </section>
         )}
 
-        {/* CTA */}
         <div className="sr-reserve">
+          {!canReserve && (
+            <div className="sr-hint">
+              Wybierz {isRoundTrip ? "lot tam i z powrotem" : "lot"} aby kontynuować.
+            </div>
+          )}
           <Button1
             className="reserve-btn"
             onClick={handleReserve}
@@ -163,11 +211,7 @@ const handleReserve = () => {
           >
             ZAREZERWUJ
           </Button1>
-          {!canReserve && (
-            <div className="sr-hint">
-              Wybierz {rt ? "lot tam i z powrotem" : "lot"} aby kontynuować.
-            </div>
-          )}
+          
         </div>
       </Container>
     </main>
@@ -180,36 +224,39 @@ function FlightCard({ data, selected, onSelect }) {
       type="button"
       className={`flight-card ${selected ? "is-selected" : ""}`}
       onClick={onSelect}
-      aria-pressed={selected}>
+      aria-pressed={selected}
+    >
+      <div className="fc-row fc-meta">
+        <div className="fc-fnumber">
+          Nr lotu: <strong>{data.flightNo}</strong>
+        </div>
+      </div>
 
-       <div className="fc-row fc-meta">
-        <div className="fc-fnumber">Nr lotu: <strong>{data.flightNo}</strong></div>
-       </div>
       <div className="fc-row fc-times">
         <div className="fc-time">{data.departTime}</div>
-        <div className="fc-icon"><FaPlane/></div>
+        <div className="fc-icon"><FaPlane /></div>
         <div className="fc-time">{data.arriveTime}</div>
       </div>
-       <div className="fc-row fc-meta">
+
+      <div className="fc-row fc-meta">
         <svg xmlns="http://www.w3.org/2000/svg" width="96" height="6" viewBox="0 0 96 6" fill="none">
-      <path d="M96 2.88678L91 2.83718e-05V5.77353L96 2.88678ZM0 2.88678V3.38678H91.5V2.88678V2.38678H0V2.88678Z" fill="#333333"/>
-      </svg>
-       <span className="fc-destination">{data.origin.name}</span><span> {data.durationText}</span> <span className="fc-destination">{data.destination.name}</span>
+          <path d="M96 2.88678L91 2.83718e-05V5.77353L96 2.88678ZM0 2.88678V3.38678H91.5V2.88678V2.38678H0V2.88678Z" fill="#333333" />
+        </svg>
+        <span className="fc-destination">{data.origin.name}</span>
+        <span>{data.durationText}</span>
+        <span className="fc-destination">{data.destination.name}</span>
       </div>
 
       <div className="fc-row fc-route">
-        <div className="fc-airport">
-          {data.origin.code}
-        </div>
-        <div className="fc-airport">
-          {data.destination.code}
-        </div>
+        <div className="fc-airport">{data.origin.code}</div>
+        <div className="fc-airport">{data.destination.code}</div>
       </div>
 
-     
-
       <div className="fc-row fc-bottom">
-        <div className="fc-price"><span>TARYFA PODSTAWOWA:</span>{data.pricePLN.toFixed(2)}<span>PLN</span></div>
+        <div className="fc-price">
+          <span>TARYFA PODSTAWOWA:</span>
+          {data.pricePLN.toFixed(2)} <span>PLN</span>
+        </div>
         <div className={`fc-radio ${selected ? "fc-radio--on" : ""}`} aria-hidden />
       </div>
     </button>

@@ -10,11 +10,14 @@ function seatType(letter) {
   if (letter === "C" || letter === "D") return "aisle";
   return "middle";
 }
-function surchargeByType(t) {
-  if (t === "window") return 29.9;
-  if (t === "aisle") return 19.9;
+function surchargeByType(seat) {
+  if (seat.row === 1) return 49.9;
+
+  if (seat.type === "window") return 29.9;
+  if (seat.type === "aisle") return 19.9;
   return 0.0;
 }
+
 function buildSeatMap(rows = 30, occRatio = 0.18) {
   const letters = ["A","B","C","D","E","F"];
   const out = [];
@@ -31,23 +34,33 @@ function buildSeatMap(rows = 30, occRatio = 0.18) {
   }
   return out;
 }
+
 function autoAssign(seats, count) {
   const pick = [];
-  for (const pref of ["middle","aisle","window"]) {
+
+  for (const pref of ["middle", "aisle", "window"]) {
     for (const s of seats) {
+      if (s.row === 1) continue;
+
       if (pick.length >= count) break;
-      if (!s.taken && s.type === pref && !pick.includes(s)) pick.push(s);
+      if (!s.taken && s.type === pref && !pick.includes(s)) {
+        pick.push(s);
+      }
     }
     if (pick.length >= count) break;
   }
+
   if (pick.length < count) {
     for (const s of seats) {
+      if (s.row === 1) continue;
       if (!s.taken && !pick.includes(s)) pick.push(s);
       if (pick.length >= count) break;
     }
   }
+
   return pick;
 }
+
 
 export default function SeatSelection() {
   const navigate = useNavigate();
@@ -79,7 +92,7 @@ export default function SeatSelection() {
   };
 
   const effective = selected.length ? selected : assigned;
-  const totalSurcharge = effective.reduce((sum, s) => sum + surchargeByType(s.type), 0);
+  const totalSurcharge = effective.reduce((sum, s) => sum + surchargeByType(s), 0);
   const ready = effective.length === pax;
 
   const next = () => {
@@ -102,24 +115,34 @@ export default function SeatSelection() {
       <button className="back-btn" onClick={() => navigate(-1)} aria-label="Wróć">
         <IoArrowBackCircle />
       </button>
-          <div className="seat-cta">
-            {!ready && <div className="seat-hint">Wybierz {pax} miejsce(a).</div>}
-            <Button1 onClick={next} disabled={!ready}>WYBIERZ MIEJSC{pax > 1 ? "A" : "E"}</Button1>
+        <div className="seat-cta">
+          {!ready && <div className="seat-hint">Wybierz {pax} miejsce(a).</div>}
+          <Button1 onClick={next} disabled={!ready}>
+            {selected.length > 0
+              ? `WYBIERZ MIEJSC${pax > 1 ? "A" : "E"}`
+              : `WYBIERZ LOSOWE`}
+          </Button1>
         </div>
 
       <div className="seat-wrap-no-panel">
+        <h1 className="ss-title">WYBIERZ MIEJSC{pax > 1 ? "A" : "E"}:</h1>
         <header className="seat-legend">
           <div><span className="dot dot--taken" /> Zajęte</div>
           <div><span className="dot dot--free" /> Dostępne</div>
           <div><span className="dot dot--selected" /> Wybrane</div>
-          <div className="legend-note">Przydzielone automatycznie →</div>
         </header>
 
         <div className="plane">
           <img className="plane-bg" src={planeBg} alt="" />
           <div className="seat-grid-rows" aria-label="Mapa miejsc">
           <div className="seat-picked">
-            <div className="picked-title">Wybrane miejsc{pax > 1 ? "a" : "e"}:  <span className="picked-value">{effective.map(s => s.label).join(", ") || "—"}</span></div>
+            <div className="picked-title">
+                {selected.length > 0 ? "Wybrane miejsc" : "Losowe miejsc"}
+                {pax > 1 ? "a" : "e"}:{" "}
+                <span className="picked-value">
+                  {effective.map((s) => s.label).join(", ") || "—"}
+                </span>
+              </div>
             <div className="picked-price">
               Dopłata za wybór: <strong>{totalSurcharge.toFixed(2)} PLN</strong>
             </div>
@@ -158,13 +181,17 @@ function SeatButton({ seat, selected, assigned, onClick }) {
     selected ? "is-selected" : "",
     assigned && !selected ? "is-assigned" : ""
   ].join(" ");
-  const title = seat.taken
-    ? `${seat.label} • zajęte`
-    : `${seat.label} • ${
-        seat.type === "window" ? "okno +29,90"
-      : seat.type === "aisle"  ? "korytarz +19,90"
-      : "środek +0,0"}`;
-
+const title = seat.taken
+  ? `${seat.label} • zajęte`
+  : `${seat.label} • ${
+      seat.row === 1
+        ? "pierwszy rząd +49,90"
+        : seat.type === "window"
+        ? "okno +29,90"
+        : seat.type === "aisle"
+        ? "korytarz +19,90"
+        : "środek +0,0"
+    }`;
   return (
     <button
       type="button"

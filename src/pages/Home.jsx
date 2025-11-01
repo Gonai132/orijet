@@ -25,30 +25,20 @@ export default function Home() {
   const navigate = useNavigate();
 
   const [rules, setRules] = useState([]);
-
   const [tripType, setTripType] = useState("rt");
   const [origin, setOrigin] = useState("WAW");
   const [destination, setDestination] = useState("");
-
   const [departISO, setDepartISO] = useState("");
   const [returnISO, setReturnISO] = useState("");
-
   const [passengers, setPassengers] = useState(1);
-
-  // useEffect(() => {
-  //   fetch("/data/flights.json")
-  //     .then((r) => r.json())
-  //     .then(setRules)
-  //     .catch(() => setRules([]));
-  // }, []);
+  const [formError, setFormError] = useState("");
 
   useEffect(() => {
-  fetch(`${process.env.PUBLIC_URL}/data/flights.json`)
-    .then((r) => r.json())
-    .then(setRules)
-    .catch(() => setRules([]));
-}, []);
-
+    fetch(`${process.env.PUBLIC_URL}/data/flights.json`)
+      .then((r) => r.json())
+      .then(setRules)
+      .catch(() => setRules([]));
+  }, []);
 
   const airports = useMemo(() => {
     const map = new Map();
@@ -90,8 +80,14 @@ export default function Home() {
     if (tripType === "ow") setReturnISO("");
   }, [tripType]);
 
-  const dec = () => setPassengers((p) => Math.max(1, p - 1));
-  const inc = () => setPassengers((p) => Math.min(9, p + 1));
+  const dec = () => {
+    setPassengers((p) => Math.max(1, p - 1));
+    setFormError("");
+  };
+  const inc = () => {
+    setPassengers((p) => Math.min(9, p + 1));
+    setFormError("");
+  };
 
   const swapDirections = () => {
     setOrigin((prev) => {
@@ -100,15 +96,18 @@ export default function Home() {
     });
     setDepartISO("");
     setReturnISO("");
+    setFormError("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!origin) return alert("Wybierz lotnisko wylotu.");
-    if (!destination) return alert("Wybierz lotnisko przylotu.");
-    if (!departISO) return alert("Wybierz datę wylotu.");
+    setFormError("");
+
+    if (!origin) return setFormError("Wybierz lotnisko wylotu.");
+    if (!destination) return setFormError("Wybierz lotnisko przylotu.");
+    if (!departISO) return setFormError("Wybierz datę wylotu.");
     if (!departDatesISO.includes(departISO))
-      return alert("Wybrana data wylotu nie jest dostępna.");
+      return setFormError("Wybrana data wylotu nie jest dostępna.");
 
     let params = {
       o: origin,
@@ -117,13 +116,14 @@ export default function Home() {
       pax: String(passengers),
       rt: tripType === "rt" ? "1" : "0",
     };
+
     if (tripType === "rt") {
-      if (!returnISO) return alert("Wybierz datę powrotu.");
+      if (!returnISO) return setFormError("Wybierz datę powrotu.");
       if (returnISO < departISO)
-        return alert("Data powrotu musi być po dacie wylotu.");
+        return setFormError("Data powrotu musi być po dacie wylotu.");
       if (!returnDatesISO.includes(returnISO))
-        return alert("Wybrana data powrotu nie jest dostępna.");
-      params.ret = returnISO; // <<< dopisujemy do URL
+        return setFormError("Wybrana data powrotu nie jest dostępna.");
+      params.ret = returnISO;
     }
 
     const q = new URLSearchParams(params);
@@ -147,21 +147,22 @@ export default function Home() {
           loop
           playsInline
         />
-        <div className="movie-soft-blur" />
       </section>
 
       <section className="home-search">
         <Container>
           <form className="search-form" onSubmit={handleSubmit}>
             <div className="trip-type">
-            
               <label className="radio">
                 <input
                   type="radio"
                   name="tripType"
                   value="rt"
                   checked={tripType === "rt"}
-                  onChange={() => setTripType("rt")}
+                  onChange={() => {
+                    setTripType("rt");
+                    setFormError("");
+                  }}
                 />
                 <span>W obie strony</span>
               </label>
@@ -171,7 +172,10 @@ export default function Home() {
                   name="tripType"
                   value="ow"
                   checked={tripType === "ow"}
-                  onChange={() => setTripType("ow")}
+                  onChange={() => {
+                    setTripType("ow");
+                    setFormError("");
+                  }}
                 />
                 <span>W jedną stronę</span>
               </label>
@@ -190,6 +194,7 @@ export default function Home() {
                       setDestination("");
                       setDepartISO("");
                       setReturnISO("");
+                      setFormError("");
                     }}
                   >
                     <option value="" disabled>
@@ -210,7 +215,6 @@ export default function Home() {
                 className="swap"
                 onClick={swapDirections}
                 aria-label="Zamień kierunki"
-                title="Zamień kierunki"
               >
                 <PiArrowsClockwiseFill />
               </button>
@@ -226,6 +230,7 @@ export default function Home() {
                       setDestination(e.target.value);
                       setDepartISO("");
                       setReturnISO("");
+                      setFormError("");
                     }}
                   >
                     <option value="" disabled>
@@ -244,13 +249,16 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="dates-row">
+            <div className={`dates-row ${tripType === "ow" ? "single" : ""}`}>
               <div className="date-field">
                 <label className="label">Od</label>
                 <DatePicker
                   locale="pl"
                   selected={departSelected}
-                  onChange={(d) => setDepartISO(d ? toISO(d) : "")}
+                  onChange={(d) => {
+                    setDepartISO(d ? toISO(d) : "");
+                    setFormError("");
+                  }}
                   includeDates={includeDepart}
                   dateFormat="dd.MM.yyyy"
                   placeholderText="dd.mm.rrrr"
@@ -265,7 +273,10 @@ export default function Home() {
                   <DatePicker
                     locale="pl"
                     selected={returnSelected}
-                    onChange={(d) => setReturnISO(d ? toISO(d) : "")}
+                    onChange={(d) => {
+                      setReturnISO(d ? toISO(d) : "");
+                      setFormError("");
+                    }}
                     includeDates={includeReturn}
                     minDate={departSelected || undefined}
                     dateFormat="dd.MM.yyyy"
@@ -280,17 +291,14 @@ export default function Home() {
             <div className="passengers">
               <span className="label">Liczba pasażerów:</span>
               <div className="counter">
-                <button className="counter-btn" type="button" onClick={dec}>
-                  −
-                </button>
+                <button className="counter-btn" type="button" onClick={dec}>−</button>
                 <span className="counter-val">{passengers}</span>
-                <button className="counter-btn" type="button" onClick={inc}>
-                  +
-                </button>
+                <button className="counter-btn" type="button" onClick={inc}>+</button>
               </div>
             </div>
 
             <div className="row cta">
+              {formError && <div className="form-error">{formError}</div>}
               <Button1 type="submit">Wyszukaj loty</Button1>
             </div>
           </form>

@@ -101,9 +101,9 @@ export default function BagSelection() {
               {current.price.toFixed(2)} <span>PLN</span>
             </div>
           </div>
-
-                    <div className="bag-qty">
-            <span>Ilość sztuk bagażu:</span>
+             <hr className="bp-hr" />
+            <div className="bag-qty">
+            <div>Ilość sztuk wybranego bagażu:</div>
             <div className="counter">
               <button type="button" onClick={() => setQty(q => Math.max(0, q - 1))}>−</button>
               <span className="counter-val">{qty}</span>

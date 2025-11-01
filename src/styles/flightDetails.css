@@ -10,10 +10,35 @@
 .details .back-btn svg{ width:36px; height:36px; }
 
 .fd-bar{ padding:10px 0 0; color:#fff; }
+
 .fd-route{
-  display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
-  gap:10px 14px; font-weight:700;
+  display:flex; flex-direction: column; flex-wrap:wrap; align-items:center; justify-content:center;
+ font-weight:700; gap: 2px;
 }
+
+.sr-flightinfo {
+  display: flex;
+  align-items: flex-start;
+ }
+
+ .sr-flightinfo svg {
+  margin: 15px 0 10px;
+  align-self: self-start;
+ }
+
+ .sr-flighdata {
+  flex-basis: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+
+ .sr-flighticon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .fd-code{ font-size:24px; }
 .fd-pax{ width:100%; text-align:center; font-weight:500; opacity:.9; }
 
@@ -63,7 +88,13 @@
 }
 .fd-fare{
   flex:1 1 calc(50% - 6px);
-  border:1px solid #e7ecef; border-radius:14px; padding:12px 10px; background:#fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border:1px solid #e7ecef; 
+  border-radius:14px; 
+  padding:12px 10px; 
+  background:#fff;
   min-width:140px;
 }
 .fd-fare-title{
@@ -103,5 +134,5 @@
 .fd-tab.is-active{ background:var(--color-teal-light); color:#fff; border-color:transparent; font-weight:700; }
 
 .fd-cta{
-  margin:16px auto 28px; display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
+  margin:25px auto 30px; display:flex;flex-direction: column; align-items: center; gap:15px;
 }

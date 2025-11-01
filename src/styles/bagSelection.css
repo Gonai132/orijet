@@ -129,10 +129,17 @@
   margin: 14px 0 6px;
 }
 
+
+.bag-cta .button {
+ width: 100%!important;
+}
+
 .bag-qty {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: var(--color-text-medium);
   gap: 12px;
   margin: 10px 0 4px;
 }
@@ -140,6 +147,7 @@
 .counter {
   display: inline-flex;
   align-items: center;
+  color: var(--color-text-dark);
   gap: 10px;
   border-radius: 20px;
   padding: 4px 8px;
