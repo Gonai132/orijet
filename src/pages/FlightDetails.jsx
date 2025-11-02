@@ -4,7 +4,7 @@ import Container from "../components/Container/Container";
 import Button1 from "../components/Buttons/Button1";
 import Button2 from "../components/Buttons/Button2";
 import { FaPlane, FaSuitcaseRolling,} from "react-icons/fa6";
-import { IoArrowBackCircle } from "react-icons/io5";
+import BackButton from "../components/Buttons/BackButton";
 import { FaBagShopping } from "react-icons/fa6";
 import "./../styles/flightDetails.css";
 import "./../styles/searchResults.css";
@@ -92,13 +92,17 @@ export default function FlightDetails() {
 
   return (
     <main className="page details">
-      <button className="back-btn" onClick={() => navigate(-1)} aria-label="Wróć">
-        <IoArrowBackCircle />
-      </button>
-
+       <BackButton />
+       <ul className="location">
+        <li className="active">1.POŁĄCZENIE / </li>
+        <li>2. MIEJSCE / </li>
+        <li>3. BAGAŻ / </li>
+        <li>4. DANE / </li>
+        <li>5. PŁATNOŚĆ</li>
+       </ul>
       <header className="fd-bar">
         <div className="fd-route">
-          <h1 className="sr-title">DOSTĘPNE POŁĄCZENIA:</h1>
+          <h1 className="title">SZCZEGÓŁY POŁĄCZENIA:</h1>
           <div className="sr-flightinfo">
             <div className="sr-flighdata">
           <span className="fd-code">{origin?.code}</span>

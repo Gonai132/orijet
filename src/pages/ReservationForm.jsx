@@ -86,7 +86,15 @@ export default function ReservationForm() {
   return (
     <main className="page reservation">
       <BackButton />
-      <h1 className="rf-title">
+            <ul className="location">
+          <li>1.POŁĄCZENIE / </li>
+          <li>2. MIEJSCE / </li>
+          <li>3. BAGAŻ / </li>
+          <li className="active">4. DANE / </li>
+          <li>5. PŁATNOŚĆ</li>
+        </ul>
+
+      <h1 className="title">
         UZUPEŁNIJ SWOJE DANE
         <br />
         OSOBOWE:

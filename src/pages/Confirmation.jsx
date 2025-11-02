@@ -6,6 +6,7 @@ import Button1 from "../components/Buttons/Button1";
 import Button2 from "../components/Buttons/Button2";
 import "./../styles/confirmation.css";
 import { FaPlane} from "react-icons/fa6";
+import BackButton from "../components/Buttons/BackButton";
 import barcodeImg from "../img/code.png";
 import logo from "../img/logoSmall.png";
 
@@ -68,8 +69,9 @@ const boarding = dep !== "—" ? subtract30min(dep) : "—";
 
   return (
     <main className="page confirmation">
-      <h1 className="bp-title">KARTA POKŁADOWA:</h1>
-
+      <BackButton/>
+      <h1 className="title">KARTA POKŁADOWA:</h1>
+      
       <Container className="bp-wrap">
         <div id="boarding-card" className="bp-stack">
           <section className="bp-card bp-card--top">

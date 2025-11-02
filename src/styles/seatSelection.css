@@ -35,7 +35,7 @@
 .seat--aisle:not(:disabled)  { background: var(--color-text-light); }
 .seat--middle:not(:disabled) {  background: var(--color-text-light);}
 .seat-page.transparent { background: transparent; }
-.seat-wrap-no-panel { padding: 6px 0px 20px; }
+.seat-wrap-no-panel { padding: 0px 0px 20px; }
 
 .seat-legend {
   display:flex;
@@ -45,14 +45,13 @@
   gap:14px;
   flex-wrap:wrap;
   color:#fff;
-  padding:6px 0;
+  padding-bottom: 10px;
 }
 
 
 .ss-title {
   text-align: center;
   font-size:22px;
-  margin-bottom:6px;
   color: var(--color-text-light);
 }
 

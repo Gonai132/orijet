@@ -35,6 +35,7 @@ export default function Payment() {
   const pax = Number(state?.pax ?? 1);
   const out = state?.flight ?? null;
   const back = state?.returnFlight ?? null;
+  const email =state?.passenger.email ?? null;
 
   const seatFeeTotal = Number(state?.seatFeeTotal ?? 0);
 
@@ -63,8 +64,8 @@ export default function Payment() {
 
   const bookingRef = useMemo(() => {
     const a = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-    let s = "ORJ-";
-    for (let i = 0; i < 8; i++) s += a[(Math.random() * a.length) | 0];
+    let s = "OJ-";
+    for (let i = 0; i < 5; i++) s += a[(Math.random() * a.length) | 0];
     return s;
   }, []);
 
@@ -115,12 +116,18 @@ export default function Payment() {
 
   return (
     <main className="page payment">
-
-  <BackButton to={-1} aria-label="Wróć" />
+    <BackButton/>
+      <ul className="location">
+        <li>1.POŁĄCZENIE / </li>
+        <li>2. MIEJSCE / </li>
+        <li>3. BAGAŻ / </li>
+         <li>4. DANE / </li>
+        <li className="active">5. PŁATNOŚĆ</li>
+       </ul>
       <section className="sr-hero">
       
         <div className="sr-hero-content">
-          <h1 className="sr-title">PŁATNOŚĆ</h1>
+          <h1 className="title">PŁATNOŚĆ</h1>
 
           <div className="sr-flightinfo">
             <div className="sr-flighdata">
@@ -180,7 +187,7 @@ export default function Payment() {
             </div>
 
             <div className="pay-item">
-              <span className="pay-item-l">Wybór miejsca</span>
+              <span className="pay-item-l">Wybór miejsc</span>
               <span className="pay-item-r">{pln(seatFeeTotal)} PLN</span>
             </div>
 
@@ -284,13 +291,16 @@ export default function Payment() {
       {showOk && (
         <div className="pay-modal">
           <div className="pay-modal-box">
-            <h3>Płatność udana 🎉</h3>
+            <h3>Płatność udana! 🎉</h3>
             <p>
               Twój numer rezerwacji to: <strong>{bookingRef}</strong>
             </p>
-            <button className="pay-modal-btn" onClick={goToConfirmation}>
-              Przejdź do karty pokładowej
-            </button>
+             <p>
+              Potwierdzenie i inofmacje jak odprawić pozostałych pasażerów wysłane na email: <strong>{email}</strong>
+            </p>
+            <Button1 className="pay-modal-btn" onClick={goToConfirmation}>
+              Moja karta pokładowa →
+            </Button1>
           </div>
         </div>
       )}

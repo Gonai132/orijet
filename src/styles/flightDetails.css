@@ -1,15 +1,6 @@
-.details .back-btn{
-  position: static;
-  appearance: none;
-  border: 0;
-  background: transparent;
-  color: rgba(255,255,255,.85);
-  padding: 6px 8px;
-}
-
 .details .back-btn svg{ width:36px; height:36px; }
 
-.fd-bar{ padding:10px 0 0; color:#fff; }
+.fd-bar{color:var(--color-text-light)}
 
 .fd-route{
   display:flex; flex-direction: column; flex-wrap:wrap; align-items:center; justify-content:center;

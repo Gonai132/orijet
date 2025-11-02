@@ -1,15 +1,15 @@
 .button {
   width: 90%!important;
   max-width: 400px;
-  height: 45px;
+  min-height: 45px;
   border-radius: 100px;
   font-family: var(--font-main);
-  line-height: 24px;
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 1px;
   cursor: pointer;
   transition: background-color var(--transition);
+  padding: 5px;
 }
 
 .button1 {
@@ -53,13 +53,16 @@
   border: 2px solid var(--color-teal);
 }
 
-.back-btn{
-  position: static;
+.back-btn {
+  position: absolute;
   appearance: none;
   border: 0;
   background: transparent;
-  color: rgba(255,255,255,.85);
-  padding: 6px 8px;
+  color: rgba(255,255,255,.6);
+  padding: 7px 5px;
+  transition: all var(--transition);
 }
 
 .back-btn svg{ width:36px; height:36px; }
+
+.back-btn:hover { color: #fff; }

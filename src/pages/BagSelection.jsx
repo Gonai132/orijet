@@ -55,8 +55,15 @@ export default function BagSelection() {
   return (
     <main className="page bag-page">
       <BackButton />
+        <ul className="location">
+          <li>1.POŁĄCZENIE / </li>
+          <li>2. MIEJSCE / </li>
+          <li className="active">3. BAGAŻ / </li>
+          <li>4. DANE / </li>
+          <li>5. PŁATNOŚĆ</li>
+        </ul>
       <Container className="bag-wrap">
-        <h1 className="bag-title">
+        <h1 className="title">
           WYBIERZ DODATKOWY<br />BAGAŻ REJESTROWANY:
         </h1>
 

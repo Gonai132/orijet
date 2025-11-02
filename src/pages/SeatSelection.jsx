@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import Button1 from "../components/Buttons/Button1";
-import { IoArrowBackCircle } from "react-icons/io5";
+import BackButton from "../components/Buttons/BackButton";
 import "./../styles/seatSelection.css";
 import planeBg from "../img/Samolot.png";
 
@@ -112,9 +112,14 @@ export default function SeatSelection() {
 
   return (
     <main className="page seat-page transparent">
-      <button className="back-btn" onClick={() => navigate(-1)} aria-label="Wróć">
-        <IoArrowBackCircle />
-      </button>
+      <BackButton />
+      <ul className="location">
+        <li>1.POŁĄCZENIE / </li>
+        <li className="active">2. MIEJSCE / </li>
+        <li>3. BAGAŻ / </li>
+        <li>4. DANE / </li>
+        <li>5. PŁATNOŚĆ</li>
+       </ul>
         <div className="seat-cta">
           {!ready && <div className="seat-hint">Wybierz {pax} miejsce(a).</div>}
           <Button1 onClick={next} disabled={!ready}>
@@ -125,7 +130,7 @@ export default function SeatSelection() {
         </div>
 
       <div className="seat-wrap-no-panel">
-        <h1 className="ss-title">WYBIERZ MIEJSC{pax > 1 ? "A" : "E"}:</h1>
+        <h1 className="title">WYBIERZ MIEJSC{pax > 1 ? "A" : "E"}:</h1>
         <header className="seat-legend">
           <div><span className="dot dot--taken" /> Zajęte</div>
           <div><span className="dot dot--free" /> Dostępne</div>
