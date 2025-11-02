@@ -2,10 +2,9 @@ import "./../styles/home.css";
 import Container from "../components/Container/Container";
 import Button1 from "../components/Buttons/Button1";
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { PiArrowsClockwiseFill } from "react-icons/pi";
 import { FaPlaneDeparture, FaPlaneArrival, FaChevronDown } from "react-icons/fa6";
-
 import DatePicker from "react-datepicker";
 import { registerLocale } from "react-datepicker";
 import pl from "date-fns/locale/pl";
@@ -23,15 +22,18 @@ registerLocale("pl", pl);
 
 export default function Home() {
   const navigate = useNavigate();
+  
 
   const [rules, setRules] = useState([]);
   const [tripType, setTripType] = useState("rt");
-  const [origin, setOrigin] = useState("WAW");
+  const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
   const [departISO, setDepartISO] = useState("");
   const [returnISO, setReturnISO] = useState("");
   const [passengers, setPassengers] = useState(1);
   const [formError, setFormError] = useState("");
+
+const location = useLocation();
 
   useEffect(() => {
     fetch(`${process.env.PUBLIC_URL}/data/flights.json`)
@@ -39,6 +41,17 @@ export default function Home() {
       .then(setRules)
       .catch(() => setRules([]));
   }, []);
+
+useEffect(() => {
+  if (location.state?.preselected) {
+    const { origin, destination } = location.state.preselected;
+    setOrigin(origin || "");
+    setDestination(destination || "");
+    setFormError("");
+    setDepartISO("");
+    setReturnISO("");
+  }
+}, [location]);
 
   const airports = useMemo(() => {
     const map = new Map();
