@@ -33,11 +33,11 @@ export default function NavbarMobile() {
       <div className={`nav-layer ${open ? "is-open" : ""}`} onClick={closeMenu}>
         <div className="dropdown" onClick={(e) => e.stopPropagation()}>
           <Link to="/login" onClick={closeMenu} className="item">Zaloguj się</Link>
-          <Link to="/register" onClick={closeMenu} className="item">Zarejestruj się</Link>
-          <Link to="/search" onClick={closeMenu} className="item">Wyszukaj loty</Link>
+          <Link to="/" onClick={closeMenu} className="item">Wyszukaj loty</Link>
           <Link to="/offers" onClick={closeMenu} className="item">Oferty promocyjne</Link>
           <Link to="/map" onClick={closeMenu} className="item">Mapa połączeń</Link>
-          <Link to="/my-flights" onClick={closeMenu} className="item">Moje loty</Link>
+          <Link to="/rules" onClick={closeMenu} className="item">Regulamin</Link>
+          <Link to="/about" onClick={closeMenu} className="item">O nas</Link>
           <Link to="/contact" onClick={closeMenu} className="item">Kontakt</Link>
         </div>
       </div>

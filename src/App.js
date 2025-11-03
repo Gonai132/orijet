@@ -15,7 +15,10 @@ import Contact from "./pages/Contact";
 import Offers from "./pages/Offers";
 import Map from './pages/Map';
 import Rules from './pages/Rules';
+import Privacy from './pages/Privacy';
+import About from './pages/About';
 import Login from './pages/Login';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -36,11 +39,15 @@ function App() {
         <Route path="/offers" element={<Offers />} />
         <Route path="/map" element={<Map />} />
         <Route path="/rules" element={<Rules />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <LowerMenu />
+      <Footer />
     </BrowserRouter>
+
     </div>
   );
 }

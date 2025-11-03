@@ -43,6 +43,6 @@ main {
 @media (min-width: 992px) {
   main {
     padding-top: 60px;
-    padding-bottom: 30px;
+    padding-bottom: 50px;
   }
 }
