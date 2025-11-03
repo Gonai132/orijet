@@ -14,7 +14,7 @@ export default function Navbar() {
         <nav className="menu">
           <Link to="/offers" className="menu-item">Oferty</Link>
           <Link to="/map" className="menu-item">Mapa połączeń</Link>
-          <Link to="/my-flights" className="menu-item">Moje loty</Link>
+          <Link to="/" className="menu-item">Wyszukaj loty</Link>
           <Link to="/contact" className="menu-item">Kontakt</Link>
           <Link to="/login" className="menu-item accent">Zaloguj się</Link>
         </nav>

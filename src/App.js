@@ -13,6 +13,9 @@ import LowerMenu from './components/LowerMenu/LowerMenu';
 import Navbar from './components/Navbar/Navbar';
 import Contact from "./pages/Contact";
 import Offers from "./pages/Offers";
+import Map from './pages/Map';
+import Rules from './pages/Rules';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -31,6 +34,9 @@ function App() {
         <Route path="/confirmation" element={<Confirmation />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/offers" element={<Offers />} />
+        <Route path="/map" element={<Map />} />
+        <Route path="/rules" element={<Rules />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <LowerMenu />

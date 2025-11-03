@@ -1,16 +1,6 @@
 .offers-page {
-  background: linear-gradient(var(--color-orange), var(--color-sand));
   min-height: 100vh;
   padding-bottom: 90px;
-}
-
-.offers-title {
-  color: var(--color-text-light);
-  text-align: center;
-  font-size: 24px;
-  font-weight: 800;
-  margin-bottom: 26px;
-  letter-spacing: 0.5px;
 }
 
 .offers-wrap {
@@ -18,62 +8,127 @@
   padding: 0 20px;
 }
 
+.row {
+  align-items: stretch !important;
+}
+
+.col {
+  display: flex;
+  justify-content: center;
+}
+
 .offer-card {
-  border: none;
-  border-radius: var(--radius-md);
-  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  border-radius: 20px!important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   transition: transform var(--transition2);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
 }
 
 .offer-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
 }
 
 .offer-img {
   height: 200px;
   object-fit: cover;
+  width: 100%;
 }
 
 .card-body {
-  background: #fff;
+  background: var(--color-text-light);
   padding: 16px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
 }
 
-.card-title {
-  font-size: 17px;
+#card-title {
+  font-size: 18px;
   font-weight: 700;
-  color: var(--color-teal-dark);
+  color: var(--color-teal);
+  margin-bottom: 6px;
 }
 
 .card-text {
   font-size: 14px;
   color: var(--color-text-dark);
-  margin-top: 8px;
   margin-bottom: 14px;
-  min-height: 55px;
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-start;
 }
 
 .offer-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: auto;
 }
 
 .offer-price {
-  font-size: 14px;
-  color: var(--color-teal-dark);
+  font-size: 16px;
+  color: var(--color-teal);
 }
 
-.offer-btn {
-  background-color: var(--color-teal-light)!important;
-  border: none!important;
-  font-size: 16px!important;
-  font-weight: 700!important;
-  border-radius: 20px!important;
-  transition: all var(--transition2)!important;
+#offer-btn {
+  background-color: var(--color-teal-light);
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 20px;
+  transition: all var(--transition2);
 }
 
 .offer-btn:hover {
-  background-color: var(--color-teal)!important;
+  background-color: var(--color-teal) !important;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 30px auto 0;
+  --bs-pagination-active-bg: var(--color-teal);
+  --bs-pagination-active-border-color: var(--color-teal);
+  --bs-pagination-color: var(--color-text-dark);
+  --bs-pagination-border-color: #ddd;
+  --bs-pagination-hover-color: var(--color-teal-dark);
+  font-weight: 600;
+}
+
+.page-item.active .page-link {
+  color: #fff !important;
+  background-color: var(--color-teal) !important;
+  border-color: var(--color-teal) !important;
+}
+
+.page-link {
+  border-radius: 50% !important;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-teal)!important;
+  transition: background-color 0.3s, color 0.3s;
+  margin: 2px!important;
+}
+
+.fade-wrapper {
+  transition: opacity 0.4s ease;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
 }
