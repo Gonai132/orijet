@@ -87,28 +87,52 @@ export default function Payment() {
   const markTouched = (k) => () => setTouched((t) => ({ ...t, [k]: true }));
 
   const handlePay = async (e) => {
-    e.preventDefault();
-    setTouched({ card: true, name: true, cvv: true, exp: true });
-    if (!isValid) return;
+  e.preventDefault();
+  setTouched({ card: true, name: true, cvv: true, exp: true });
+  if (!isValid) return;
 
-    setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 900));
-    setSubmitting(false);
-    setShowOk(true);
-  };
+  setSubmitting(true);
+  await new Promise((r) => setTimeout(r, 900));
+  setSubmitting(false);
+  setShowOk(true);
 
-  const goToConfirmation = () => {
-    navigate("/confirmation", {
-      state: {
-        ...prev,
-        bookingRef,
-        pax,
-        flight: out,
-        returnFlight: back,
-        totals: { ticketOut, ticketBack, seatFeeTotal, baggageTotal, grand },
-      },
-    });
-  };
+  // 💾 Zapisz rezerwację w koncie użytkownika
+  const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+  if (loggedUser) {
+    const newRes = {
+      id: Date.now(),
+      bookingRef,
+      flight: `${out?.origin?.code} → ${out?.destination?.code}`,
+      date: state?.dateISO ?? out?.date ?? "—",
+    };
+
+    const updatedUser = {
+      ...loggedUser,
+      reservations: [...(loggedUser.reservations || []), newRes],
+    };
+
+    localStorage.setItem("loggedUser", JSON.stringify(updatedUser));
+
+    const allUsers = JSON.parse(localStorage.getItem("users")) || [];
+    const updatedUsers = allUsers.map((u) =>
+      u.id === updatedUser.id ? updatedUser : u
+    );
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+  }
+};
+
+const goToConfirmation = () => {
+  navigate("/confirmation", {
+    state: {
+      ...prev,
+      bookingRef,
+      pax,
+      flight: out,
+      returnFlight: back,
+      totals: { ticketOut, ticketBack, seatFeeTotal, baggageTotal, grand },
+    },
+  });
+};
 
   const dateA = state?.dateISO ?? out?.date ?? "";
   const origin = out?.origin;

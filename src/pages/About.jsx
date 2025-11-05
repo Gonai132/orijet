@@ -19,7 +19,7 @@ export default function About() {
           <h2>Kim jesteśmy?</h2>
           <p>
             <strong>OriJet</strong> to fikcyjna linia lotnicza stworzona na potrzeby projektu inżynierskiego,
-            prezentującego proces projektowania oraz implementacji interfejsu dla aplikacji internetowej do rezerwacji biletów lotniczych.
+            prezentującego proces projektowania oraz implementacji interfejsu aplikacji internetowej do rezerwacji biletów lotniczych.
           </p>
 
           <h2>Technologie wykorzystane w projekcie:</h2>

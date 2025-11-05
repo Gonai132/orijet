@@ -1,0 +1,91 @@
+.login-container {
+  font-family: var(--font-main);
+  text-align: left;
+  min-width: 280px;
+  width:92vw;
+  max-width: 450px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-form > button {
+  display: block;
+  margin: 20px auto 5px;
+}
+
+.login-btn:hover {
+  background: color-mix(in srgb, var(--color-teal) 85%, #000);
+}
+
+.switch-mode {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.switch-mode span {
+  color: var(--color-teal);
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.switch-mode span:hover {
+  color: var(--color-teal-dark);
+}
+
+.login-message {
+  text-align: center;
+  font-weight: 600;
+  color: var(--color-teal-dark);
+  margin-top: 10px;
+}
+
+.login-form label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 14px;
+  color: var(--color-text-dark);
+  gap: 4px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-gray-light);
+  font-size: 15px;
+}
+
+.input.is-error {
+  border-color: var(--color-orange);
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.12);
+}
+
+.err {
+  color: var(--color-orange);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.input.is-error {
+  border-color: var(--color-orange);
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.12);
+}
+
+.err {
+  color: var(--color-orange);
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.login-btn:disabled {
+  background-color: #ccc !important;
+  cursor: not-allowed;
+  box-shadow: none;
+}

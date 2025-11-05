@@ -38,6 +38,28 @@
   font-size: 11px;
 }
 
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.page-exit {
+  opacity: 1;
+}
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.page-fade-wrapper {
+  min-height: calc(100vh - 60px);
+}
+
 @media (max-width: 360px) {
 
   .location {

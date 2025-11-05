@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, Button, Row, Col, Pagination } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 import "../styles/offers.css";
 
 export default function Offers() {
@@ -180,11 +181,58 @@ export default function Offers() {
   return (
     <main className="page offers-page">
       <h1 className="title">OFERTY SPECJALNE</h1>
+      <div className="carousel-wrap">
+        <div className="offers-carousel">
+ 
+        <Carousel fade interval={2000} pause="hover">
+          <Carousel.Item>
+            <img
+              className="d-block w-100 carousel-img"
+              src={require("../img/cityBreak.jpg")}
+              alt="Slide 3"
+            />
+            <Carousel.Caption>
+              <h3>Loty w promocyjnych cenach</h3>
+              <p>Zarezerwuj wcześniej i leć taniej z OriJet</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100 carousel-img"
+              src={require("../img/beach.jpg")}
+              alt="Slide 1"
+            />
+            <Carousel.Caption>
+              <h3>Wakacje marzeń</h3>
+              <p>Odkryj gorące kierunki i najpiękniejsze plaże Europy.</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+
+          <Carousel.Item>
+            <img
+              className="d-block w-100 carousel-img"
+              src={require("../img/cityBreak.jpg")}
+              alt="Slide 2"
+            />
+            <Carousel.Caption>
+              <h3>City Break</h3>
+              <p>Weekend w Barcelonie, Paryżu lub Rzymie?</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+      </div>
+    </div>
 
       <div className={`offers-wrap fade-wrapper ${fade ? "fade-out" : "fade-in"}`}>
-        <Row xs={1} md={3} xl={4} className="g-4">
-          {currentOffers.map((offer) => (
-            <Col key={offer.id}>
+        <Row className="g-4 justify-content-center">
+  {currentOffers.map((offer) => (
+    <Col
+      key={offer.id}
+      xs={12}
+      md={5}
+      xl={3}
+      className="d-flex justify-content-center"
+    >
               <Card className="offer-card">
                 <Card.Img
                   variant="top"

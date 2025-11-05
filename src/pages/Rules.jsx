@@ -9,7 +9,7 @@ export default function Rules() {
     <main className="app-bg">
       <h1 className="title">REGULAMIN</h1>
 
-      <div className="center-vertical">
+      <div className="center-vertical rules-wrap">
         <div className="app-container elevated rules-container">
           <h2>1. Postanowienia ogólne</h2>
           <p>

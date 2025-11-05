@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Container from "../components/Container/Container";
 import Button1 from "../components/Buttons/Button1";
@@ -35,6 +35,22 @@ export default function ReservationForm() {
   });
 
   const [touched, setTouched] = useState({});
+
+  useEffect(() => {
+    const stored = localStorage.getItem("loggedUser");
+    if (stored) {
+      const user = JSON.parse(stored);
+      setForm((f) => ({
+        ...f,
+        fname: user.fname || "",
+        lname: user.lname || "",
+        email: user.email || "",
+        phone: user.phone || "",
+        dob: user.dob || "",
+        doc: user.doc || "",
+      }));
+    }
+  }, []);
 
   const errors = useMemo(() => {
     const e = {};
@@ -74,7 +90,6 @@ export default function ReservationForm() {
     });
     if (!isValid) return;
 
-
     navigate("/payment", {
       state: {
         ...prev,
@@ -86,13 +101,13 @@ export default function ReservationForm() {
   return (
     <main className="page reservation">
       <BackButton />
-            <ul className="location">
-          <li>1.POŁĄCZENIE / </li>
-          <li>2. MIEJSCE / </li>
-          <li>3. BAGAŻ / </li>
-          <li className="active">4. DANE / </li>
-          <li>5. PŁATNOŚĆ</li>
-        </ul>
+      <ul className="location">
+        <li>1.POŁĄCZENIE / </li>
+        <li>2. MIEJSCE / </li>
+        <li>3. BAGAŻ / </li>
+        <li className="active">4. DANE / </li>
+        <li>5. PŁATNOŚĆ</li>
+      </ul>
 
       <h1 className="title">
         UZUPEŁNIJ SWOJE DANE
@@ -215,38 +230,38 @@ export default function ReservationForm() {
         </form>
       </Container>
 
-  <div className="rf-bottom">
-    <label className="rf-consent">
-      <input
-        type="checkbox"
-        checked={form.accept}
-        onChange={onChange("accept")}
-        onBlur={onBlur("accept")}
-      />
-      <span>
-        Akceptuję{" "}
-        <a
-          href="/rules"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rf-link"
-        >
-          REGULAMIN
-        </a>
-        <FaCircleCheck className="icon-accept" />
-      </span>
-    </label>
+      <div className="rf-bottom">
+        <label className="rf-consent">
+          <input
+            type="checkbox"
+            checked={form.accept}
+            onChange={onChange("accept")}
+            onBlur={onBlur("accept")}
+          />
+          <span>
+            Akceptuję{" "}
+            <a
+              href="/rules"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rf-link"
+            >
+              REGULAMIN
+            </a>
+            <FaCircleCheck className="icon-accept" />
+          </span>
+        </label>
 
-    {touched.accept && errors.accept && (
-      <div className="rf-err rf-err-consent">{errors.accept}</div>
-    )}
+        {touched.accept && errors.accept && (
+          <div className="rf-err rf-err-consent">{errors.accept}</div>
+        )}
 
-    <div className="rf-cta">
-      <Button1 type="submit" onClick={handleSubmit} disabled={!isValid}>
-        PRZEJDŹ DO PŁATNOŚCI
-      </Button1>
-    </div>
-  </div>
+        <div className="rf-cta">
+          <Button1 type="submit" onClick={handleSubmit} disabled={!isValid}>
+            PRZEJDŹ DO PŁATNOŚCI
+          </Button1>
+        </div>
+      </div>
     </main>
   );
 }

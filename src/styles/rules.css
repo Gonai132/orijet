@@ -43,6 +43,15 @@
   width: 90%;
 }
 
+.rules-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+
 @media (max-width: 480px) {
   .rules-container {
     padding: 16px;
