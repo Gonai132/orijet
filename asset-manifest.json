@@ -1,21 +1,31 @@
 {
   "files": {
-    "main.css": "/orijet/static/css/main.b4fb0e6b.css",
-    "main.js": "/orijet/static/js/main.966ca3e5.js",
+    "main.css": "/orijet/static/css/main.640b6018.css",
+    "main.js": "/orijet/static/js/main.37db90aa.js",
     "static/js/453.4e5ba19a.chunk.js": "/orijet/static/js/453.4e5ba19a.chunk.js",
     "static/media/OriJetVideo.mp4": "/orijet/static/media/OriJetVideo.a1bd9fcfd74cfd0bb997.mp4",
+    "static/media/cityBreak.jpg": "/orijet/static/media/cityBreak.1799837134a40324d94a.jpg",
+    "static/media/OriJetPlane.jpg": "/orijet/static/media/OriJetPlane.8645217f491b30e1d82c.jpg",
     "static/media/londyn.jpg": "/orijet/static/media/londyn.a52b7a6678292f67372f.jpg",
+    "static/media/cityView.jpg": "/orijet/static/media/cityView.103e03f56b331203fe65.jpg",
     "static/media/burgas.jpg": "/orijet/static/media/burgas.3b1b22a3892f266a73e5.jpg",
+    "static/media/beach.jpg": "/orijet/static/media/beach.474dcb32c3e9db5351a9.jpg",
     "static/media/lizbona.jpg": "/orijet/static/media/lizbona.adfc1bb9a40c8d698e92.jpg",
     "static/media/OriJetVideoPreview.jpg": "/orijet/static/media/OriJetVideoPreview.d091429f92ba035a20ce.jpg",
     "static/media/warszawa.jpg": "/orijet/static/media/warszawa.08737140701eab259adf.jpg",
     "static/media/logo.png": "/orijet/static/media/logo.c695c3479b4db34378f5.png",
     "static/media/plane.png": "/orijet/static/media/plane.63ebf93406bd700ddecf.png",
+    "static/media/OriJetPlane1.jpg": "/orijet/static/media/OriJetPlane1.373147f013763c42cfd7.jpg",
     "static/media/about.jpg": "/orijet/static/media/about.bff73dfe62cd28bfae76.jpg",
     "static/media/ateny.jpg": "/orijet/static/media/ateny.bff73dfe62cd28bfae76.jpg",
+    "static/media/beach1.jpg": "/orijet/static/media/beach1.8ff80259cba3b9a61806.jpg",
+    "static/media/beach2.jpg": "/orijet/static/media/beach2.bb3ce457fe0eb0bb604b.jpg",
+    "static/media/beach3.jpg": "/orijet/static/media/beach3.69dd1599210ada995214.jpg",
     "static/media/lwow.jpg": "/orijet/static/media/lwow.d307356c87c72a54ce77.jpg",
     "static/media/oslo.jpg": "/orijet/static/media/oslo.5de81845fb2ddab4c368.jpg",
+    "static/media/view.jpg": "/orijet/static/media/view.ee51e7397833fe5c7938.jpg",
     "static/media/rzym.jpg": "/orijet/static/media/rzym.4388279acde9518dde43.jpg",
+    "static/media/OriJetPlane2.jpg": "/orijet/static/media/OriJetPlane2.ebb99b0e1f3bab35bea8.jpg",
     "static/media/wieden.jpg": "/orijet/static/media/wieden.05042e68cc4c5d0d283a.jpg",
     "static/media/paryz.jpg": "/orijet/static/media/paryz.44a2490e3f9a09bbcf6d.jpg",
     "static/media/barcelona.jpg": "/orijet/static/media/barcelona.2fc6a0d1e202b195f787.jpg",
@@ -24,12 +34,12 @@
     "static/media/Samolot.png": "/orijet/static/media/Samolot.2b2c203b69b41a2a0b33.png",
     "static/media/logoSmall.png": "/orijet/static/media/logoSmall.98ad9efed042399c88d5.png",
     "index.html": "/orijet/index.html",
-    "main.b4fb0e6b.css.map": "/orijet/static/css/main.b4fb0e6b.css.map",
-    "main.966ca3e5.js.map": "/orijet/static/js/main.966ca3e5.js.map",
+    "main.640b6018.css.map": "/orijet/static/css/main.640b6018.css.map",
+    "main.37db90aa.js.map": "/orijet/static/js/main.37db90aa.js.map",
     "453.4e5ba19a.chunk.js.map": "/orijet/static/js/453.4e5ba19a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b4fb0e6b.css",
-    "static/js/main.966ca3e5.js"
+    "static/css/main.640b6018.css",
+    "static/js/main.37db90aa.js"
   ]
 }
