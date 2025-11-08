@@ -23,6 +23,7 @@ import Privacy from "./pages/Privacy";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import Account from "./pages/Account";
+import Faq from "./pages/Faq";
 import Footer from "./components/Footer/Footer";
 
 function AnimatedRoutes() {
@@ -52,6 +53,7 @@ function AnimatedRoutes() {
             <Route path="/offers" element={<Offers />} />
             <Route path="/map" element={<Map />} />
             <Route path="/rules" element={<Rules />} />
+            <Route path="/faq" element={<Faq/>} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />

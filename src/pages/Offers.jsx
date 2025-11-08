@@ -188,7 +188,7 @@ export default function Offers() {
           <Carousel.Item>
             <img
               className="d-block w-100 carousel-img"
-              src={require("../img/cityBreak.jpg")}
+              src={require("../img/cityView.jpg")}
               alt="Slide 3"
             />
             <Carousel.Caption>
@@ -199,7 +199,7 @@ export default function Offers() {
           <Carousel.Item>
             <img
               className="d-block w-100 carousel-img"
-              src={require("../img/beach.jpg")}
+              src={require("../img/beach2.jpg")}
               alt="Slide 1"
             />
             <Carousel.Caption>

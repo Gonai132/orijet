@@ -22,8 +22,6 @@ registerLocale("pl", pl);
 
 export default function Home() {
   const navigate = useNavigate();
-  
-
   const [rules, setRules] = useState([]);
   const [tripType, setTripType] = useState("rt");
   const [origin, setOrigin] = useState("");
@@ -33,7 +31,7 @@ export default function Home() {
   const [passengers, setPassengers] = useState(1);
   const [formError, setFormError] = useState("");
 
-const location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     fetch(`${process.env.PUBLIC_URL}/data/flights.json`)
@@ -42,16 +40,16 @@ const location = useLocation();
       .catch(() => setRules([]));
   }, []);
 
-useEffect(() => {
-  if (location.state?.preselected) {
-    const { origin, destination } = location.state.preselected;
-    setOrigin(origin || "");
-    setDestination(destination || "");
-    setFormError("");
-    setDepartISO("");
-    setReturnISO("");
-  }
-}, [location]);
+  useEffect(() => {
+    if (location.state?.preselected) {
+      const { origin, destination } = location.state.preselected;
+      setOrigin(origin || "");
+      setDestination(destination || "");
+      setFormError("");
+      setDepartISO("");
+      setReturnISO("");
+    }
+  }, [location]);
 
   const airports = useMemo(() => {
     const map = new Map();
@@ -151,172 +149,178 @@ useEffect(() => {
 
   return (
     <main className="page home">
-      <section className="movie-banner">
-        <video
-          className="movie-video"
-          src={require("../img/OriJetVideo.mp4")}
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
-      </section>
-
-      <section className="home-search">
-        <Container>
-          <form className="search-form" onSubmit={handleSubmit}>
-            <div className="trip-type">
-              <label className="radio">
-                <input
-                  type="radio"
-                  name="tripType"
-                  value="rt"
-                  checked={tripType === "rt"}
-                  onChange={() => {
-                    setTripType("rt");
-                    setFormError("");
-                  }}
-                />
-                <span>W obie strony</span>
-              </label>
-              <label className="radio">
-                <input
-                  type="radio"
-                  name="tripType"
-                  value="ow"
-                  checked={tripType === "ow"}
-                  onChange={() => {
-                    setTripType("ow");
-                    setFormError("");
-                  }}
-                />
-                <span>W jedną stronę</span>
-              </label>
-            </div>
-
-            <div className="loc-group">
-              <div className="field-row with-icon">
-                <FaPlaneDeparture className="ficon" aria-hidden />
-                <div className="select-wrap">
-                  <label className="label">Wylot</label>
-                  <select
-                    className="select"
-                    value={origin}
-                    onChange={(e) => {
-                      setOrigin(e.target.value);
-                      setDestination("");
-                      setDepartISO("");
-                      setReturnISO("");
+      <div className="home-layout">
+        <section className="home-search">
+          <Container>
+            <form className="search-form" onSubmit={handleSubmit}>
+              <div className="trip-type">
+                <label className="radio">
+                  <input
+                    type="radio"
+                    name="tripType"
+                    value="rt"
+                    checked={tripType === "rt"}
+                    onChange={() => {
+                      setTripType("rt");
                       setFormError("");
                     }}
-                  >
-                    <option value="" disabled>
-                      Wybierz lotnisko…
-                    </option>
-                    {airports.map((a) => (
-                      <option key={`o-${a.code}`} value={a.code}>
-                        {a.code} {a.name}
-                      </option>
-                    ))}
-                  </select>
-                  <FaChevronDown className="chev" aria-hidden />
-                </div>
+                  />
+                  <span>W obie strony</span>
+                </label>
+                <label className="radio">
+                  <input
+                    type="radio"
+                    name="tripType"
+                    value="ow"
+                    checked={tripType === "ow"}
+                    onChange={() => {
+                      setTripType("ow");
+                      setFormError("");
+                    }}
+                  />
+                  <span>W jedną stronę</span>
+                </label>
               </div>
 
-              <button
-                type="button"
-                className="swap"
-                onClick={swapDirections}
-                aria-label="Zamień kierunki"
-              >
-                <PiArrowsClockwiseFill />
-              </button>
-
-              <div className="field-row with-icon">
-                <FaPlaneArrival className="ficon" aria-hidden />
-                <div className="select-wrap">
-                  <label className="label">Przylot</label>
-                  <select
-                    className="select"
-                    value={destination}
-                    onChange={(e) => {
-                      setDestination(e.target.value);
-                      setDepartISO("");
-                      setReturnISO("");
-                      setFormError("");
-                    }}
-                  >
-                    <option value="" disabled>
-                      Wybierz z listy…
-                    </option>
-                    {reachable
-                      .filter((a) => a.code !== origin)
-                      .map((a) => (
-                        <option key={`d-${a.code}`} value={a.code}>
+              <div className="loc-group">
+                <div className="field-row with-icon">
+                  <FaPlaneDeparture className="ficon" aria-hidden />
+                  <div className="select-wrap">
+                    <label className="label">Wylot</label>
+                    <select
+                      className="select"
+                      value={origin}
+                      onChange={(e) => {
+                        setOrigin(e.target.value);
+                        setDestination("");
+                        setDepartISO("");
+                        setReturnISO("");
+                        setFormError("");
+                      }}
+                    >
+                      <option value="" disabled>
+                        Wybierz lotnisko…
+                      </option>
+                      {airports.map((a) => (
+                        <option key={`o-${a.code}`} value={a.code}>
                           {a.code} {a.name}
                         </option>
                       ))}
-                  </select>
-                  <FaChevronDown className="chev" aria-hidden />
+                    </select>
+                    <FaChevronDown className="chev" aria-hidden />
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  className="swap"
+                  onClick={swapDirections}
+                  aria-label="Zamień kierunki"
+                >
+                  <PiArrowsClockwiseFill />
+                </button>
+
+                <div className="field-row with-icon">
+                  <FaPlaneArrival className="ficon" aria-hidden />
+                  <div className="select-wrap">
+                    <label className="label">Przylot</label>
+                    <select
+                      className="select"
+                      value={destination}
+                      onChange={(e) => {
+                        setDestination(e.target.value);
+                        setDepartISO("");
+                        setReturnISO("");
+                        setFormError("");
+                      }}
+                    >
+                      <option value="" disabled>
+                        Wybierz z listy…
+                      </option>
+                      {reachable
+                        .filter((a) => a.code !== origin)
+                        .map((a) => (
+                          <option key={`d-${a.code}`} value={a.code}>
+                            {a.code} {a.name}
+                          </option>
+                        ))}
+                    </select>
+                    <FaChevronDown className="chev" aria-hidden />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className={`dates-row ${tripType === "ow" ? "single" : ""}`}>
-              <div className="date-field">
-                <label className="label">Od</label>
-                <DatePicker
-                  locale="pl"
-                  selected={departSelected}
-                  onChange={(d) => {
-                    setDepartISO(d ? toISO(d) : "");
-                    setFormError("");
-                  }}
-                  includeDates={includeDepart}
-                  dateFormat="dd.MM.yyyy"
-                  placeholderText="dd.mm.rrrr"
-                  withPortal
-                  popperPlacement="bottom-start"
-                />
-              </div>
-
-              {tripType === "rt" && (
+              <div className={`dates-row ${tripType === "ow" ? "single" : ""}`}>
                 <div className="date-field">
-                  <label className="label">Do</label>
+                  <label className="label">Od</label>
                   <DatePicker
                     locale="pl"
-                    selected={returnSelected}
+                    selected={departSelected}
                     onChange={(d) => {
-                      setReturnISO(d ? toISO(d) : "");
+                      setDepartISO(d ? toISO(d) : "");
                       setFormError("");
                     }}
-                    includeDates={includeReturn}
-                    minDate={departSelected || undefined}
+                    includeDates={includeDepart}
                     dateFormat="dd.MM.yyyy"
                     placeholderText="dd.mm.rrrr"
                     withPortal
                     popperPlacement="bottom-start"
                   />
                 </div>
-              )}
-            </div>
 
-            <div className="passengers">
-              <span className="label">Liczba pasażerów:</span>
-              <div className="counter">
-                <button className="counter-btn" type="button" onClick={dec}>−</button>
-                <span className="counter-val">{passengers}</span>
-                <button className="counter-btn" type="button" onClick={inc}>+</button>
+                {tripType === "rt" && (
+                  <div className="date-field">
+                    <label className="label">Do</label>
+                    <DatePicker
+                      locale="pl"
+                      selected={returnSelected}
+                      onChange={(d) => {
+                        setReturnISO(d ? toISO(d) : "");
+                        setFormError("");
+                      }}
+                      includeDates={includeReturn}
+                      minDate={departSelected || undefined}
+                      dateFormat="dd.MM.yyyy"
+                      placeholderText="dd.mm.rrrr"
+                      withPortal
+                      popperPlacement="bottom-start"
+                    />
+                  </div>
+                )}
               </div>
-            </div>
 
-            <div className="row cta">
-              {formError && <div className="form-error">{formError}</div>}
-              <Button1 type="submit">Wyszukaj loty</Button1>
-            </div>
-          </form>
-        </Container>
-      </section>
+              <div className="passengers">
+                <span className="label">Liczba pasażerów:</span>
+                <div className="counter">
+                  <button className="counter-btn" type="button" onClick={dec}>
+                    −
+                  </button>
+                  <span className="counter-val">{passengers}</span>
+                  <button className="counter-btn" type="button" onClick={inc}>
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <div className="row cta">
+                {formError && <div className="form-error">{formError}</div>}
+                <Button1 type="submit">Wyszukaj loty</Button1>
+              </div>
+            </form>
+          </Container>
+        </section>
+
+        <section className="movie-banner">
+          <video
+            className="movie-video"
+            src={require("../img/OriJetVideo.mp4")}
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+        </section>
+      </div>
     </main>
   );
 }

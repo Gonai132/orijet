@@ -67,6 +67,7 @@ export default function NavbarMobile() {
           <Link to="/map" onClick={closeMenu} className="item">Mapa połączeń</Link>
           <Link to="/rules" onClick={closeMenu} className="item">Regulamin</Link>
           <Link to="/about" onClick={closeMenu} className="item">O nas</Link>
+          <Link to="/faq" onClick={closeMenu} className="item">FAQ</Link>
           <Link to="/contact" onClick={closeMenu} className="item">Kontakt</Link>
         </div>
       </div>

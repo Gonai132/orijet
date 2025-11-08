@@ -10,10 +10,10 @@ export default function LowerMenu() {
       <Link to="/login" className="lm-item" aria-label="Profil">
         <FaUser />
       </Link>
-      <Link to="/cart" className="lm-item" aria-label="Koszyk/Rezerwacje">
+      <Link to="/map" className="lm-item" aria-label="Mapa połączeń">
         <FaCartShopping />
       </Link>
-      <Link to="/map" className="lm-item" aria-label="Wyszukaj loty">
+      <Link to="/offers" className="lm-item" aria-label="Loty promocyjne">
         <FaPlaneUp />
       </Link>
     </nav>
