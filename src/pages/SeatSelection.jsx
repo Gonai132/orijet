@@ -4,6 +4,7 @@ import Button1 from "../components/Buttons/Button1";
 import BackButton from "../components/Buttons/BackButton";
 import "./../styles/seatSelection.css";
 import planeBg from "../img/Samolot.png";
+import planeBg2 from "../img/Samolot3.png";
 
 function seatType(letter) {
   if (letter === "A" || letter === "F") return "window";
@@ -120,14 +121,6 @@ export default function SeatSelection() {
         <li>4. DANE / </li>
         <li>5. PŁATNOŚĆ</li>
        </ul>
-        <div className="seat-cta">
-          {!ready && <div className="seat-hint">Wybierz {pax} miejsce(a).</div>}
-          <Button1 onClick={next} disabled={!ready}>
-            {selected.length > 0
-              ? `WYBIERZ MIEJSC${pax > 1 ? "A" : "E"}`
-              : `WYBIERZ LOSOWE`}
-          </Button1>
-        </div>
 
       <div className="seat-wrap-no-panel">
         <h1 className="title">WYBIERZ MIEJSC{pax > 1 ? "A" : "E"}:</h1>
@@ -136,7 +129,21 @@ export default function SeatSelection() {
           <div><span className="dot dot--free" /> Dostępne</div>
           <div><span className="dot dot--selected" /> Wybrane</div>
         </header>
+        
+        <div className="seat-picked2">
+            <div className="picked-title">
+                {selected.length > 0 ? "Wybrane miejsc" : "Losowe miejsc"}
+                {pax > 1 ? "a" : "e"}:{" "}
+                <span className="picked-value">
+                  {effective.map((s) => s.label).join(", ") || "—"}
+                </span>
+              </div>
+            <div className="picked-price">
+              Dopłata za wybór: <strong>{totalSurcharge.toFixed(2)} PLN</strong>
+            </div>
+          </div>
 
+<div className="plane-wrapper">
         <div className="plane">
           <img className="plane-bg" src={planeBg} alt="" />
           <div className="seat-grid-rows" aria-label="Mapa miejsc">
@@ -173,7 +180,42 @@ export default function SeatSelection() {
             })}
           </div>
         </div>
+
+        <div className="plane2">
+          <img className="plane-bg" src={planeBg2} alt="" />
+          <div className="seat-grid-horizontal" aria-label="Mapa miejsc">
+            {Array.from({ length: 30 }, (_, i) => i + 1).map((row) => {
+              const a = seats.find(s => s.label === `${row}A`);
+              const b = seats.find(s => s.label === `${row}B`);
+              const c = seats.find(s => s.label === `${row}C`);
+              const d = seats.find(s => s.label === `${row}D`);
+              const e = seats.find(s => s.label === `${row}E`);
+              const f = seats.find(s => s.label === `${row}F`);
+              return (
+                <div key={row} className="row7-horizontal">
+                  <SeatButton seat={a} selected={isSelected(a.label)} assigned={isAssigned(a.label)} onClick={() => onSeatClick(a)} />
+                  <SeatButton seat={b} selected={isSelected(b.label)} assigned={isAssigned(b.label)} onClick={() => onSeatClick(b)} />
+                  <SeatButton seat={c} selected={isSelected(c.label)} assigned={isAssigned(c.label)} onClick={() => onSeatClick(c)} />
+                  <div className="aisle" aria-hidden />
+                  <SeatButton seat={d} selected={isSelected(d.label)} assigned={isAssigned(d.label)} onClick={() => onSeatClick(d)} />
+                  <SeatButton seat={e} selected={isSelected(e.label)} assigned={isAssigned(e.label)} onClick={() => onSeatClick(e)} />
+                  <SeatButton seat={f} selected={isSelected(f.label)} assigned={isAssigned(f.label)} onClick={() => onSeatClick(f)} />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        </div>
       </div>
+
+      <div className="seat-cta">
+          {!ready && <div className="seat-hint">Wybierz {pax} miejsce(a).</div>}
+          <Button1 onClick={next} disabled={!ready}>
+            {selected.length > 0
+              ? `WYBIERZ MIEJSC${pax > 1 ? "A" : "E"}`
+              : `WYBIERZ LOSOWE`}
+          </Button1>
+        </div>
     </main>
   );
 }

@@ -4,6 +4,13 @@ import Container from "../components/Container/Container";
 import Button1 from "../components/Buttons/Button1";
 import BackButton from "../components/Buttons/BackButton";
 import "./../styles/payment.css";
+import mapImg from "../img/mapa1.png";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { registerLocale } from "react-datepicker";
+import pl from "date-fns/locale/pl";
+import { FaCalendar } from "react-icons/fa6";
+registerLocale("pl", pl);
 
 function pln(n) {
   return new Intl.NumberFormat("pl-PL", {
@@ -96,7 +103,6 @@ export default function Payment() {
   setSubmitting(false);
   setShowOk(true);
 
-  // 💾 Zapisz rezerwację w koncie użytkownika
   const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
   if (loggedUser) {
     const newRes = {
@@ -158,6 +164,7 @@ const goToConfirmation = () => {
               <span className="fd-code">{origin?.code}</span>
               <span className="fc-destination fc-top">{origin?.name}</span>
             </div>
+            <img src={mapImg} className="mapa-img" alt="Mapa w tle" />
 
             <div className="sr-flighticon">
               <svg
@@ -227,7 +234,6 @@ const goToConfirmation = () => {
           </div>
         </section>
 
-        {/* --- FORMULARZ KARTY --- */}
         <form className="pay-card" onSubmit={handlePay} noValidate>
           <h2 className="pay-sub">WPROWADŹ DANE KARTY:</h2>
 
@@ -236,7 +242,7 @@ const goToConfirmation = () => {
             <input
               className="pay-inp"
               inputMode="numeric"
-              placeholder="0000 0000 0000 0000"
+              placeholder="np. 0000 0000 0000 0000"
               value={card}
               onChange={(e) => setCard(group4(e.target.value))}
               onBlur={markTouched("card")}
@@ -252,7 +258,7 @@ const goToConfirmation = () => {
             <span className="pay-lab">IMIĘ I NAZWISKO POSIADACZA KARTY</span>
             <input
               className="pay-inp"
-              placeholder="JAN KOWALSKI"
+              placeholder="np. JAN KOWALSKI"
               value={name}
               onChange={(e) => setName(e.target.value.toUpperCase())}
               onBlur={markTouched("name")}
@@ -283,18 +289,27 @@ const goToConfirmation = () => {
 
             <label className="pay-field half">
               <span className="pay-lab">DATA WAŻNOŚCI</span>
-              <input
-                className="pay-inp"
-                placeholder="MM/YY"
-                value={exp}
-                onChange={(e) => {
-                  let v = e.target.value.replace(/[^\d/]/g, "");
-                  if (/^\d{2}$/.test(v)) v = v + "/";
-                  setExp(v.slice(0, 5));
-                }}
-                onBlur={markTouched("exp")}
-                required
-              />
+              <div className="exp-wrapper">
+                <input
+                  className="pay-inp"
+                  placeholder="MM/YY"
+                  value={exp}
+                  onChange={(e) => setExp(e.target.value)}
+                  onBlur={markTouched("exp")}
+                />
+                <DatePicker
+                  selected={null}
+                  onChange={(date) => {
+                    const month = String(date.getMonth() + 1).padStart(2, "0");
+                    const year = String(date.getFullYear()).slice(-2);
+                    setExp(`${month}/${year}`);
+                  }}
+                  dateFormat="MM/yy"
+                  showMonthYearPicker
+                  locale="pl"
+                  customInput={<button type="button" className="calendar-btn"><FaCalendar/></button>}
+                />
+              </div>
               {touched.exp && errors.exp && (
                 <div className="pay-err">{errors.exp}</div>
               )}
@@ -315,12 +330,12 @@ const goToConfirmation = () => {
       {showOk && (
         <div className="pay-modal">
           <div className="pay-modal-box">
-            <h3>Płatność udana! 🎉</h3>
+            <h3>Płatność udana!</h3>
             <p>
               Twój numer rezerwacji to: <strong>{bookingRef}</strong>
             </p>
              <p>
-              Potwierdzenie i inofmacje jak odprawić pozostałych pasażerów wysłane na email: <strong>{email}</strong>
+              Potwierdzenie i inofmacje jak odprawić pozostałych pasażerów zostały wysłane na email: <strong>{email}</strong>
             </p>
             <Button1 className="pay-modal-btn" onClick={goToConfirmation}>
               Moja karta pokładowa →

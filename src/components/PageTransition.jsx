@@ -7,11 +7,11 @@ export default function PageTransition({ children }) {
   const location = useLocation();
 
   useEffect(() => {
-    setFade(true); // zaczyna się znikać
+    setFade(true);
     const timeout = setTimeout(() => {
-      setDisplayChildren(children); // podmiana zawartości po zniknięciu
-      setFade(false); // pojawia się nowa
-    }, 200); // 200ms = długość fade-out
+      setDisplayChildren(children);
+      setFade(false);
+    }, 200);
     return () => clearTimeout(timeout);
   }, [children, location.pathname]);
 

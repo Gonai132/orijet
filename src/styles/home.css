@@ -137,9 +137,9 @@
 }
 
 .select option {
-  font-family: var(--font-main), "Calibri", sans-serif;
+  font-family: var(--font-main), "Calibri", sans-serif!important;
   color: #333;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .chev {

@@ -33,7 +33,6 @@ export default function Account() {
   const [touched, setTouched] = useState({});
   const [message, setMessage] = useState("");
 
-  // Stan modala
   const [showModal, setShowModal] = useState(false);
   const [reservationToDelete, setReservationToDelete] = useState(null);
 

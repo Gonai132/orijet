@@ -9,6 +9,7 @@ import { FaPlane} from "react-icons/fa6";
 import BackButton from "../components/Buttons/BackButton";
 import barcodeImg from "../img/code.png";
 import logo from "../img/logoSmall.png";
+import mapImg from "../img/mapa1.png";
 
 export default function Confirmation() {
   const { state } = useLocation();
@@ -70,7 +71,12 @@ const boarding = dep !== "—" ? subtract30min(dep) : "—";
   return (
     <main className="page confirmation">
       <BackButton/>
+      <ul className="location">
+        <li className="active">POTWIERDZENIE REZERWACJI {state?.bookingRef}</li>
+      </ul>
       <h1 className="title">KARTA POKŁADOWA:</h1>
+
+      <img src={mapImg} className="mapa-img mapa-confirmation" alt="Mapa w tle" />
       
       <Container className="bp-wrap">
         <div id="boarding-card" className="bp-stack">

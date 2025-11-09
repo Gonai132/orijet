@@ -151,3 +151,81 @@
   cursor: pointer;
 }
 .counter-val { min-width: 18px; text-align: center; }
+
+  .bag-cta2 {
+    display: none;
+  }
+
+
+@media (min-width: 992px) {
+
+  .bag-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .bag-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    width: 80%;
+  }
+
+  .bag-left {
+    flex: 0 0 48%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bag-icons-row {
+    margin-top: 80px;
+    flex-direction: row;
+    gap: 25px;
+    margin-bottom: 20px;
+  }
+
+  .bag-icon svg {
+    width: 90px;
+    height: 90px;
+  }
+
+  .bag-pills {
+    flex-direction: row;
+    gap: 35px;
+  }
+
+  .bag-pill {
+     min-width: 80px;
+     text-align: center;
+     font-size: 16px;
+  }
+
+  .bag-card {
+    flex: 0 0 48%;
+    max-width: 420px;
+    margin-top: 0;
+  }
+
+  .bag-cta2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .bag-cta2 .button {
+    min-width: 320px;
+  }
+
+  .bag-cta {
+    display: none;
+  }
+}
