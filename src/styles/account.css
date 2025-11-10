@@ -164,11 +164,11 @@
 
 .small-btn {
   color: var(--color-teal);
-  background-color: color-mix(in srgb, var(--color-cream) 60%, transparent);
-  border: 2px solid var(--color-cream);
+  background-color: var(--color-sky-2);
+  border: 2px solid var(--color-sky-1);
   border-radius: 99px;
   padding: 6px 15px;
-  font-size: 0.9rem;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
@@ -181,7 +181,7 @@
 .trash-icon {
    color: var(--color-orange);
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 20px;
   transition: color 0.2s;
 }
 
@@ -189,6 +189,10 @@
   color: #b52b27;
 }
 
+.account-reservation {
+color: var(--color-text-medium);
+font-size: 14px;
+}
 
 .modal-overlay {
   position: fixed;
@@ -256,9 +260,31 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width:499px) {
   .account-container {
     max-width: 92%;
-    padding: 10px;
   }
+
+  .small-btn {
+  border-radius: 15px;
+  padding: 5px 5px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+
+}
+
+@media (min-width: 500px && max-width: 768px) {
+
+  .small-btn {
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
 }

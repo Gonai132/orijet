@@ -161,9 +161,13 @@
 .bp-cta > *{ width:min(420px, 90%); }
 
 @media (max-width:991px) {
-  .confirmation .mapa-img {
+.mapa-confirmation {
     opacity: 0;
   }
+}
+
+.mapa-confirmation {
+  overflow: hidden;
 }
 
 

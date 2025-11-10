@@ -5,6 +5,7 @@ import Button1 from "../components/Buttons/Button1";
 import "./../styles/reservationForm.css";
 import BackButton from "../components/Buttons/BackButton";
 import { FaCircleCheck } from "react-icons/fa6";
+import mapImg from "../img/mapa1.png";
 
 const emailR = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneR = /^(?:\+?48)?[\s-]*\d{3}[\s-]*\d{3}[\s-]*\d{3}$/;
@@ -114,6 +115,8 @@ export default function ReservationForm() {
         <br />
         OSOBOWE:
       </h1>
+
+      <img src={mapImg} className="mapa-img mapa-confirmation" alt="Mapa w tle" />
 
       <Container className="rf-container">
         <form className="rf-card" onSubmit={handleSubmit} noValidate>

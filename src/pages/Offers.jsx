@@ -181,9 +181,14 @@ export default function Offers() {
   return (
     <main className="page offers-page">
       <h1 className="title">OFERTY SPECJALNE</h1>
+
       <div className="carousel-wrap">
+            <Col
+      xs={12}
+      md={10}
+      xl={9}
+    >
         <div className="offers-carousel">
- 
         <Carousel fade interval={2000} pause="hover">
           <Carousel.Item>
             <img
@@ -221,6 +226,7 @@ export default function Offers() {
           </Carousel.Item>
         </Carousel>
       </div>
+      </Col>
     </div>
 
       <div className={`offers-wrap fade-wrapper ${fade ? "fade-out" : "fade-in"}`}>

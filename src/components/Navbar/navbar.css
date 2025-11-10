@@ -50,6 +50,7 @@
     font-family: var(--font-main);
     color: #fff;
     text-decoration: none;
+    text-align: center;
     font-weight: 700;
     text-transform: uppercase;
     padding: 8px 10px;
@@ -100,4 +101,15 @@
 
 .logout-btn-nav:hover {
   opacity: 0.7;
+}
+
+@media (max-width: 1068px) {
+  .menu {
+    gap: 5px;
+  }
+
+  .menu-item {
+    font-size: 15px;
+    font-weight: 700;
+  }
 }

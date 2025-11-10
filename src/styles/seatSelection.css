@@ -50,7 +50,7 @@
   background: transparent; 
 }
 .seat-wrap-no-panel { 
-  padding: 0px 0px 20px; 
+  padding: 0px; 
 }
 
 .seat-legend {
@@ -228,27 +228,22 @@ main.seat-page {
     width: 100%;
     max-width: 100vw;
     margin: 0 auto;
-    padding-left: 50px;
+    padding-left: 20px;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
+    cursor: grab;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
-  .plane2 {
-  scrollbar-width: auto;
-  scrollbar-color: #faf6ddb1 transparent;
+  .plane2:active {
+    cursor: grabbing;
   }
 
   .plane2::-webkit-scrollbar {
-    height: 8px;
-  }
-  .plane2::-webkit-scrollbar-thumb {
-    background: #faf6ddb1;
-    border-radius: 8px;
-  }
-  .plane2::-webkit-scrollbar-track {
-    background: transparent;
+    display: none;
   }
 
   .plane2 .plane-bg {
@@ -263,7 +258,7 @@ main.seat-page {
   .seat-grid-horizontal {
     position: absolute;
     top: 20px;
-    left: 400px;
+    left: 360px;
     display: flex;
     flex-direction: row;
     gap: 10px;

@@ -4,6 +4,7 @@ import "../styles/account.css";
 import Button1 from "../components/Buttons/Button1";
 import { FaPlane, FaTrashAlt } from "react-icons/fa";
 import Button2 from "../components/Buttons/Button2";
+import mapImg from "../img/mapa1.png";
 
 const emailR = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneR = /^(?:\+?48)?[\s-]*\d{3}[\s-]*\d{3}[\s-]*\d{3}$/;
@@ -132,6 +133,7 @@ export default function Account() {
   return (
     <main className="app-bg">
       <h1 className="title">TWOJE KONTO</h1>
+      <img src={mapImg} className="mapa-img mapa-confirmation" alt="Mapa w tle" />
       <div className="center-vertical">
         <div className="app-container elevated account-container">
           <div className="account-header">
@@ -145,15 +147,12 @@ export default function Account() {
               {user.reservations.map((r) => (
                 <li key={r.id} className="reservation-item">
                   <div className="reservation-info">
-                    <FaPlane />{" "}
                     <strong>
-                      {r.flight?.origin?.code} → {r.flight?.destination?.code}
-                    </strong>{" "}
-                    — {r.date}
-                    <br />
-                    <small>
+                      {r.flight?.origin?.code} <FaPlane size={12}/> {r.flight?.destination?.code}
+                    </strong>{", "}{r.dateISO}<br />
+                    <div className="account-reservation">
                       Numer rezerwacji: <strong>{r.bookingRef}</strong>
-                    </small>
+                    </div>
                   </div>
                   <div className="reservation-actions">
                     <button
@@ -170,7 +169,7 @@ export default function Account() {
                               dob: user.dob,
                             },
                             selectedSeats: r.selectedSeats,
-                            dateISO: r.date,
+                            dateISO: r.dateISO,
                           },
                         })
                       }

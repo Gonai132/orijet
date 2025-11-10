@@ -52,7 +52,8 @@
   text-align: center;
   margin-bottom: 15px;
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 20px;
+  text-transform: uppercase;
 }
 
 .connections-list ul {
@@ -77,7 +78,7 @@
 }
 .connections-list li:hover {
   color: var(--color-teal);
-  transform: translateX(4px);
+  transform: translateX(5px);
 }
 
 .connections-list li:last-child {
@@ -121,7 +122,7 @@
 
   .map-container {
     order: 2;
-    max-width: 750px;
+    max-width: 720px;
   }
 }
 

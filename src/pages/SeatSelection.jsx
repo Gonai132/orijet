@@ -62,7 +62,6 @@ function autoAssign(seats, count) {
   return pick;
 }
 
-
 export default function SeatSelection() {
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -78,6 +77,47 @@ export default function SeatSelection() {
   const [assigned, setAssigned] = useState([]);
 
   useEffect(() => { setAssigned(autoAssign(seats, pax)); }, [seats, pax]);
+
+  useEffect(() => {
+    const plane2 = document.querySelector(".plane2");
+    if (!plane2) return;
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    const startDrag = (e) => {
+      isDown = true;
+      plane2.classList.add("active");
+      startX = e.pageX - plane2.offsetLeft;
+      scrollLeft = plane2.scrollLeft;
+    };
+
+    const stopDrag = () => {
+      isDown = false;
+      plane2.classList.remove("active");
+    };
+
+    const moveDrag = (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - plane2.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      plane2.scrollLeft = scrollLeft - walk;
+    };
+
+    plane2.addEventListener("mousedown", startDrag);
+    plane2.addEventListener("mouseleave", stopDrag);
+    plane2.addEventListener("mouseup", stopDrag);
+    plane2.addEventListener("mousemove", moveDrag);
+
+    return () => {
+      plane2.removeEventListener("mousedown", startDrag);
+      plane2.removeEventListener("mouseleave", stopDrag);
+      plane2.removeEventListener("mouseup", stopDrag);
+      plane2.removeEventListener("mousemove", moveDrag);
+    };
+  }, []);
 
   const isSelected = (l) => selected.some(s => s.label === l);
   const isAssigned = (l) => assigned.some(s => s.label === l);

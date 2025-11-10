@@ -108,8 +108,16 @@ export default function Payment() {
     const newRes = {
       id: Date.now(),
       bookingRef,
-      flight: `${out?.origin?.code} → ${out?.destination?.code}`,
-      date: state?.dateISO ?? out?.date ?? "—",
+      dateISO: state?.dateISO ?? out?.date ?? "—",
+      selectedSeats: state?.selectedSeats ?? [],
+      flight: {
+        origin: out?.origin ?? { code: "—", name: "" },
+        destination: out?.destination ?? { code: "—", name: "" },
+        flightNo: out?.flightNo ?? "—",
+        departTime: out?.departTime ?? "—",
+        arriveTime: out?.arriveTime ?? "—",
+        durationText: out?.durationText ?? "—",
+      },
     };
 
     const updatedUser = {

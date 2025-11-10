@@ -30,6 +30,10 @@ export default function SearchResults() {
   const [selectedDepart, setSelectedDepart] = useState(null);
   const [selectedReturn, setSelectedReturn] = useState(null);
 
+  // 🆕 osobne klucze dla animacji sekcji wylotu i powrotu
+  const [fadeDepartKey, setFadeDepartKey] = useState(0);
+  const [fadeReturnKey, setFadeReturnKey] = useState(0);
+
   useEffect(() => {
     fetch(`${process.env.PUBLIC_URL}/data/flights.json`)
       .then((r) => r.json())
@@ -86,6 +90,7 @@ export default function SearchResults() {
   }, [rules, originCode, destinationCode, isRoundTrip, returnISO]);
 
   const gotoDepart = (newISO) => {
+    setFadeDepartKey((k) => k + 1);
     const q = new URLSearchParams({
       o: originCode,
       d: destinationCode,
@@ -99,6 +104,7 @@ export default function SearchResults() {
   };
 
   const gotoReturn = (newISO) => {
+    setFadeReturnKey((k) => k + 1);
     const q = new URLSearchParams({
       o: originCode,
       d: destinationCode,
@@ -225,9 +231,9 @@ export default function SearchResults() {
             </div>
 
             {outboundFlights.length === 0 ? (
-              <p className="sr-empty">Brak lotów w wybranym dniu.</p>
+              <p className="sr-empty fade">Brak lotów w wybranym dniu.</p>
             ) : (
-              <div className="sr-cards">
+              <div key={fadeDepartKey} className="sr-cards fade">
                 {outboundFlights.map((f) => (
                   <FlightCard
                     key={f.id}
@@ -273,9 +279,9 @@ export default function SearchResults() {
               </div>
 
               {returnFlights.length === 0 ? (
-                <p className="sr-empty">Brak lotów w wybranym dniu.</p>
+                <p className="sr-empty fade">Brak lotów w wybranym dniu.</p>
               ) : (
-                <div className="sr-cards">
+                <div key={fadeReturnKey} className="sr-cards fade">
                   {returnFlights.map((f) => (
                     <FlightCard
                       key={f.id}

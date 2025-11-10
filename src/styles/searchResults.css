@@ -93,6 +93,8 @@
   box-shadow: 0 6px 18px rgba(0,0,0,.08);
   padding: 14px 14px 12px;
   transition: box-shadow .2s, border-color .2s, transform .05s;
+  max-width: 600px;
+  margin: 0 auto;
 }
 .flight-card:hover { box-shadow: 0 8px 22px rgba(0,0,0,.12); }
 .flight-card:active { transform: translateY(1px); }
@@ -199,6 +201,8 @@ font-weight: 300; }
   justify-content: space-between;
   gap: 10px;
   width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .sr-datebar .pill {
@@ -241,6 +245,11 @@ font-weight: 300; }
     margin: 0;
   }
 
+  .sr-datebar .pill {
+  font-size: 16px;
+  font-weight: 600;
+}
+
   .sr-reserve {
     display: flex;
     flex-direction: column;
@@ -254,4 +263,20 @@ font-weight: 300; }
   gap: 20px;
   margin-top: 20px;
 }
+}
+
+.fade {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(1px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

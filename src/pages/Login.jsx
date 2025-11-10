@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
 import Button1 from "../components/Buttons/Button1";
+import mapImg from "../img/mapa1.png";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -19,19 +20,19 @@ export default function Login() {
         {
           id: 1,
           username: "gosia",
-          email: "gosia@email.com",
-          password: "12345",
+          email: "gosia@email.pl",
+          password: "1234",
           fname: "Małgorzata",
           lname: "Szymanik",
-          doc: "AAAAAAA",
-          dob: "2025-10-31",
-          phone: "+48600111222",
+          doc: "ABC1234",
+          dob: "2025-01-01",
+          phone: "123456789",
           gender: "female",
           reservations: [
             {
               id: 1,
               bookingRef: "OJ-A1B2C",
-              date: "2026-06-15",
+              dateISO: "2026-06-15",
               selectedSeats: ["14A"],
               flight: {
                 origin: { code: "WAW", name: "Warszawa Chopin" },
@@ -45,10 +46,10 @@ export default function Login() {
             {
               id: 2,
               bookingRef: "OJ-D3E4F",
-              date: "2026-06-22",
+              dateISO: "2026-06-22",
               selectedSeats: ["18C"],
               flight: {
-                origin: { code: "FCO", name: "Rzym Fiumicino" },
+                origin: { code: "LHR", name: "Londyn Heathrow" },
                 destination: { code: "WAW", name: "Warszawa Chopin" },
                 flightNo: "OJ322",
                 departTime: "18:50",
@@ -133,6 +134,9 @@ export default function Login() {
   return (
     <main className="app-bg">
       <h1 className="title">{isRegistering ? "REJESTRACJA" : "LOGOWANIE"}</h1>
+
+      <img src={mapImg} className="mapa-img mapa-login" alt="Mapa w tle" />
+
       <div className="center-vertical">
         <div className="app-container elevated login-container">
           <form className="login-form" onSubmit={handleSubmit} noValidate>
@@ -179,7 +183,7 @@ export default function Login() {
                 className={`input ${
                   touched.password && errors.password ? "is-error" : ""
                 }`}
-                placeholder="Wpisz hasło"
+                placeholder="np. 1234"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 onBlur={onBlur("password")}
