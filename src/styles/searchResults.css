@@ -284,3 +284,21 @@ font-weight: 300; }
     transform: translateY(0);
   }
 }
+
+@media (max-width: 400px) {
+
+  .sr-datebar {
+  gap: 5px;
+}
+.pill {
+  padding: 15px 10px;
+  min-width: 30px;
+  z-index: 5;
+}
+
+.sr-datebar .pill {
+    font-size: 12px;
+    padding: 15px 10px;
+}
+
+}

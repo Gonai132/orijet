@@ -11,7 +11,7 @@
  }
 
  .sr-flightinfo svg {
-  margin: 15px 0 10px;
+  margin: 15px 3px 10px;
   align-self: self-start;
  }
 
@@ -133,6 +133,11 @@
     max-width: 1000px !important;
     width: 92%;
   }
+
+   .sr-flightinfo svg {
+  margin: 15px 10px 10px;
+ }
+
 
   .page.details .fd-card {
     display: flex;

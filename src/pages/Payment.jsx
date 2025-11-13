@@ -149,6 +149,7 @@ const goToConfirmation = () => {
 };
 
   const dateA = state?.dateISO ?? out?.date ?? "";
+  const dateB = state?.dateISO ?? back?.date ?? "";
   const origin = out?.origin;
   const destination = out?.destination;
 
@@ -213,27 +214,50 @@ const goToConfirmation = () => {
       <Container className="pay-wrap">
         <section className="pay-summary">
           <div className="pay-items">
-            <div className="pay-line">
-              Lot numer {out?.flightNo || "—"},{" "}
-              {dateA ? dateA : "—"}
-            </div>
+
+             {back ? (
+              <div className="pay-line">
+                  Lot numer: {(out?.flightNo + " (" + dateA + ") oraz powrót: "  + back?.flightNo + " (" + dateB + ")") || "—"}
+                </div>
+            ) : <div className="pay-line">
+                  Lot numer {out?.flightNo || "—"}{" ("}
+                  {dateA ? dateA : "—"}{") "}
+                </div>}
 
             <div className="pay-item">
               <span className="pay-item-l">
-                Bilet {pax > 1 ? `× ${pax}` : ""}
+                Bilet:  {pax > 1 ? `${ticketOut/pax}pln × ${pax}` : ""}
               </span>
               <span className="pay-item-r">{pln(ticketOut)} PLN</span>
             </div>
+            {back ? (
+              <div className="pay-item">
+                <span className="pay-item-l">
+                  Bilet powrotny: {pax > 1 ? `${ticketBack/pax}pln × ${pax}` : ""}
+                </span>
+                <span className="pay-item-r">{pln(ticketBack)} PLN</span>
+              </div>
+            ) : null}
 
-            <div className="pay-item">
-              <span className="pay-item-l">Wybór miejsc</span>
-              <span className="pay-item-r">{pln(seatFeeTotal)} PLN</span>
-            </div>
+            {back ? (
+              <div className="pay-item">
+               <span className="pay-item-l">Wybór miejsc{pax > 1 ? "" : "a"}, wylot i powrót: {seatFeeTotal}pln x 2</span>
+              <span className="pay-item-r">{pln(seatFeeTotal*2)} PLN</span>
+              </div>
+            ) :  <div className="pay-item">
+                    <span className="pay-item-l">Wybór miejsc{pax > 1 ? "" : "a"}</span>
+                    <span className="pay-item-r">{pln(seatFeeTotal)} PLN</span>
+                 </div>}
 
-            <div className="pay-item">
-              <span className="pay-item-l">Bagaż rejestrowany</span>
-              <span className="pay-item-r">{pln(baggageTotal)} PLN</span>
-            </div>
+            {back ? (
+              <div className="pay-item">
+               <span className="pay-item-l">Bagaż rejestrowany, wylot i powrót: {baggageTotal}pln x 2</span>
+              <span className="pay-item-r">{pln(baggageTotal*2)} PLN</span>
+              </div>
+            ) : <div className="pay-item">
+                  <span className="pay-item-l">Bagaż rejestrowany</span>
+                  <span className="pay-item-r">{pln(baggageTotal)} PLN</span>
+                </div>}
 
             <div className="pay-total">
               <span className="pay-total-l">SUMA ŁĄCZNIE:</span>

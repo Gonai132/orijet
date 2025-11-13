@@ -12,7 +12,7 @@ export default function About() {
     <main className="app-bg about-page">
       <h1 className="title">O NAS <FaPlane /></h1>
 
-       <img src={mapImg} className="mapa-img" alt="Mapa w tle" />
+        <div className="map-wrapper"><img src={mapImg} className="mapa-img" alt="Mapa w tle" /></div>
 
       <div className="about-layout">
         <div className="about-image">

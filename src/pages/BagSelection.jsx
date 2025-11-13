@@ -112,7 +112,7 @@ export default function BagSelection() {
             </div>
 
             <div className="bag-card-line bag-card-price">
-              <div className="bag-card-caption">CENA (za 1 szt.):</div>
+              <div className="bag-card-caption">CENA (za 1 szt. w jedną stronę):</div>
               <div className="bag-price">
                 {current.price.toFixed(2)} <span>PLN</span>
               </div>
