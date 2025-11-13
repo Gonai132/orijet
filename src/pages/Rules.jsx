@@ -1,13 +1,14 @@
 import Button1 from "../components/Buttons/Button1";
 import "../styles/rules.css";
 import { useNavigate } from "react-router-dom";
+import { FaRectangleList } from "react-icons/fa6";
 
 export default function Rules() {
   const navigate = useNavigate();
 
   return (
     <main className="app-bg">
-      <h1 className="title">REGULAMIN</h1>
+      <h1 className="title">REGULAMIN <FaRectangleList /></h1>
 
       <div className="center-vertical rules-wrap">
         <div className="app-container elevated rules-container">

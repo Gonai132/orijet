@@ -3,7 +3,7 @@
   text-align: left;
   line-height: 1.6;
   max-width: 900px;
-  padding: 20px 28px;
+  padding: 15px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
@@ -56,10 +56,10 @@
 
 @media (max-width: 480px) {
   .faq-container {
-    padding: 16px;
+    padding: 10px;
   }
 
   .accordion-button {
-    font-size: 0.95rem;
+    font-size: 16px;
   }
 }

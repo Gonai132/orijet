@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import "../styles/account.css";
 import Button1 from "../components/Buttons/Button1";
 import { FaPlane, FaTrashAlt } from "react-icons/fa";
+import { FaHouseUser } from "react-icons/fa6";
 import Button2 from "../components/Buttons/Button2";
 import mapImg from "../img/mapa1.png";
+import BackButton from "../components/Buttons/BackButton";
 
 const emailR = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneR = /^(?:\+?48)?[\s-]*\d{3}[\s-]*\d{3}[\s-]*\d{3}$/;
@@ -132,7 +134,8 @@ export default function Account() {
 
   return (
     <main className="app-bg">
-      <h1 className="title">TWOJE KONTO</h1>
+      <BackButton/>
+      <h1 className="title">TWOJE KONTO <FaHouseUser /></h1>
       <img src={mapImg} className="mapa-img mapa-confirmation" alt="Mapa w tle" />
       <div className="center-vertical">
         <div className="app-container elevated account-container">

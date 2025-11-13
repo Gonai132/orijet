@@ -94,7 +94,7 @@
   padding: 14px 14px 12px;
   transition: box-shadow .2s, border-color .2s, transform .05s;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 .flight-card:hover { box-shadow: 0 8px 22px rgba(0,0,0,.12); }
 .flight-card:active { transform: translateY(1px); }
@@ -221,6 +221,10 @@ font-weight: 300; }
 
   .app-container.container-search {
   max-width: 1000px;
+}
+
+.flight-card {
+  margin: 0 auto;
 }
 
   .container-search {

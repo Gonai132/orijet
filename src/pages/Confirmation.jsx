@@ -64,7 +64,7 @@ const boarding = dep !== "—" ? subtract30min(dep) : "—";
     const url = canvas.toDataURL("image/png");
     const a = document.createElement("a");
     a.href = url;
-    a.download = `boarding-${flightNo}.png`;
+    a.download = `bilet-${flightNo}.png`;
     a.click();
   };
 

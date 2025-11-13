@@ -3,6 +3,7 @@ import Container from "../components/Container/Container";
 import Button1 from "../components/Buttons/Button1";
 import "../styles/contact.css";
 import mapImg from "../img/mapa1.png";
+import { FaMessage } from "react-icons/fa6";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -44,9 +45,9 @@ export default function Contact() {
 
   return (
     <main className="page contact-page">
-        <h1 className="title">SKONTAKTUJ SIĘ Z NAMI</h1>
+        <h1 className="title">SKONTAKTUJ SIĘ Z NAMI <FaMessage /></h1>
 
-      <img src={mapImg} className="mapa-img mapa-confirmation" alt="Mapa w tle" />
+        <img src={mapImg} className="mapa-img mapa-confirmation" alt="Mapa w tle" />
 
       <Container className="contact-wrap">
         {sent ? (

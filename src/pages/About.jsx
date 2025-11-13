@@ -2,13 +2,17 @@ import "../styles/about.css";
 import Button1 from "../components/Buttons/Button1";
 import aboutImg from "../img/plane.png";
 import { useNavigate } from "react-router-dom";
+import { FaPlane } from "react-icons/fa6";
+import mapImg from "../img/mapa1.png";
 
 export default function About() {
   const navigate = useNavigate();
 
   return (
     <main className="app-bg about-page">
-      <h1 className="title">O NAS</h1>
+      <h1 className="title">O NAS <FaPlane /></h1>
+
+       <img src={mapImg} className="mapa-img" alt="Mapa w tle" />
 
       <div className="about-layout">
         <div className="about-image">

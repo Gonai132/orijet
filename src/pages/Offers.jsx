@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, Button, Row, Col, Pagination } from "react-bootstrap";
 import { Carousel } from "react-bootstrap";
+import { PiAirplaneTiltFill } from "react-icons/pi";
 import "../styles/offers.css";
 
 export default function Offers() {
@@ -180,7 +181,7 @@ export default function Offers() {
 
   return (
     <main className="page offers-page">
-      <h1 className="title">OFERTY SPECJALNE</h1>
+      <h1 className="title">OFERTY SPECJALNE <PiAirplaneTiltFill/></h1>
 
       <div className="carousel-wrap">
             <Col

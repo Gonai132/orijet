@@ -2,13 +2,14 @@ import "../styles/faq.css";
 import { Accordion } from "react-bootstrap";
 import Button1 from "../components/Buttons/Button1";
 import { useNavigate } from "react-router-dom";
+import { FaQuestionCircle } from "react-icons/fa";
 
 export default function Faq() {
   const navigate = useNavigate();
 
   return (
     <main className="app-bg">
-      <h1 className="title">FAQ – Najczęściej zadawane pytania</h1>
+      <h1 className="title">FAQ – Najczęściej zadawane pytania  <FaQuestionCircle /></h1>
 
       <div className="center-vertical faq-wrap">
         <div className="app-container elevated faq-container">

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
 import Button1 from "../components/Buttons/Button1";
 import mapImg from "../img/mapa1.png";
+import { FaUser } from "react-icons/fa6";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -133,9 +134,9 @@ export default function Login() {
 
   return (
     <main className="app-bg">
-      <h1 className="title">{isRegistering ? "REJESTRACJA" : "LOGOWANIE"}</h1>
+      <h1 className="title">{isRegistering ? "REJESTRACJA" : "LOGOWANIE"} <FaUser /></h1>
 
-      <img src={mapImg} className="mapa-img mapa-login" alt="Mapa w tle" />
+      <div className="map-wrapper"><img src={mapImg} className="mapa-img mapa-login" alt="Mapa w tle" /></div>
 
       <div className="center-vertical">
         <div className="app-container elevated login-container">

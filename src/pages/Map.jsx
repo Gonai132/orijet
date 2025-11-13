@@ -2,7 +2,7 @@ import { ComposableMap, Geographies, Geography, Marker, Line } from "react-simpl
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/map.css";
-import { FaPlane } from "react-icons/fa6";
+import { FaPlane, FaMapLocationDot } from "react-icons/fa6";
 
 const geoUrl = process.env.PUBLIC_URL + "/data/europe-geo.json";
 
@@ -69,7 +69,7 @@ export default function Map() {
 
 return (
   <main className="page map-page">
-    <h1 className="title">MAPA POŁĄCZEŃ</h1>
+    <h1 className="title">MAPA POŁĄCZEŃ <FaMapLocationDot/></h1>
 
     <div className="map-layout">
       <div className="connections-list">

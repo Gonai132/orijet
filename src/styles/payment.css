@@ -223,12 +223,28 @@
   cursor: pointer;
   color: var(--color-text-light);
 }
+ 
+.login-container {
+z-index: 2!important;
+}
 
 @media (min-width:992px){
   .mapa-img {
-  top: 150px;
+  top: 130px;
   left: 5%;
   width: 90%;
+  overflow: hidden;
+}
+
+.map-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
 }
 }
 
