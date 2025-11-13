@@ -241,21 +241,21 @@ const goToConfirmation = () => {
 
             {back ? (
               <div className="pay-item">
-               <span className="pay-item-l">Wybór miejsc{pax > 1 ? "" : "a"}, wylot i powrót: {seatFeeTotal}pln x 2</span>
+               <span className="pay-item-l">Wybór miejsc{pax > 1 ? "" : "a"} w obie strony: {seatFeeTotal}pln x 2</span>
               <span className="pay-item-r">{pln(seatFeeTotal*2)} PLN</span>
               </div>
             ) :  <div className="pay-item">
-                    <span className="pay-item-l">Wybór miejsc{pax > 1 ? "" : "a"}</span>
+                    <span className="pay-item-l">Wybór miejsc{pax > 1 ? ":" : "a:"}</span>
                     <span className="pay-item-r">{pln(seatFeeTotal)} PLN</span>
                  </div>}
 
             {back ? (
               <div className="pay-item">
-               <span className="pay-item-l">Bagaż rejestrowany, wylot i powrót: {baggageTotal}pln x 2</span>
+               <span className="pay-item-l">Bagaż rejestrowany w obie strony: {baggageTotal}pln x 2</span>
               <span className="pay-item-r">{pln(baggageTotal*2)} PLN</span>
               </div>
             ) : <div className="pay-item">
-                  <span className="pay-item-l">Bagaż rejestrowany</span>
+                  <span className="pay-item-l">Bagaż rejestrowany:</span>
                   <span className="pay-item-r">{pln(baggageTotal)} PLN</span>
                 </div>}
 

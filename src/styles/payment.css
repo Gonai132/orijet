@@ -86,6 +86,10 @@
   padding: 3px 0; 
 }
 
+.pay-item-r {
+  text-align: right;
+  min-width: 100px;
+}
 .pay-total { 
   border-top:2px solid #e7ecef; 
   margin-top:6px; 
