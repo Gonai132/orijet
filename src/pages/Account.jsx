@@ -248,7 +248,7 @@ export default function Account() {
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-box">
-            <h4>Czy na pewno chcesz usunąć rezerwację?</h4>
+            <h4>Usunąć rezerwację?</h4>
             <p>Pieniądze zostaną zwrócone na konto.</p>
             <div className="modal-buttons">
               <button className="modal-btn confirm" onClick={handleConfirmDelete}>

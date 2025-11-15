@@ -220,6 +220,12 @@ font-size: 14px;
   animation: fadeIn 0.2s ease-in-out;
 }
 
+.modal-box h4 {
+  font-size: 20px;
+  text-transform: uppercase;
+  color: var(--color-teal);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
