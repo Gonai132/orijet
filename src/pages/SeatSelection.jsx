@@ -196,6 +196,12 @@ const backFee = selectedBack.length
           <div className="plane">
             <img className="plane-bg" src={planeBg} alt="" />
             <div className="seat-grid-rows" aria-label="Mapa miejsc">
+              <div className="seat-picked"> 
+                <div className="picked-title"> {selected.length > 0 ? "Wybrane miejsc" : "Losowe miejsc"}{pax > 1 ? "a" : "e"}:{" "} <span className="picked-value"> {effective.map((s) => s.label).join(", ") || "—"} </span> 
+                </div> 
+                <div className="picked-price"> Dopłata za wybór: <strong>{totalSurcharge.toFixed(2)} PLN</strong> 
+              </div> 
+            </div>
               {Array.from({ length: 30 }, (_, i) => i + 1).map((row) => {
                 const a = seats.find(s => s.label === `${row}A`);
                 const b = seats.find(s => s.label === `${row}B`);
