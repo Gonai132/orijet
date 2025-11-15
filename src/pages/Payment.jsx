@@ -45,7 +45,9 @@ export default function Payment() {
   const back = state?.returnFlight ?? null;
   const email =state?.passenger.email ?? null;
 
-  const seatFeeTotal = Number(state?.seatFeeTotal ?? 0);
+  const seatFeeOut = Number(state?.seatFeeOut ?? 0);
+  const seatFeeBack = Number(state?.seatFeeBack ?? 0);
+  const seatFeeTotal = seatFeeOut + seatFeeBack;
 
   const bag = state?.baggage;
   const baggageTotal = bag
@@ -55,7 +57,7 @@ export default function Payment() {
   const basePrice = Number(state?.pricePLN ?? out?.pricePLN ?? 0);
   const ticketOut = basePrice * pax;
   const ticketBack = back ? Number(back?.pricePLN ?? 0) * pax : 0;
-  const grand = ticketOut + ticketBack + seatFeeTotal + baggageTotal;
+  const grand = ticketOut + ticketBack + seatFeeTotal + (back ? baggageTotal * 2 : baggageTotal);
 
   const [card, setCard] = useState("");
   const [name, setName] = useState("");
@@ -104,22 +106,37 @@ export default function Payment() {
   setSubmitting(false);
   setShowOk(true);
 
-  const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-  if (loggedUser) {
-    const newRes = {
-      id: Date.now(),
-      bookingRef,
-      dateISO: state?.dateISO ?? out?.date ?? "—",
-      selectedSeats: state?.selectedSeats ?? [],
-      flight: {
-        origin: out?.origin ?? { code: "—", name: "" },
-        destination: out?.destination ?? { code: "—", name: "" },
-        flightNo: out?.flightNo ?? "—",
-        departTime: out?.departTime ?? "—",
-        arriveTime: out?.arriveTime ?? "—",
-        durationText: out?.durationText ?? "—",
-      },
-    };
+const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+if (loggedUser) {
+  const newRes = {
+    id: Date.now(),
+
+    bookingRef,
+
+    dateISO: state?.dateISO ?? out?.date ?? "—",
+    selectedSeats: state?.selectedSeats ?? [],
+    flight: {
+      origin: out?.origin ?? { code: "—", name: "" },
+      destination: out?.destination ?? { code: "—", name: "" },
+      flightNo: out?.flightNo ?? "—",
+      departTime: out?.departTime ?? "—",
+      arriveTime: out?.arriveTime ?? "—",
+      durationText: out?.durationText ?? "—",
+    },
+
+    returnDateISO: state?.returnDateISO ?? back?.date ?? null,
+    returnSelectedSeats: state?.returnSelectedSeats ?? null,
+    returnFlight: back
+      ? {
+          origin: back?.origin ?? null,
+          destination: back?.destination ?? null,
+          flightNo: back?.flightNo ?? null,
+          departTime: back?.departTime ?? null,
+          arriveTime: back?.arriveTime ?? null,
+          durationText: back?.durationText ?? null,
+        }
+      : null,
+  };
 
     const updatedUser = {
       ...loggedUser,
@@ -242,12 +259,12 @@ const goToConfirmation = () => {
 
             {back ? (
               <div className="pay-item">
-               <span className="pay-item-l">Wybór miejsc{pax > 1 ? "" : "a"} w obie strony: {seatFeeTotal}pln x 2</span>
-              <span className="pay-item-r">{pln(seatFeeTotal*2)} PLN</span>
+               <span className="pay-item-l">Wybór miejsc, wylot: {seatFeeOut}pln, powrót: {seatFeeBack}pln</span>
+              <span className="pay-item-r">{pln(seatFeeTotal)} PLN</span>
               </div>
             ) :  <div className="pay-item">
                     <span className="pay-item-l">Wybór miejsc{pax > 1 ? ":" : "a:"}</span>
-                    <span className="pay-item-r">{pln(seatFeeTotal)} PLN</span>
+                    <span className="pay-item-r">{pln(seatFeeOut)} PLN</span>
                  </div>}
 
             {back ? (

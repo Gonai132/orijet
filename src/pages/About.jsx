@@ -14,7 +14,7 @@ export default function About() {
       <BackButton/>
       <h1 className="title">O NAS <FaPlane /></h1>
 
-        <div className="map-wrapper"><img src={mapImg} className="mapa-img" alt="Mapa w tle" /></div>
+         <div className="map-wrapper"><img src={mapImg} className="mapa-img mapa-login" alt="Mapa w tle" /></div>
 
       <div className="about-layout">
         <div className="about-image">

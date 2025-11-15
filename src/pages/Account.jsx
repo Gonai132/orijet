@@ -153,9 +153,21 @@ export default function Account() {
                   <div className="reservation-info">
                     <strong>
                       {r.flight?.origin?.code} <FaPlane size={12}/> {r.flight?.destination?.code}
-                    </strong>{", "}{r.dateISO}<br />
+                    </strong>
+                    {", "} {r.dateISO}
+                    {r.returnFlight && (
+                      <div>
+                        <strong>
+                          {r.flight?.destination?.code} <FaPlane size={12}/> {r.flight?.origin?.code}
+                        </strong>
+                        {", "} {r.returnDateISO}
+                      </div>
+                    )}
                     <div className="account-reservation">
                       Numer rezerwacji: <strong>{r.bookingRef}</strong>
+                    </div>
+                    <div className="account-reservation">
+                     Osoby na rezerwacji: <strong>{r.selectedSeats?.length || 1}</strong>
                     </div>
                   </div>
                   <div className="reservation-actions">
@@ -166,14 +178,17 @@ export default function Account() {
                           state: {
                             bookingRef: r.bookingRef,
                             flight: r.flight,
+                            returnFlight: r.returnFlight,
+                            selectedSeats: r.selectedSeats,
+                            returnSelectedSeats: r.returnSelectedSeats,
+                            dateISO: r.dateISO,
+                            returnDateISO: r.returnDateISO,
                             passenger: {
                               fname: user.fname,
                               lname: user.lname,
                               doc: user.doc,
                               dob: user.dob,
                             },
-                            selectedSeats: r.selectedSeats,
-                            dateISO: r.dateISO,
                           },
                         })
                       }

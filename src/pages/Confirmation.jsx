@@ -1,11 +1,11 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import html2canvas from "html2canvas";
 import Container from "../components/Container/Container";
 import Button1 from "../components/Buttons/Button1";
 import Button2 from "../components/Buttons/Button2";
 import "./../styles/confirmation.css";
-import { FaPlane} from "react-icons/fa6";
+import { FaPlane } from "react-icons/fa6";
 import BackButton from "../components/Buttons/BackButton";
 import barcodeImg from "../img/code.png";
 import logo from "../img/logoSmall.png";
@@ -16,41 +16,63 @@ export default function Confirmation() {
   const navigate = useNavigate();
 
   const out = state?.flight ?? null;
+  const back = state?.returnFlight ?? null;
+
+  // nowy stan: który odcinek pokazujemy (wylot/powrót)
+  const [segment, setSegment] = useState("out"); // "out" albo "back"
+
+  // aktualny lot zależnie od segmentu
+  const currentFlight = segment === "out" ? out : back;
 
   const pax = state?.passenger || {};
   const fullName = [pax.fname, pax.lname].filter(Boolean).join(" ") || "—";
   const dob = pax.dob || "—";
   const doc = pax.doc || "—";
-  const seat = (state?.selectedSeats && state.selectedSeats[0]) || "—"; 
 
-  const flightNo = out?.flightNo || (state?.bookingRef || "—");
-  const dep = out?.departTime || out?.departure || "—";
-  const arr = out?.arriveTime || "—";
-  const oCode = out?.origin?.code || "—";
-  const oName = out?.origin?.name || "";
-  const dCode = out?.destination?.code || "—";
-  const dName = out?.destination?.name || "";
-  const date = state?.dateISO || out?.date || "—";
+  const seat =
+    segment === "out"
+      ? (state?.selectedSeats && state.selectedSeats[0]) || "—"
+      : (state?.returnSelectedSeats && state.returnSelectedSeats[0]) || "—";
+
+  const flightNo =
+    currentFlight?.flightNo || state?.bookingRef || "—";
+
+  const dep =
+    currentFlight?.departTime || currentFlight?.departure || "—";
+
+  const arr = currentFlight?.arriveTime || "—";
+
+  const oCode = currentFlight?.origin?.code || "—";
+  const oName = currentFlight?.origin?.name || "";
+  const dCode = currentFlight?.destination?.code || "—";
+  const dName = currentFlight?.destination?.name || "";
+
+  const date =
+    segment === "out"
+      ? (state?.dateISO || out?.date || "—")
+      : (state?.returnDateISO || back?.date || "—");
+
   function subtract30min(timeStr) {
-  const m = timeStr.match(/^(\d{1,2}):(\d{2})$/);
-  if (!m) return "—";
-  const h = Number(m[1]);
-  const min = Number(m[2]);
-  const total = h * 60 + min - 30;
-  const newH = ((Math.floor(total / 60) % 24) + 24) % 24;
-  const newM = ((total % 60) + 60) % 60;
-  return `${String(newH).padStart(2, "0")}:${String(newM).padStart(2, "0")}`;
-}
+    const m = timeStr.match(/^(\d{1,2}):(\d{2})$/);
+    if (!m) return "—";
+    const h = Number(m[1]);
+    const min = Number(m[2]);
+    const total = h * 60 + min - 30;
+    const newH = ((Math.floor(total / 60) % 24) + 24) % 24;
+    const newM = ((total % 60) + 60) % 60;
+    return `${String(newH).padStart(2, "0")}:${String(newM).padStart(2, "0")}`;
+  }
 
-const boarding = dep !== "—" ? subtract30min(dep) : "—";
+  const boarding = dep !== "—" ? subtract30min(dep) : "—";
+
   const duration = useMemo(() => {
-    if (out?.durationText) return out.durationText;
-    const m = Number(out?.durationMin || 0);
+    if (currentFlight?.durationText) return currentFlight.durationText;
+    const m = Number(currentFlight?.durationMin || 0);
     if (!m) return "—";
     const h = Math.floor(m / 60);
     const mm = String(m % 60).padStart(2, "0");
     return `${h} h ${mm} min`;
-  }, [out]);
+  }, [currentFlight]);
 
   const downloadCard = async () => {
     const el = document.getElementById("boarding-card");
@@ -64,44 +86,75 @@ const boarding = dep !== "—" ? subtract30min(dep) : "—";
     const url = canvas.toDataURL("image/png");
     const a = document.createElement("a");
     a.href = url;
-    a.download = `bilet-${flightNo}.png`;
+    a.download = `bilet-${flightNo}.png`; // nazwa jak wcześniej
     a.click();
   };
 
   return (
     <main className="page confirmation">
-      <BackButton/>
+      <BackButton />
+
       <ul className="location">
-        <li className="active">POTWIERDZENIE REZERWACJI {state?.bookingRef}</li>
+        <li className="active">
+          POTWIERDZENIE REZERWACJI {state?.bookingRef}
+        </li>
       </ul>
+
       <h1 className="title">KARTA POKŁADOWA:</h1>
 
-      <img src={mapImg} className="mapa-img mapa-confirmation" alt="Mapa w tle" />
-      
+      <img
+        src={mapImg}
+        className="mapa-img mapa-confirmation"
+        alt="Mapa w tle"
+      />
+
       <Container className="bp-wrap">
+              {back ? (
+        <div className="fd-tabs">
+          <button
+            type="button"
+            className={`fd-tab ${segment === "out" ? "is-active" : ""}`}
+            onClick={() => setSegment("out")}
+          >
+            Wylot
+          </button>
+          <button
+            type="button"
+            className={`fd-tab ${segment === "in" ? "is-active" : ""}`}
+            onClick={() => setSegment("in")}
+          >
+            Powrót
+          </button>
+        </div>
+      ) :null}
         <div id="boarding-card" className="bp-stack">
           <section className="bp-card bp-card--top">
-            <div className="bp-logo"><img src={logo} alt="OriJet logo" className="brand-logo"/>
-          <span className="brand-text">OriJet</span></div>
-        <div className="bp-head">
+            <div className="bp-logo">
+              <img src={logo} alt="OriJet logo" className="brand-logo" />
+              <span className="brand-text">OriJet</span>
+            </div>
+
+            <div className="bp-head">
               <div className="bp-col-left">
                 <div className="bp-airport">{oCode}</div>
                 <div className="bp-city">{oName}</div>
-                  <div className="bp-time">{dep}</div>
+                <div className="bp-time">{dep}</div>
               </div>
 
               <div className="bp-col-mid">
                 <div className="bp-flightno">
                   Nr lotu: <strong>{flightNo}</strong>
                 </div>
-                <div className="bp-plane"><FaPlane /></div>
+                <div className="bp-plane">
+                  <FaPlane />
+                </div>
                 <div className="bp-duration">{duration}</div>
               </div>
 
               <div className="bp-col-right">
                 <div className="bp-airport">{dCode}</div>
                 <div className="bp-city">{dName}</div>
-                 <div className="bp-time bp-time--right">{arr}</div>
+                <div className="bp-time bp-time--right">{arr}</div>
               </div>
             </div>
 
@@ -138,7 +191,11 @@ const boarding = dep !== "—" ? subtract30min(dep) : "—";
           </section>
 
           <section className="bp-card bp-card--bottom">
-            <img src={barcodeImg} alt="Kod kreskowy" className="bp-barcode" />
+            <img
+              src={barcodeImg}
+              alt="Kod kreskowy"
+              className="bp-barcode"
+            />
           </section>
         </div>
       </Container>

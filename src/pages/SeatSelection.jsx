@@ -13,7 +13,6 @@ function seatType(letter) {
 }
 function surchargeByType(seat) {
   if (seat.row === 1) return 49.9;
-
   if (seat.type === "window") return 29.9;
   if (seat.type === "aisle") return 19.9;
   return 0.0;
@@ -42,11 +41,8 @@ function autoAssign(seats, count) {
   for (const pref of ["middle", "aisle", "window"]) {
     for (const s of seats) {
       if (s.row === 1) continue;
-
       if (pick.length >= count) break;
-      if (!s.taken && s.type === pref && !pick.includes(s)) {
-        pick.push(s);
-      }
+      if (!s.taken && s.type === pref && !pick.includes(s)) pick.push(s);
     }
     if (pick.length >= count) break;
   }
@@ -72,82 +68,76 @@ export default function SeatSelection() {
   const flight      = state?.flight || null;
   const returnFlight= state?.returnFlight || null;
 
-  const seats = useMemo(() => buildSeatMap(30, 0.18), []);
-  const [selected, setSelected] = useState([]);
-  const [assigned, setAssigned] = useState([]);
+  const seatsOut  = useMemo(() => buildSeatMap(30, 0.18), []);
+  const seatsBack = useMemo(() => buildSeatMap(30, 0.22), []);
 
-  useEffect(() => { setAssigned(autoAssign(seats, pax)); }, [seats, pax]);
+  const [segment, setSegment] = useState("out");
+
+  const [selectedOut, setSelectedOut]   = useState([]);
+  const [selectedBack, setSelectedBack] = useState([]);
+
+  const [assignedOut, setAssignedOut]   = useState([]);
+  const [assignedBack, setAssignedBack] = useState([]);
 
   useEffect(() => {
-    const plane2 = document.querySelector(".plane2");
-    if (!plane2) return;
+    setAssignedOut(autoAssign(seatsOut, pax));
+    setAssignedBack(autoAssign(seatsBack, pax));
+  }, [seatsOut, seatsBack, pax]);
 
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+  const seats = segment === "out" ? seatsOut : seatsBack;
 
-    const startDrag = (e) => {
-      isDown = true;
-      plane2.classList.add("active");
-      startX = e.pageX - plane2.offsetLeft;
-      scrollLeft = plane2.scrollLeft;
-    };
+  const selected = segment === "out" ? selectedOut : selectedBack;
+  const assigned = segment === "out" ? assignedOut : assignedBack;
 
-    const stopDrag = () => {
-      isDown = false;
-      plane2.classList.remove("active");
-    };
+  const setSelectedForSegment =
+    segment === "out" ? setSelectedOut : setSelectedBack;
 
-    const moveDrag = (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - plane2.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      plane2.scrollLeft = scrollLeft - walk;
-    };
-
-    plane2.addEventListener("mousedown", startDrag);
-    plane2.addEventListener("mouseleave", stopDrag);
-    plane2.addEventListener("mouseup", stopDrag);
-    plane2.addEventListener("mousemove", moveDrag);
-
-    return () => {
-      plane2.removeEventListener("mousedown", startDrag);
-      plane2.removeEventListener("mouseleave", stopDrag);
-      plane2.removeEventListener("mouseup", stopDrag);
-      plane2.removeEventListener("mousemove", moveDrag);
-    };
-  }, []);
+  const effective = selected.length ? selected : assigned;
 
   const isSelected = (l) => selected.some(s => s.label === l);
   const isAssigned = (l) => assigned.some(s => s.label === l);
 
   const onSeatClick = (seat) => {
     if (seat.taken) return;
-    if (isSelected(seat.label)) {
-      setSelected(selected.filter(s => s.label !== seat.label));
+
+    const currentSelected = selected;
+    const setSel = setSelectedForSegment;
+
+    if (currentSelected.some((s) => s.label === seat.label)) {
+      setSel(currentSelected.filter((s) => s.label !== seat.label));
     } else {
-      if (selected.length >= pax) return;
-      setSelected([...selected, seat]);
+      if (currentSelected.length >= pax) return;
+      setSel([...currentSelected, seat]);
     }
   };
 
-  const effective = selected.length ? selected : assigned;
   const totalSurcharge = effective.reduce((sum, s) => sum + surchargeByType(s), 0);
+  const outFee = selectedOut.length
+  ? selectedOut.reduce((sum, s) => sum + surchargeByType(s), 0)
+  : assignedOut.reduce((sum, s) => sum + surchargeByType(s), 0);
+
+const backFee = selectedBack.length
+  ? selectedBack.reduce((sum, s) => sum + surchargeByType(s), 0)
+  : assignedBack.reduce((sum, s) => sum + surchargeByType(s), 0);
+
   const ready = effective.length === pax;
 
   const next = () => {
     if (!ready) return;
+
     navigate("/baggage", {
       state: {
         pax,
         fare,
         pricePLN: basePrice,
-        seatFeeTotal: Number(totalSurcharge.toFixed(2)), 
-        selectedSeats: effective.map(s => s.label),
+        seatFeeOut: Number(outFee.toFixed(2)),
+        seatFeeBack: Number(backFee.toFixed(2)),
+        seatFeeTotal: Number(totalSurcharge.toFixed(2)),
+        selectedSeats: selectedOut.map(s => s.label),
+        returnSelectedSeats: selectedBack.map(s => s.label),
         flight,
         returnFlight,
-      }
+      },
     });
   };
 
@@ -160,102 +150,113 @@ export default function SeatSelection() {
         <li>3. BAGAŻ / </li>
         <li>4. DANE / </li>
         <li>5. PŁATNOŚĆ</li>
-       </ul>
+      </ul>
 
       <div className="seat-wrap-no-panel">
-        <h1 className="title">WYBIERZ MIEJSC{pax > 1 ? "A" : "E"}:</h1>
+        <h1 className="title">WYBIERZ MIEJSCE:</h1>
+
         <header className="seat-legend">
           <div><span className="dot dot--taken" /> Zajęte</div>
           <div><span className="dot dot--free" /> Dostępne</div>
           <div><span className="dot dot--selected" /> Wybrane</div>
         </header>
-        
+
+                <div className="fd-tabs">
+          <button
+            className={`fd-tab ${segment === "out" ? "is-active" : ""}`}
+            onClick={() => setSegment("out")}
+          >
+            Wylot
+          </button>
+
+          {returnFlight && (
+            <button
+              className={`fd-tab ${segment === "in" ? "is-active" : ""}`}
+              onClick={() => setSegment("in")}
+            >
+              Powrót
+            </button>
+          )}
+        </div>
+
         <div className="seat-picked2">
-            <div className="picked-title">
-                {selected.length > 0 ? "Wybrane miejsc" : "Losowe miejsc"}
-                {pax > 1 ? "a" : "e"}:{" "}
-                <span className="picked-value">
-                  {effective.map((s) => s.label).join(", ") || "—"}
-                </span>
-              </div>
-            <div className="picked-price">
-              Dopłata za wybór: <strong>{totalSurcharge.toFixed(2)} PLN</strong>
-            </div>
+          <div className="picked-title">
+            {selected.length > 0 ? "Wybrane miejsc" : "Losowe miejsc"}
+            {pax > 1 ? "a" : "e"}:{" "}
+            <span className="picked-value">
+              {effective.map((s) => s.label).join(", ") || "—"}
+            </span>
           </div>
-
-<div className="plane-wrapper">
-        <div className="plane">
-          <img className="plane-bg" src={planeBg} alt="" />
-          <div className="seat-grid-rows" aria-label="Mapa miejsc">
-          <div className="seat-picked">
-            <div className="picked-title">
-                {selected.length > 0 ? "Wybrane miejsc" : "Losowe miejsc"}
-                {pax > 1 ? "a" : "e"}:{" "}
-                <span className="picked-value">
-                  {effective.map((s) => s.label).join(", ") || "—"}
-                </span>
-              </div>
-            <div className="picked-price">
-              Dopłata za wybór: <strong>{totalSurcharge.toFixed(2)} PLN</strong>
-            </div>
-          </div>
-            {Array.from({ length: 30 }, (_, i) => i + 1).map((row) => {
-              const a = seats.find(s => s.label === `${row}A`);
-              const b = seats.find(s => s.label === `${row}B`);
-              const c = seats.find(s => s.label === `${row}C`);
-              const d = seats.find(s => s.label === `${row}D`);
-              const e = seats.find(s => s.label === `${row}E`);
-              const f = seats.find(s => s.label === `${row}F`);
-              return (
-                <div key={row} className="row7">
-                  <SeatButton seat={a} selected={isSelected(a.label)} assigned={isAssigned(a.label)} onClick={() => onSeatClick(a)} />
-                  <SeatButton seat={b} selected={isSelected(b.label)} assigned={isAssigned(b.label)} onClick={() => onSeatClick(b)} />
-                  <SeatButton seat={c} selected={isSelected(c.label)} assigned={isAssigned(c.label)} onClick={() => onSeatClick(c)} />
-                  <div className="aisle" aria-hidden />
-                  <SeatButton seat={d} selected={isSelected(d.label)} assigned={isAssigned(d.label)} onClick={() => onSeatClick(d)} />
-                  <SeatButton seat={e} selected={isSelected(e.label)} assigned={isAssigned(e.label)} onClick={() => onSeatClick(e)} />
-                  <SeatButton seat={f} selected={isSelected(f.label)} assigned={isAssigned(f.label)} onClick={() => onSeatClick(f)} />
-                </div>
-              );
-            })}
+          <div className="picked-price">
+            Dopłata za wybór: <strong>{totalSurcharge.toFixed(2)} PLN</strong>
           </div>
         </div>
 
-        <div className="plane2">
-          <img className="plane-bg" src={planeBg2} alt="" />
-          <div className="seat-grid-horizontal" aria-label="Mapa miejsc">
-            {Array.from({ length: 30 }, (_, i) => i + 1).map((row) => {
-              const a = seats.find(s => s.label === `${row}A`);
-              const b = seats.find(s => s.label === `${row}B`);
-              const c = seats.find(s => s.label === `${row}C`);
-              const d = seats.find(s => s.label === `${row}D`);
-              const e = seats.find(s => s.label === `${row}E`);
-              const f = seats.find(s => s.label === `${row}F`);
-              return (
-                <div key={row} className="row7-horizontal">
-                  <SeatButton seat={a} selected={isSelected(a.label)} assigned={isAssigned(a.label)} onClick={() => onSeatClick(a)} />
-                  <SeatButton seat={b} selected={isSelected(b.label)} assigned={isAssigned(b.label)} onClick={() => onSeatClick(b)} />
-                  <SeatButton seat={c} selected={isSelected(c.label)} assigned={isAssigned(c.label)} onClick={() => onSeatClick(c)} />
-                  <div className="aisle" aria-hidden />
-                  <SeatButton seat={d} selected={isSelected(d.label)} assigned={isAssigned(d.label)} onClick={() => onSeatClick(d)} />
-                  <SeatButton seat={e} selected={isSelected(e.label)} assigned={isAssigned(e.label)} onClick={() => onSeatClick(e)} />
-                  <SeatButton seat={f} selected={isSelected(f.label)} assigned={isAssigned(f.label)} onClick={() => onSeatClick(f)} />
-                </div>
-              );
-            })}
+        <div className="plane-wrapper">
+          <div className="plane">
+            <img className="plane-bg" src={planeBg} alt="" />
+            <div className="seat-grid-rows" aria-label="Mapa miejsc">
+              {Array.from({ length: 30 }, (_, i) => i + 1).map((row) => {
+                const a = seats.find(s => s.label === `${row}A`);
+                const b = seats.find(s => s.label === `${row}B`);
+                const c = seats.find(s => s.label === `${row}C`);
+                const d = seats.find(s => s.label === `${row}D`);
+                const e = seats.find(s => s.label === `${row}E`);
+                const f = seats.find(s => s.label === `${row}F`);
+
+                return (
+                  <div key={row} className="row7">
+                    <SeatButton seat={a} selected={isSelected(a.label)} assigned={isAssigned(a.label)} onClick={() => onSeatClick(a)} />
+                    <SeatButton seat={b} selected={isSelected(b.label)} assigned={isAssigned(b.label)} onClick={() => onSeatClick(b)} />
+                    <SeatButton seat={c} selected={isSelected(c.label)} assigned={isAssigned(c.label)} onClick={() => onSeatClick(c)} />
+                    <div className="aisle" aria-hidden />
+                    <SeatButton seat={d} selected={isSelected(d.label)} assigned={isAssigned(d.label)} onClick={() => onSeatClick(d)} />
+                    <SeatButton seat={e} selected={isSelected(e.label)} assigned={isAssigned(e.label)} onClick={() => onSeatClick(e)} />
+                    <SeatButton seat={f} selected={isSelected(f.label)} assigned={isAssigned(f.label)} onClick={() => onSeatClick(f)} />
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
+
+          <div className="plane2">
+            <img className="plane-bg" src={planeBg2} alt="" />
+            <div className="seat-grid-horizontal" aria-label="Mapa miejsc">
+              {Array.from({ length: 30 }, (_, i) => i + 1).map((row) => {
+                const a = seats.find(s => s.label === `${row}A`);
+                const b = seats.find(s => s.label === `${row}B`);
+                const c = seats.find(s => s.label === `${row}C`);
+                const d = seats.find(s => s.label === `${row}D`);
+                const e = seats.find(s => s.label === `${row}E`);
+                const f = seats.find(s => s.label === `${row}F`);
+
+                return (
+                  <div key={row} className="row7-horizontal">
+                    <SeatButton seat={a} selected={isSelected(a.label)} assigned={isAssigned(a.label)} onClick={() => onSeatClick(a)} />
+                    <SeatButton seat={b} selected={isSelected(b.label)} assigned={isAssigned(b.label)} onClick={() => onSeatClick(b)} />
+                    <SeatButton seat={c} selected={isSelected(c.label)} assigned={isAssigned(c.label)} onClick={() => onSeatClick(c)} />
+                    <div className="aisle" aria-hidden />
+                    <SeatButton seat={d} selected={isSelected(d.label)} assigned={isAssigned(d.label)} onClick={() => onSeatClick(d)} />
+                    <SeatButton seat={e} selected={isSelected(e.label)} assigned={isAssigned(e.label)} onClick={() => onSeatClick(e)} />
+                    <SeatButton seat={f} selected={isSelected(f.label)} assigned={isAssigned(f.label)} onClick={() => onSeatClick(f)} />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
 
       <div className="seat-cta">
-          {!ready && <div className="seat-hint">Wybierz {pax} miejsce(a).</div>}
+        {!ready && <div className="seat-hint">Wybierz {pax} miejsce(a).</div>}
           <Button1 onClick={next} disabled={!ready}>
-            {selected.length > 0
-              ? `WYBIERZ MIEJSC${pax > 1 ? "A" : "E"}`
-              : `WYBIERZ LOSOWE`}
+            {selectedOut.length === 0 && selectedBack.length === 0
+              ? "WYBIERZ LOSOWE"
+              : returnFlight
+                  ? "WYBIERZ MIEJSCA"
+                  : `WYBIERZ MIEJSC${pax > 1 ? "A" : "E"}`}
           </Button1>
-        </div>
+      </div>
     </main>
   );
 }
@@ -268,17 +269,19 @@ function SeatButton({ seat, selected, assigned, onClick }) {
     selected ? "is-selected" : "",
     assigned && !selected ? "is-assigned" : ""
   ].join(" ");
-const title = seat.taken
-  ? `${seat.label} • zajęte`
-  : `${seat.label} • ${
-      seat.row === 1
-        ? "pierwszy rząd +49,90"
-        : seat.type === "window"
-        ? "okno +29,90"
-        : seat.type === "aisle"
-        ? "korytarz +19,90"
-        : "środek +0,0"
-    }`;
+
+  const title = seat.taken
+    ? `${seat.label} • zajęte`
+    : `${seat.label} • ${
+        seat.row === 1
+          ? "pierwszy rząd +49,90"
+          : seat.type === "window"
+          ? "okno +29,90"
+          : seat.type === "aisle"
+          ? "korytarz +19,90"
+          : "środek +0,0"
+      }`;
+
   return (
     <button
       type="button"
