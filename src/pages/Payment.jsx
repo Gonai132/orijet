@@ -10,6 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale } from "react-datepicker";
 import pl from "date-fns/locale/pl";
 import { FaCalendar } from "react-icons/fa6";
+import { LuTicketsPlane } from "react-icons/lu";
 registerLocale("pl", pl);
 
 function pln(n) {
@@ -157,7 +158,7 @@ const goToConfirmation = () => {
     <main className="page payment">
     <BackButton/>
       <ul className="location">
-        <li>1.POŁĄCZENIE / </li>
+        <li>1. POŁĄCZENIE / </li>
         <li>2. MIEJSCE / </li>
         <li>3. BAGAŻ / </li>
          <li>4. DANE / </li>
@@ -370,7 +371,7 @@ const goToConfirmation = () => {
               Potwierdzenie i inofmacje jak odprawić pozostałych pasażerów zostały wysłane na email: <strong>{email}</strong>
             </p>
             <Button1 className="pay-modal-btn" onClick={goToConfirmation}>
-              Moja karta pokładowa →
+              Mój bilet <LuTicketsPlane />
             </Button1>
           </div>
         </div>

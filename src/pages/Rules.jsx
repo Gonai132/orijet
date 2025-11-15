@@ -2,12 +2,14 @@ import Button1 from "../components/Buttons/Button1";
 import "../styles/rules.css";
 import { useNavigate } from "react-router-dom";
 import { FaRectangleList } from "react-icons/fa6";
+import BackButton from "../components/Buttons/BackButton";
 
 export default function Rules() {
   const navigate = useNavigate();
 
   return (
     <main className="app-bg">
+      <BackButton/>
       <h1 className="title">REGULAMIN <FaRectangleList /></h1>
 
       <div className="center-vertical rules-wrap">

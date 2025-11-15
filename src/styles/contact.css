@@ -46,6 +46,7 @@
   font-size: 14px;
   transition: border-color var(--transition);
   outline: none;
+  background-color: transparent;
 }
 
 .contact-field input:focus,

@@ -155,7 +155,7 @@ export default function SeatSelection() {
     <main className="page seat-page transparent">
       <BackButton />
       <ul className="location">
-        <li>1.POŁĄCZENIE / </li>
+        <li>1. POŁĄCZENIE / </li>
         <li className="active">2. MIEJSCE / </li>
         <li>3. BAGAŻ / </li>
         <li>4. DANE / </li>

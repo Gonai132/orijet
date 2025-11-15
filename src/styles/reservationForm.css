@@ -76,6 +76,10 @@
   margin-top: 30px;
 }
 
+.rf-consent svg {
+  vertical-align: top;
+}
+
 .rf-consent input[type="checkbox"] {
   accent-color:var(--color-teal);
   width: 16px;

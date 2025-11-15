@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/map.css";
 import { FaPlane, FaMapLocationDot } from "react-icons/fa6";
+import BackButton from "../components/Buttons/BackButton";
 
 const geoUrl = process.env.PUBLIC_URL + "/data/europe-geo.json";
 
@@ -10,6 +11,7 @@ export default function Map() {
   const [flights, setFlights] = useState([]);
   const [airports, setAirports] = useState([]);
   const [activeAirport, setActiveAirport] = useState(null);
+  const activeAirportData = airports.find(a => a.code === activeAirport);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -68,14 +70,16 @@ export default function Map() {
   const activeRoutes = flights.filter((f) => f.origin.code === activeAirport);
 
 return (
-  <main className="page map-page">
+  <main className="page">
+    <BackButton />
+    <div className="map-page">
     <h1 className="title">MAPA POŁĄCZEŃ <FaMapLocationDot/></h1>
-
+    
     <div className="map-layout">
       <div className="connections-list">
         {activeAirport ? (
           <>
-            <h2>Połączenia z {activeAirport} :</h2>
+            <h2>Połączenia z {activeAirport}   {activeAirportData && ` — ${activeAirportData.name}`}</h2>
             <ul>
               {[...new Set(activeRoutes.map((r) => r.destination.code))].map((destCode) => {
                 const dest = airports.find((a) => a.code === destCode);
@@ -118,22 +122,26 @@ return (
             }
           </Geographies>
 
-          {activeRoutes.map((route) => {
-            const fromAirport = airports.find((a) => a.code === route.origin.code);
-            const toAirport = airports.find((a) => a.code === route.destination.code);
-            if (!fromAirport || !toAirport) return null;
-            return (
-              <Line
-                key={route.id}
-                from={fromAirport.coordinates}
-                to={toAirport.coordinates}
-                stroke="#00BCD4"
-                strokeWidth={3}
-                strokeLinecap="round"
-                style={{ opacity: 0.8 }}
-              />
-            );
-          })}
+          {activeAirport && (
+            <g key={"routes-" + activeAirport}>
+              {activeRoutes.map((route) => {
+                const fromAirport = airports.find((a) => a.code === route.origin.code);
+                const toAirport = airports.find((a) => a.code === route.destination.code);
+                if (!fromAirport || !toAirport) return null;
+                return (
+                  <Line
+                    key={route.id}
+                    from={fromAirport.coordinates}
+                    to={toAirport.coordinates}
+                    stroke="#00BCD4"
+                    strokeWidth={3}
+                    strokeLinecap="round"
+                    style={{ opacity: 0.8 }}
+                  />
+                );
+              })}
+            </g>
+          )}
 
           {airports.map((airport) => (
             <Marker
@@ -142,7 +150,7 @@ return (
               onClick={() => handleClick(airport)}
             >
               <circle
-                r={activeAirport === airport.code ? 12 : 9}
+                r={activeAirport === airport.code ? 13 : 10}
                 fill={airport.code === "WAW" ? "orange" : "#007389"}
                 stroke="#fff"
                 strokeWidth={1}
@@ -159,6 +167,7 @@ return (
           ))}
         </ComposableMap>
       </div>
+    </div>
     </div>
   </main>
 );

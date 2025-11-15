@@ -9,6 +9,7 @@ import DatePicker from "react-datepicker";
 import { registerLocale } from "react-datepicker";
 import pl from "date-fns/locale/pl";
 import { parseISO as dfParseISO } from "date-fns";
+import { FaCalendar } from "react-icons/fa6";
 import "react-datepicker/dist/react-datepicker.css";
 
 import {
@@ -265,7 +266,7 @@ export default function Home() {
                     placeholderText="dd.mm.rrrr"
                     withPortal
                     popperPlacement="bottom-start"
-                  />
+                  /><FaCalendar/>
                 </div>
 
                 {tripType === "rt" && (
@@ -284,7 +285,7 @@ export default function Home() {
                       placeholderText="dd.mm.rrrr"
                       withPortal
                       popperPlacement="bottom-start"
-                    />
+                    /><FaCalendar/>
                   </div>
                 )}
               </div>

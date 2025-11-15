@@ -56,7 +56,7 @@ export default function BagSelection() {
     <main className="page bag-page">
       <BackButton />
       <ul className="location">
-        <li>1.POŁĄCZENIE / </li>
+        <li>1. POŁĄCZENIE / </li>
         <li>2. MIEJSCE / </li>
         <li className="active">3. BAGAŻ / </li>
         <li>4. DANE / </li>
@@ -123,9 +123,9 @@ export default function BagSelection() {
             <div className="bag-qty">
               <div>Ilość sztuk wybranego bagażu:</div>
               <div className="counter">
-                <button type="button" onClick={() => setQty(q => Math.max(0, q - 1))}>−</button>
+                <button type="button" className="counter-btn" onClick={() => setQty(q => Math.max(0, q - 1))}>−</button>
                 <span className="counter-val">{qty}</span>
-                <button type="button" onClick={() => setQty(q => Math.min(9, q + 1))}>+</button>
+                <button type="button" className="counter-btn" onClick={() => setQty(q => Math.min(9, q + 1))}>+</button>
               </div>
             </div>
 

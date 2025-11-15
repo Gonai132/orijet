@@ -4,6 +4,7 @@ import Button1 from "../components/Buttons/Button1";
 import "../styles/contact.css";
 import mapImg from "../img/mapa1.png";
 import { FaMessage } from "react-icons/fa6";
+import BackButton from "../components/Buttons/BackButton";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -45,6 +46,7 @@ export default function Contact() {
 
   return (
     <main className="page contact-page">
+      <BackButton/>
         <h1 className="title">SKONTAKTUJ SIĘ Z NAMI <FaMessage /></h1>
 
         <img src={mapImg} className="mapa-img mapa-confirmation" alt="Mapa w tle" />

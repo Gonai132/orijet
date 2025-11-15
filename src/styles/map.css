@@ -106,6 +106,10 @@ svg *:focus {
   outline: none !important;
 }
 
+.map-page .back-btn {
+  position: absolute;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -143,6 +147,10 @@ svg *:focus {
     padding-bottom: 90px;
   }
 
+ .rsm-marker text{
+    font-size: 20px!important;
+  }
+
   .map-container {
     border-radius: 15px;
     margin: 0 0px;
@@ -154,10 +162,11 @@ svg *:focus {
   }
 
   .connections-list h2 {
-    font-size: 1.1rem;
+    font-size: 18px;
+    padding: 10px 5px 0px;
   }
 
   .connections-list li {
-    font-size: 0.95rem;
+    font-size: 16px;
   }
 }

@@ -95,7 +95,7 @@ export default function FlightDetails() {
     <main className="page details">
       <BackButton />
       <ul className="location">
-        <li className="active">1.POŁĄCZENIE / </li>
+        <li className="active">1. POŁĄCZENIE / </li>
         <li>2. MIEJSCE / </li>
         <li>3. BAGAŻ / </li>
         <li>4. DANE / </li>

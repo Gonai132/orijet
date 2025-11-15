@@ -4,6 +4,7 @@ import "../styles/login.css";
 import Button1 from "../components/Buttons/Button1";
 import mapImg from "../img/mapa1.png";
 import { FaUser } from "react-icons/fa6";
+import BackButton from "../components/Buttons/BackButton";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -134,6 +135,7 @@ export default function Login() {
 
   return (
     <main className="app-bg">
+      <BackButton/>
       <h1 className="title">{isRegistering ? "REJESTRACJA" : "LOGOWANIE"} <FaUser /></h1>
 
       <div className="map-wrapper"><img src={mapImg} className="mapa-img mapa-login" alt="Mapa w tle" /></div>

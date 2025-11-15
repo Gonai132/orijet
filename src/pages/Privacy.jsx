@@ -2,12 +2,14 @@ import Button1 from "../components/Buttons/Button1";
 import "../styles/rules.css";
 import { useNavigate } from "react-router-dom";
 import { MdPrivacyTip } from "react-icons/md";
+import BackButton from "../components/Buttons/BackButton";
 
 export default function Privacy() {
   const navigate = useNavigate();
 
   return (
     <main className="app-bg">
+      <BackButton/>
       <h1 className="title">POLITYKA PRYWATNOŚCI <MdPrivacyTip /></h1>
 
       <div className="center-vertical rules-wrap">

@@ -90,7 +90,7 @@
 
 .logout-btn-nav {
   background: var(--color-teal-dark);
-  color: var(--color-sky-1);
+  color: var(--color-sky-1)!important;
   border: none;
   text-transform: uppercase;
   border-radius: 99px;

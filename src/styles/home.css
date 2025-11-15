@@ -9,6 +9,8 @@
   background-attachment: fixed;
 }
 
+/* #f84f00ec  */
+
 .home-layout {
   display: flex;
   flex-direction: column;
@@ -235,7 +237,7 @@
 
 .input[type="date"] {
   width: 100%;
-  font-size: 13px;
+  font-size: 16px;
   height: var(--select-h);
   padding: 0 34px 0 8px;
   box-sizing: border-box;
@@ -313,8 +315,12 @@
   font-family: var(--font-main);
   box-sizing: border-box;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 16px;
   font-family: var(--font-main);
+}
+
+.react-datepicker__input-container input:placeholder-shown {
+  font-size: 12px;
 }
 
 .react-datepicker__day--selected {
@@ -337,16 +343,24 @@
   width: 100% !important;
   display: block !important;
   box-sizing: border-box;
+  position: relative;
+  z-index: 5;
+  background-color: transparent;
 }
 
 .form-error {
-  /* background: #ffebeb; */
   color: var(--color-orange);
-  /* border: 1px solid #f5b5b5; */
   border-radius: 8px;
   font-size: 16px;
   text-align: center;
   animation: fadeIn 0.3s ease;
+}
+
+.date-field svg {
+  position: absolute;
+  right: 10px;
+  z-index: 0;
+  color: var(--color-teal-light);
 }
 
 @keyframes fadeIn {
@@ -412,6 +426,7 @@
     justify-content: center;
     margin-right: -80px;
     z-index: 5;
+    min-width: 400px;
   }
 
   .home {

@@ -30,7 +30,6 @@ export default function SearchResults() {
   const [selectedDepart, setSelectedDepart] = useState(null);
   const [selectedReturn, setSelectedReturn] = useState(null);
 
-  // 🆕 osobne klucze dla animacji sekcji wylotu i powrotu
   const [fadeDepartKey, setFadeDepartKey] = useState(0);
   const [fadeReturnKey, setFadeReturnKey] = useState(0);
 
@@ -141,7 +140,7 @@ export default function SearchResults() {
     <main className="page page-results">
       <BackButton />
       <ul className="location">
-        <li className="active">1.POŁĄCZENIE / </li>
+        <li className="active">1. POŁĄCZENIE / </li>
         <li>2. MIEJSCE / </li>
         <li>3. BAGAŻ / </li>
         <li>4. DANE / </li>

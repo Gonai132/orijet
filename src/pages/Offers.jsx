@@ -4,6 +4,7 @@ import { Card, Button, Row, Col, Pagination } from "react-bootstrap";
 import { Carousel } from "react-bootstrap";
 import { PiAirplaneTiltFill } from "react-icons/pi";
 import "../styles/offers.css";
+import BackButton from "../components/Buttons/BackButton";
 
 export default function Offers() {
   const navigate = useNavigate();
@@ -181,6 +182,7 @@ export default function Offers() {
 
   return (
     <main className="page offers-page">
+      <BackButton/>
       <h1 className="title">OFERTY SPECJALNE <PiAirplaneTiltFill/></h1>
 
       <div className="carousel-wrap">

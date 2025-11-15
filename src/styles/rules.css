@@ -21,7 +21,7 @@
 .rules-container p {
   font-size: 16px;
   margin-bottom: 10px;
-  text-align: ljustify;
+  text-align: left;
 }
 
 .rules-container ul {
@@ -39,7 +39,8 @@
 .rules-btn {
   display: flex;
   justify-content: center;
-  margin-top: 35px;
+  padding-top: 25px;
+  margin-bottom: 30px;
   width: 90%;
 }
 

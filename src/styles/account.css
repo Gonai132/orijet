@@ -9,8 +9,8 @@
   border-radius: 25px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   padding: 30px 25px;
-  width: 100%;
-  max-width: 600px;
+  width: 92%;
+  max-width: 650px;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -166,12 +166,17 @@
   color: var(--color-teal);
   background-color: var(--color-sky-2);
   border: 2px solid var(--color-sky-1);
+  text-transform: uppercase;
   border-radius: 99px;
   padding: 6px 15px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
+}
+
+.small-btn svg {
+  vertical-align: top !important;
 }
 
 .small-btn:hover {
@@ -253,6 +258,7 @@ font-size: 14px;
 
 .modal-btn.cancel {
   background: #ddd;
+  color: var(--color-text-dark);
 }
 
 .modal-btn.cancel:hover {
@@ -263,15 +269,18 @@ font-size: 14px;
 @media (max-width:499px) {
   .account-container {
     max-width: 92%;
+    padding: 30px 15px;
   }
 
   .small-btn {
   border-radius: 15px;
   padding: 5px 5px;
   font-size: 12px;
+  line-height: 24px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
+  min-width: 80px;
 }
 
 

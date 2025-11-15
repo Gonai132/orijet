@@ -172,7 +172,11 @@
 }
 
 .pay-modal-box h3 { 
-  margin: 0 0 8px; 
+  margin: 10px 0 8px; 
+  color: var(--color-teal);
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
 }
 .pay-modal-btn {
   margin-top:10px; 
@@ -182,6 +186,11 @@
   cursor:pointer;
   background: var(--color-teal); 
   color:#fff; font-weight:700;
+}
+
+.pay-modal-box svg {
+  vertical-align:top;
+  font-size: 24px;
 }
 
 .pay-err {
@@ -225,7 +234,7 @@
   border: none;
   font-size: 22px;
   cursor: pointer;
-  color: var(--color-text-light);
+  color: var(--color-text-medium);
 }
  
 .login-container {

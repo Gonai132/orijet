@@ -103,7 +103,7 @@ export default function ReservationForm() {
     <main className="page reservation">
       <BackButton />
       <ul className="location">
-        <li>1.POŁĄCZENIE / </li>
+        <li>1. POŁĄCZENIE / </li>
         <li>2. MIEJSCE / </li>
         <li>3. BAGAŻ / </li>
         <li className="active">4. DANE / </li>

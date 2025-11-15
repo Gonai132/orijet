@@ -4,12 +4,14 @@ import aboutImg from "../img/plane.png";
 import { useNavigate } from "react-router-dom";
 import { FaPlane } from "react-icons/fa6";
 import mapImg from "../img/mapa1.png";
+import BackButton from "../components/Buttons/BackButton";
 
 export default function About() {
   const navigate = useNavigate();
 
   return (
     <main className="app-bg about-page">
+      <BackButton/>
       <h1 className="title">O NAS <FaPlane /></h1>
 
         <div className="map-wrapper"><img src={mapImg} className="mapa-img" alt="Mapa w tle" /></div>

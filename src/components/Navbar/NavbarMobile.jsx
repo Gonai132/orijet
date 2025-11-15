@@ -1,8 +1,12 @@
 import "./navbarMobile.css";
-import { FaBars } from "react-icons/fa6";
+import { FaBars, FaUser, FaMapLocationDot, FaRectangleList, FaPlane, FaCircleQuestion, FaMessage   } from "react-icons/fa6";
 import logo from "../../img/logoSmall.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { IoLogOut } from "react-icons/io5";
+import { ImSearch } from "react-icons/im";
+import { TbCirclePercentageFilled } from "react-icons/tb";
+import { IoSearchCircle } from "react-icons/io5";
 
 export default function NavbarMobile() {
   const [open, setOpen] = useState(false);
@@ -60,15 +64,15 @@ export default function NavbarMobile() {
       <div className={`nav-layer ${open ? "is-open" : ""}`} onClick={closeMenu}>
         <div className="dropdown" onClick={(e) => e.stopPropagation()}>
           {user ? (
-          <Link to="/login" onClick={handleLogout} className="item">Wyloguj się</Link>
-          ) : (<Link to="/login" onClick={closeMenu} className="item">Zaloguj się</Link>)}
-          <Link to="/" onClick={closeMenu} className="item">Wyszukaj loty</Link>
-          <Link to="/offers" onClick={closeMenu} className="item">Oferty promocyjne</Link>
-          <Link to="/map" onClick={closeMenu} className="item">Mapa połączeń</Link>
-          <Link to="/rules" onClick={closeMenu} className="item">Regulamin</Link>
-          <Link to="/about" onClick={closeMenu} className="item">O nas</Link>
-          <Link to="/faq" onClick={closeMenu} className="item">FAQ</Link>
-          <Link to="/contact" onClick={closeMenu} className="item">Kontakt</Link>
+          <Link to="/login" onClick={handleLogout} className="item"><IoLogOut size={22} /> Wyloguj się</Link>
+          ) : (<Link to="/login" onClick={closeMenu} className="item"><FaUser size={20}/> Zaloguj się</Link>)}
+          <Link to="/" onClick={closeMenu} className="item"><IoSearchCircle size={25} /> Wyszukaj loty</Link>
+          <Link to="/offers" onClick={closeMenu} className="item"><TbCirclePercentageFilled size={24}/> Oferty promocyjne</Link>
+          <Link to="/map" onClick={closeMenu} className="item"><FaMapLocationDot size={22}/> Mapa połączeń</Link>
+          <Link to="/rules" onClick={closeMenu} className="item"><FaRectangleList size={20}/> Regulamin</Link>
+          <Link to="/about" onClick={closeMenu} className="item"><FaPlane size={20}/> O nas</Link>
+          <Link to="/faq" onClick={closeMenu} className="item"><FaCircleQuestion size={20}/> FAQ</Link>
+          <Link to="/contact" onClick={closeMenu} className="item"><FaMessage size={18}/> Kontakt</Link>
         </div>
       </div>
     </header>

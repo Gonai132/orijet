@@ -4,6 +4,7 @@ import "../styles/account.css";
 import Button1 from "../components/Buttons/Button1";
 import { FaPlane, FaTrashAlt } from "react-icons/fa";
 import { FaHouseUser } from "react-icons/fa6";
+import { LuTicketsPlane } from "react-icons/lu";
 import Button2 from "../components/Buttons/Button2";
 import mapImg from "../img/mapa1.png";
 import BackButton from "../components/Buttons/BackButton";
@@ -177,7 +178,7 @@ export default function Account() {
                         })
                       }
                     >
-                      Karta pokładowa
+                      Bilet <LuTicketsPlane size={20} />
                     </button>
                     <FaTrashAlt
                       className="trash-icon"
