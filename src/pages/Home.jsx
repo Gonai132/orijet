@@ -142,19 +142,6 @@ export default function Home() {
     navigate(`/search?${q.toString()}`);
   };
 
-  useEffect(() => {
-  const v = document.querySelector(".movie-video");
-  if (v) {
-    const playPromise = v.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        v.muted = true;
-        v.play();
-      });
-    }
-  }
-}, []);
-
   const departSelected = departISO ? dfParseISO(departISO) : null;
   const returnSelected = returnISO ? dfParseISO(returnISO) : null;
 
@@ -324,7 +311,7 @@ export default function Home() {
           </Container>
         </section>
 
-        <section className="movie-banner">
+         <section className="movie-banner">
           <video
             className="movie-video"
             src={require("../img/OriJetVideo.mp4")}
@@ -332,10 +319,7 @@ export default function Home() {
             muted
             loop
             playsInline
-            webkit-playsinline="true"
-            preload="auto"
-          >
-          </video>
+          />
         </section>
       </div>
     </main>

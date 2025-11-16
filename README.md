@@ -1,3 +1,11 @@
+# React SPA - an University project of an interface of web application for reserving airline tickets called "OriJet"
+
+Created by Małgorzata Szymanik in 2025, all rights reserved
+
+# Aplikacja React - Projekt inżynierski interfejsu aplikacji internetowej do rezerwacji biletów lotniczych o nazwie "OriJet"
+
+Stworzone przez Małgorzatę Szymanik w roku 2025, wszelkie prawa zastrzeżone
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
