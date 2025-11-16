@@ -113,6 +113,14 @@ if (loggedUser) {
 
     bookingRef,
 
+      totals: {
+    ticketOut,
+    ticketBack,
+    seatFeeTotal,
+    baggageTotal,
+    grand,
+  },
+
     dateISO: state?.dateISO ?? out?.date ?? "—",
     selectedSeats: state?.selectedSeats ?? [],
     flight: {

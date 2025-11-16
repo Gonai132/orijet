@@ -18,10 +18,8 @@ export default function Confirmation() {
   const out = state?.flight ?? null;
   const back = state?.returnFlight ?? null;
 
-  // nowy stan: który odcinek pokazujemy (wylot/powrót)
-  const [segment, setSegment] = useState("out"); // "out" albo "back"
+  const [segment, setSegment] = useState("out");
 
-  // aktualny lot zależnie od segmentu
   const currentFlight = segment === "out" ? out : back;
 
   const pax = state?.passenger || {};
@@ -86,7 +84,7 @@ export default function Confirmation() {
     const url = canvas.toDataURL("image/png");
     const a = document.createElement("a");
     a.href = url;
-    a.download = `bilet-${flightNo}.png`; // nazwa jak wcześniej
+    a.download = `bilet-${flightNo}.png`;
     a.click();
   };
 

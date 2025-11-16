@@ -89,6 +89,7 @@
 .pay-item-r {
   text-align: right;
   min-width: 100px;
+  align-self: flex-end;
 }
 .pay-total { 
   border-top:2px solid #e7ecef; 
@@ -234,7 +235,7 @@
   border: none;
   font-size: 22px;
   cursor: pointer;
-  color: var(--color-text-medium);
+  color: var(--color-gray-medium);
 }
  
 .login-container {

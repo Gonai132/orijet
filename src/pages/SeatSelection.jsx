@@ -123,23 +123,26 @@ const backFee = selectedBack.length
   const ready = effective.length === pax;
 
   const next = () => {
-    if (!ready) return;
+  if (!ready) return;
 
-    navigate("/baggage", {
-      state: {
-        pax,
-        fare,
-        pricePLN: basePrice,
-        seatFeeOut: Number(outFee.toFixed(2)),
-        seatFeeBack: Number(backFee.toFixed(2)),
-        seatFeeTotal: Number(totalSurcharge.toFixed(2)),
-        selectedSeats: selectedOut.map(s => s.label),
-        returnSelectedSeats: selectedBack.map(s => s.label),
-        flight,
-        returnFlight,
-      },
-    });
-  };
+  const effectiveOut  = selectedOut.length  ? selectedOut  : assignedOut;
+  const effectiveBack = selectedBack.length ? selectedBack : assignedBack;
+
+  navigate("/baggage", {
+    state: {
+      pax,
+      fare,
+      pricePLN: basePrice,
+      seatFeeOut: Number(outFee.toFixed(2)),
+      seatFeeBack: Number(backFee.toFixed(2)),
+      seatFeeTotal: Number(totalSurcharge.toFixed(2)),
+      selectedSeats: effectiveOut.map(s => s.label),
+      returnSelectedSeats: effectiveBack.map(s => s.label),
+      flight,
+      returnFlight,
+    },
+  });
+};
 
   return (
     <main className="page seat-page transparent">
@@ -161,23 +164,25 @@ const backFee = selectedBack.length
           <div><span className="dot dot--selected" /> Wybrane</div>
         </header>
 
-                <div className="fd-tabs">
-          <button
+
+          
+
+          {returnFlight ? (        
+            <div className="fd-tabs">
+            <button
             className={`fd-tab ${segment === "out" ? "is-active" : ""}`}
             onClick={() => setSegment("out")}
           >
             Wylot
           </button>
-
-          {returnFlight && (
             <button
               className={`fd-tab ${segment === "in" ? "is-active" : ""}`}
               onClick={() => setSegment("in")}
             >
               Powrót
-            </button>
-          )}
-        </div>
+            </button></div>
+          ):null}
+
 
         <div className="seat-picked2">
           <div className="picked-title">

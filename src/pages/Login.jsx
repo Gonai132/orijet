@@ -44,12 +44,15 @@ export default function Login() {
                 arriveTime: "12:10",
                 durationText: "2 h 30 min",
               },
+              totals: {
+                grand: 320.30,
+              }
             },
             {
               id: 2,
               bookingRef: "OJ-D3E4F",
               dateISO: "2026-06-22",
-              selectedSeats: ["18C"],
+              selectedSeats: ["18C", "1B", "18A"],
               flight: {
                 origin: { code: "LHR", name: "Londyn Heathrow" },
                 destination: { code: "WAW", name: "Warszawa Chopin" },
@@ -58,6 +61,9 @@ export default function Login() {
                 arriveTime: "21:20",
                 durationText: "2 h 30 min",
               },
+              totals: {
+                grand: 1290.50,
+              }
             },
           ],
         },
@@ -68,7 +74,10 @@ export default function Login() {
 
   const errors = useMemo(() => {
     const e = {};
-    if (!username.trim()) e.username = "Podaj nazwę użytkownika.";
+    if (!username.trim()) 
+    e.username = "Podaj nazwę użytkownika.";
+    else if (username.length > 9)
+    e.username = "Nazwa użytkownika może mieć maksymalnie 9 znaków.";
     if (isRegistering && !email.trim()) e.email = "Podaj adres e-mail.";
     else if (isRegistering && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
       e.email = "Nieprawidłowy adres e-mail.";
@@ -152,6 +161,7 @@ export default function Login() {
                 }`}
                 placeholder="np. gosia"
                 value={username}
+                maxLength={9}
                 onChange={(e) => setUsername(e.target.value)}
                 onBlur={onBlur("username")}
               />

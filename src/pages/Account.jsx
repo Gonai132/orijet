@@ -152,13 +152,13 @@ export default function Account() {
                 <li key={r.id} className="reservation-item">
                   <div className="reservation-info">
                     <strong>
-                      {r.flight?.origin?.code} <FaPlane size={12}/> {r.flight?.destination?.code}
+                      {r.flight?.origin?.code} <FaPlane size={12}/> {r.flight?.destination?.code}   
                     </strong>
                     {", "} {r.dateISO}
                     {r.returnFlight && (
-                      <div>
+                      <div>{"powrót: "}
                         <strong>
-                          {r.flight?.destination?.code} <FaPlane size={12}/> {r.flight?.origin?.code}
+                           {r.flight?.destination?.code} <FaPlane size={12}/> {r.flight?.origin?.code}
                         </strong>
                         {", "} {r.returnDateISO}
                       </div>
@@ -167,7 +167,7 @@ export default function Account() {
                       Numer rezerwacji: <strong>{r.bookingRef}</strong>
                     </div>
                     <div className="account-reservation">
-                     Osoby na rezerwacji: <strong>{r.selectedSeats?.length || 1}</strong>
+                    Liczba osób: <strong>{r.selectedSeats?.length || 1}</strong>, Cena: <strong>{Number(r.totals?.grand).toFixed(2)}pln</strong> 
                     </div>
                   </div>
                   <div className="reservation-actions">
