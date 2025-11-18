@@ -196,6 +196,18 @@ export default function Offers() {
           <Carousel.Item>
             <img
               className="d-block w-100 carousel-img"
+              src={require("../img/cityBreak.jpg")}
+              alt="Slide 2"
+            />
+            <Carousel.Caption>
+              <h3>City Break</h3>
+              <p>Weekend w Barcelonie, Paryżu lub Rzymie?</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          
+          <Carousel.Item>
+            <img
+              className="d-block w-100 carousel-img"
               src={require("../img/cityView.jpg")}
               alt="Slide 3"
             />
@@ -213,18 +225,6 @@ export default function Offers() {
             <Carousel.Caption>
               <h3>Wakacje marzeń</h3>
               <p>Odkryj gorące kierunki i najpiękniejsze plaże Europy.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-
-          <Carousel.Item>
-            <img
-              className="d-block w-100 carousel-img"
-              src={require("../img/cityBreak.jpg")}
-              alt="Slide 2"
-            />
-            <Carousel.Caption>
-              <h3>City Break</h3>
-              <p>Weekend w Barcelonie, Paryżu lub Rzymie?</p>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>

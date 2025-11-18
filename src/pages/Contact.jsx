@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Container from "../components/Container/Container";
 import Button1 from "../components/Buttons/Button1";
 import "../styles/contact.css";
@@ -16,6 +16,20 @@ export default function Contact() {
 
   const [touched, setTouched] = useState({});
   const [sent, setSent] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("loggedUser");
+    if (stored) {
+      const user = JSON.parse(stored);
+      const fullName = [user.fname, user.lname].filter(Boolean).join(" ");
+
+      setForm((f) => ({
+        ...f,
+        name: fullName || "",
+        email: user.email || "",
+      }));
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,14 +60,19 @@ export default function Contact() {
 
   return (
     <main className="page contact-page">
-      <BackButton/>
-        <h1 className="title">SKONTAKTUJ SIĘ Z NAMI <FaMessage /></h1>
+      <BackButton />
+      <h1 className="title">
+        SKONTAKTUJ SIĘ Z NAMI <FaMessage />
+      </h1>
 
-        <img src={mapImg} className="mapa-img mapa-confirmation" alt="Mapa w tle" />
+      <img src={mapImg} className="mapa-img mapa-confirmation" alt="Mapa w tle" />
 
       <Container className="contact-wrap">
         {sent ? (
-          <div className="contact-success">Wiadomość została wysłana!<div>Odpowiemy jak naszybciej.</div></div>
+          <div className="contact-success">
+            Wiadomość została wysłana!
+            <div>Odpowiemy jak naszybciej.</div>
+          </div>
         ) : (
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
             <div className="contact-field">
